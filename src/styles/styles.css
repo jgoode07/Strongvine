@@ -1,6 +1,7 @@
 /* =========================================================
    TOKENS
 ========================================================= */
+
 :root {
 
     /* ---------- COLOURS ---------- */
@@ -30,13 +31,14 @@
 
     /* ---------- LAYOUT ---------- */
 
-    --page-padding: 2rem;
+    --page-padding: 3rem;
 
 }
 
 /* =========================================================
    BASE / RESET
 ========================================================= */
+
 *,
 *::before,
 *::after {
@@ -50,9 +52,44 @@ body {
     font-family: var(--font-primary);
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 /* =========================================================
    LAYOUT UTILITIES
 ========================================================= */
+
 .page {
     padding: var(--page-padding);
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+/* ---------- HEADER ---------- */
+
+/* Brand row */
+.header__brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header__brand-text {
+    font-family: var(--font-brand);
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.header__brand-logo {
+    display: block;
+}
+
+.header__brand-logo img {
+    width: 8rem;
+    height: auto;
 }
