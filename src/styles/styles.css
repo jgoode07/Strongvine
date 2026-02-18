@@ -72,6 +72,13 @@ img {
 
 /* ---------- HEADER ---------- */
 
+/* Container */
+.header__container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 85vh;
+}
+
 /* Brand row */
 .header__brand {
     display: flex;
@@ -81,7 +88,7 @@ img {
 
 .header__brand-text {
     font-family: var(--font-brand);
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 1vw, 1.5rem);
     letter-spacing: 0.5px;
 }
 
@@ -90,6 +97,21 @@ img {
 }
 
 .header__brand-logo img {
-    width: 8rem;
+    width: 5rem;
     height: auto;
+}
+
+/* Hero */
+.header__hero {
+    display: grid;
+    grid-template-columns: minmax(20rem, 24rem) minmax(12rem, 18rem);
+    align-items: end;
+}
+
+.header__hero-intro {
+    font-family: var(--font-primary);
+    font-size: clamp(1.15rem, 1vw, 1.25rem);
+    letter-spacing: 0.2px;
+    line-height: 1.15;
+    color: var(--color-text-dark);
 }
