@@ -1,7 +1,42 @@
 /* =========================================================
+   TOKENS
+========================================================= */
+:root {
+
+    /* ---------- COLOURS ---------- */
+
+    /* Backgrounds */
+    --color-bg-white: #ffffff;
+    --color-bg-black: #000000;
+
+    /* Text */
+    --color-text-dark: #010101;
+
+    /* Accent / Brand */
+    --color-accent-green: #88b24b;
+
+    /* Buttons */
+    --color-btn-cherry: #af0c1a;
+    --color-btn-portfolio: #1a1919;
+    --color-btn-video: #f4eeee;
+
+    /* ---------- TYPOGRAPHY ---------- */
+
+    --font-brand: "Open Sans", sans-serif;
+    --font-primary: "Space Mono", monospace;
+
+    /* Temporary until I sort what to use for emojis */
+    --font-emoji: "Noto Emoji", sans-serif;
+
+    /* ---------- LAYOUT ---------- */
+
+    --page-padding: 2rem;
+
+}
+
+/* =========================================================
    BASE / RESET
 ========================================================= */
-
 *,
 *::before,
 *::after {
@@ -10,4 +45,11 @@
 
 body {
     margin: 0;
+}
+
+/* =========================================================
+   LAYOUT UTILITIES
+========================================================= */
+.page {
+    padding: var(--page-padding);
 }
