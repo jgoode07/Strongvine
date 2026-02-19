@@ -31,6 +31,7 @@
 
     /* ---------- LAYOUT ---------- */
 
+    --space-section-small: 2rem;
     --page-padding: 3rem;
 
 }
@@ -152,4 +153,41 @@ img {
 .header__hero-too {
     margin: 0;
     font-size: 0.9rem;
+}
+
+/* Video Button */
+.header__video-btn {
+    align-self: flex-end;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: var(--space-section-small) 0 1rem 0;
+    padding: 0.35rem 0.35rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--color-btn-video);
+    color: var(--color-text-dark);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+}
+
+.header__video-btn-icon {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.header__video-btn-play {
+    display: inline-block;
+    transform: translate(0.07rem, -0.06rem);
+}
+
+.header__video-btn-text {
+    white-space: nowrap;
+    padding-right: 1.25rem;
 }
