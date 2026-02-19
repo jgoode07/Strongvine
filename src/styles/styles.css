@@ -104,7 +104,8 @@ img {
 /* Hero */
 .header__hero {
     display: grid;
-    grid-template-columns: minmax(20rem, 24rem) minmax(12rem, 18rem);
+    width: 100%;
+    grid-template-columns: minmax(20rem, 24rem) 1fr;
     align-items: end;
 }
 
@@ -114,4 +115,41 @@ img {
     letter-spacing: 0.2px;
     line-height: 1.15;
     color: var(--color-text-dark);
+}
+
+/* Hero side column */
+.header__hero-side {
+    justify-self: end;
+    text-align: right;
+}
+
+.header__hero-love {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 1.25rem;
+}
+
+.header__hero-love-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.header__hero-services {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+}
+
+.header__hero-service {
+    font-size: 0.9rem;
+    line-height: 1.25;
+}
+
+.header__hero-too {
+    margin: 0;
+    font-size: 0.9rem;
 }
