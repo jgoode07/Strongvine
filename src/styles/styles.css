@@ -114,6 +114,7 @@ img {
 .header__hero-intro {
     margin-bottom: 0.5rem;
     font-size: clamp(1.15rem, 1vw, 1.25rem);
+    font-weight: 400;
     letter-spacing: 0.2px;
     line-height: 1.15;
     color: var(--color-text-dark);
@@ -129,7 +130,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
 }
 
 .header__hero-love-text {
@@ -142,7 +143,7 @@ img {
 
 .header__hero-services {
     list-style: none;
-    margin: 0 0 1rem;
+    margin: 0 0 1.5rem;
     padding: 0;
 }
 
@@ -199,12 +200,12 @@ img {
     background: var(--color-bg-black);
     color: var(--color-bg-white);
 
-    /* Space above cherry section */
-    padding: var(--space-section-xl) 0;
-
     /* Break out of page padding */
     margin-left: calc(var(--page-padding) * -1);
     margin-right: calc(var(--page-padding) * -1);
+
+    /* Space above cherry section */
+    padding: var(--space-section-xl) 0;
 }
 
 .cherry__container {
@@ -256,4 +257,64 @@ img {
     padding: 1.2rem 2.25rem;
     background: var(--color-btn-cherry);
     color: var(--color-bg-white);
+}
+
+/* ---------- BETTER ---------- */
+
+.better {
+    background: var(--color-bg-black);
+    color: var(--color-bg-white);
+
+    /* Break out of page padding */
+    margin-left: calc(var(--page-padding) * -1);
+    margin-right: calc(var(--page-padding) * -1);
+
+    /* Space above 'Better' section */
+    padding: var(--space-section-xl) 0;
+}
+
+.better__container {
+    padding: var(--space-section-xl, 8rem) var(--page-padding);
+    min-height: 100vh;
+
+    display: grid;
+    justify-items: end;
+    align-content: space-between;
+}
+
+/* Stack the spans vertically */
+.better__lead {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: clamp(1rem, 2.25vw, 2.2rem);
+    line-height: 1.2;
+}
+
+.better__lead-row {
+    display: inline-flex;
+    gap: 0.35em;
+}
+
+.better__accent {
+    color: var(--color-accent-green);
+    display: inline;
+}
+
+.better__title {
+    /* Space above 'Better' title */
+    padding: var(--space-section-xl) 0;
+
+    text-align: right;
+    display: flex;
+    font-size: clamp(4rem, 12vw, 11rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.better__cursor {
+    color: var(--color-accent-green);
+    margin-left: 0.15em;
+    height: 1em;
+    align-self: center;
 }
