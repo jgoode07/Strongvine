@@ -302,6 +302,7 @@ img {
 }
 
 .better__title {
+    margin-right: -3rem;
     /* Space above 'Better' title */
     padding: var(--space-section-xl) 0;
 
@@ -314,7 +315,6 @@ img {
 
 .better__cursor {
     color: var(--color-accent-green);
-    margin-left: 0.15em;
     height: 1em;
     align-self: center;
 }
@@ -382,4 +382,47 @@ img {
 .less-is-more__btn-rocket {
     display: inline-block;
     transform: translateY(-0.05em);
+}
+
+/* ---------- RESULTS ---------- */
+
+.results {
+    background: var(--color-bg-white);
+    color: var(--color-text-dark);
+
+    margin-left: calc(var(--page-padding) * -1);
+    margin-right: calc(var(--page-padding) * -1);
+
+    padding: var(--space-section-xl) 0;
+}
+
+.results__container {
+    padding: 0 var(--page-padding);
+    min-height: 100vh;
+
+    display: grid;
+    justify-items: end;
+    align-content: center;
+    gap: 1.25rem;
+
+    text-align: right;
+}
+
+.results__title {
+    margin: 0;
+    margin-right: -1rem;
+    font-size: clamp(4rem, 12vw, 11rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.results__copy {
+    margin: 0;
+    max-width: 52ch;
+    font-size: clamp(1.15rem, 1vw, 1.25rem);
+    line-height: 1.35;
+}
+
+.results__copy span {
+    display: block;
 }
