@@ -318,3 +318,68 @@ img {
     height: 1em;
     align-self: center;
 }
+
+/* ---------- LESS IS MORE ---------- */
+
+.less-is-more {
+    background: var(--color-bg-black);
+    color: var(--color-bg-white);
+
+    /* Break out of page padding */
+    margin-left: calc(var(--page-padding) * -1);
+    margin-right: calc(var(--page-padding) * -1);
+
+    padding: var(--space-section-xl) 0;
+}
+
+.less-is-more__container {
+    padding: 0 var(--page-padding);
+    min-height: 100vh;
+
+    display: grid;
+    align-content: space-between;
+}
+
+.less-is-more__cursor {
+    display: inline-block;
+    background: var(--color-accent-green);
+    width: 0.12em;
+    height: 1em;
+}
+
+/* Copy block */
+.less-is-more__copy {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+
+    font-size: clamp(2rem, 1vw, 2.25rem);
+    line-height: 1.25;
+}
+
+.less-is-more__accent {
+    color: var(--color-accent-green);
+}
+
+/* Button */
+.less-is-more__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    padding: 1rem 1.75rem;
+    border-radius: 999px;
+
+    text-decoration: none;
+    background: var(--color-btn-portfolio);
+    color: var(--color-bg-white);
+
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.less-is-more__btn-rocket {
+    display: inline-block;
+    transform: translateY(-0.05em);
+}
