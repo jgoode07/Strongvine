@@ -159,6 +159,51 @@ p {
     line-height: 1.2;
 }
 
+/* Heart: enters, then beats on a loop */
+.header__hero-love-heart {
+    display: inline-block;
+    transform-origin: center;
+    opacity: 0;
+    transform: scale(0.85);
+    animation:
+        heartIn 250ms ease-out forwards,
+        heartBeat 1200ms ease-in-out infinite;
+    animation-delay:
+        /* Appears after "DO YOU LOVE" */
+        350ms,
+        /* Starts beating after it's visible */
+        600ms;
+}
+
+@keyframes heartIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Subtle throb: small pulses */
+@keyframes heartBeat {
+
+    0%,
+    70%,
+    100% {
+        transform: scale(1);
+    }
+
+    78% {
+        transform: scale(1.08);
+    }
+
+    86% {
+        transform: scale(0.98);
+    }
+
+    94% {
+        transform: scale(1.06);
+    }
+}
+
 .header__hero-services {
     list-style: none;
     margin: 0 0 1.5rem;
