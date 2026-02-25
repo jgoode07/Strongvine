@@ -645,7 +645,13 @@ img {
 .respect__toggle [type=checkbox]+label:after {
     transform: translate(calc(var(--s)*(100% + 1rem))) rotatey(-22.5deg) rotate(-22.5deg) rotatex(-90deg) translatey(-50%) rotate(45deg);
     box-shadow: -1px 1px 0.125rem rgba(206, 255, 206, 0.5);
-    background: radial-gradient(at 0 50%, #52a066, transparent 2.5rem) 0 50%/65% 50% no-repeat, radial-gradient(at 50% 0%, #88d1a0 15%, #68b47d 35%, #66b47b, #77c28e 65%) 50%/200%;
+    background:
+        radial-gradient(at 0 50%, #6b9a3f, transparent 2.5rem) 0 50%/65% 50% no-repeat,
+        radial-gradient(at 50% 0%,
+            #acc981 15%,
+            #88b24b 35%,
+            #749740,
+            #a5c97a 65%) 50%/200%;
     filter: Grayscale(calc(1 - var(--s)));
 }
 
