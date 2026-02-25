@@ -556,6 +556,8 @@ img {
     margin-right: calc(var(--page-padding) * -1);
 
     padding: var(--space-section-xxl) 0;
+
+    transition: background-color 250ms ease, color 250ms ease;
 }
 
 .results__container {
@@ -568,6 +570,11 @@ img {
     gap: 1.25rem;
 
     text-align: right;
+}
+
+.results__title,
+.results__copy {
+    transition: color 250ms ease;
 }
 
 .results__title {
@@ -583,6 +590,11 @@ img {
     max-width: 52ch;
     font-size: clamp(1.15rem, 1vw, 1.25rem);
     line-height: 1.35;
+}
+
+/* ON ( Green title colour state) */
+.results.is-lit .results__title {
+    color: var(--color-accent-green);
 }
 
 .results__copy span {
