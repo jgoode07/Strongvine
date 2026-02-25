@@ -138,6 +138,8 @@ p {
 .header__hero-side {
     justify-self: end;
     text-align: right;
+
+    /* ANIMATION */
     opacity: 0;
     transform: translateX(1rem);
     animation: heroSideIn 400ms ease-out forwards;
@@ -163,6 +165,8 @@ p {
 .header__hero-love-heart {
     display: inline-block;
     transform-origin: center;
+
+    /* ANIMATION */
     opacity: 0;
     transform: scale(0.85);
     animation:
@@ -213,6 +217,8 @@ p {
 .header__hero-service {
     font-size: 0.9rem;
     line-height: 1.25;
+
+    /* ANIMATION */
     opacity: 0;
     transform: translateX(1rem);
     animation: heroItemIn 350ms ease-out forwards;
@@ -261,9 +267,24 @@ p {
     }
 }
 
+
+
 .header__hero-too {
     margin: 0;
     font-size: 0.9rem;
+
+    /* ANIMATION */
+    opacity: 0;
+    transform: translateY(0.5rem);
+    animation: heroTooIn 300ms ease-out forwards;
+    animation-delay: 1300ms;
+}
+
+@keyframes heroTooIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Video Button */
@@ -282,6 +303,20 @@ p {
     font-size: 0.85rem;
     letter-spacing: 0.2px;
     cursor: pointer;
+
+    /* ANIMATION */
+    opacity: 0;
+    transform: translateY(0.75rem);
+    animation: heroVideoBtnIn 350ms ease-out forwards;
+    /* comes after 'WE DO TOO' */
+    animation-delay: 1450ms;
+}
+
+@keyframes heroVideoBtnIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .header__video-btn-icon {
