@@ -65,12 +65,6 @@ img {
     height: auto;
 }
 
-h1,
-h2,
-p {
-    margin: 0;
-}
-
 /* =========================================================
    LAYOUT UTILITIES
 ========================================================= */
@@ -365,7 +359,32 @@ p {
 .cherry__icon {
     font-family: var(--font-emoji);
     font-size: 3rem;
-    margin-bottom: 0;
+    display: inline-block;
+
+    /* ANIMATION */
+    transform-origin: center bottom;
+    animation: cherryJiggle 2.75s ease-in-out infinite;
+}
+
+@keyframes cherryJiggle {
+
+    0%,
+    90%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    92% {
+        transform: rotate(-6deg);
+    }
+
+    95% {
+        transform: rotate(6deg);
+    }
+
+    98% {
+        transform: rotate(-3deg);
+    }
 }
 
 .cherry__intro {
