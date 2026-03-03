@@ -301,6 +301,7 @@ img {
 
 /* Video Button */
 .header__video-btn {
+    display: inline-flex;
     align-items: center;
     margin: var(--space-section-small) 0 0.75rem 0;
     padding: 1.25rem 2rem;
@@ -312,11 +313,14 @@ img {
     font-size: 0.85rem;
     letter-spacing: 0.2px;
     cursor: pointer;
+}
 
-    /* ANIMATION */
+/* Video Button - load-in animation */
+.header__video-btn-wrap {
     opacity: 0;
     transform: translateY(0.75rem);
     animation: heroVideoBtnIn 350ms ease-out forwards;
+
     /* comes after 'WE DO TOO' */
     animation-delay: 1450ms;
 }
@@ -325,6 +329,17 @@ img {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .header__video-btn {
+        transition: transform 220ms ease;
+        will-change: transform;
+    }
+
+    .header__video-btn:hover {
+        transform: scaleX(1.08);
     }
 }
 
