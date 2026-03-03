@@ -785,55 +785,10 @@ img {
     perspective: 900px;
 }
 
-.footer__maple {
-    margin-top: 0.35rem;
-    font-family: var(--font-emoji);
-    font-size: 1rem;
-    line-height: 1;
-
-    /* ANIMATION */
-    display: inline-block;
-    transform-origin: center;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    will-change: transform;
-
-    /* Smooth overall motion */
-    animation: mapleGrowFlip 3.5s ease-in-out infinite;
-}
-
-@keyframes mapleGrowFlip {
-
-    /* Idle */
-    0%,
-    55% {
-        transform: rotateY(0deg) scale(var(--maple-big));
-    }
-
-    /* Slow shrink down */
-    65% {
-        transform: rotateY(0deg) scale(var(--maple-small));
-    }
-
-    /* Start rotating (gentle) */
-    75% {
-        transform: rotateY(120deg) scale(calc((var(--maple-big) + var(--maple-small)) / 2));
-    }
-
-    /* Force flip through middle quickly so it remains on screen */
-    82% {
-        transform: rotateY(185deg) scale(var(--maple-big));
-    }
-
-    /* Continue to full turn smoothly */
-    92% {
-        transform: rotateY(320deg) scale(var(--maple-big));
-    }
-
-    /* Settle */
-    100% {
-        transform: rotateY(360deg) scale(var(--maple-big));
-    }
+.footer__maple img {
+    display: block;
+    width: 1.25rem;
+    height: auto;
 }
 
 .footer__fine {
