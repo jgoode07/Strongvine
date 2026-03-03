@@ -504,7 +504,11 @@ img {
     font-size: clamp(4rem, 12vw, 11rem);
     font-weight: 400;
     line-height: 1;
+}
 
+.better__word {
+    display: inline-block;
+    white-space: nowrap;
     letter-spacing: -0.05em;
 }
 
