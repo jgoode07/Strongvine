@@ -583,8 +583,24 @@ img {
     line-height: 1.15;
 }
 
+/* Accent text starts WHITE like the rest */
 .less-is-more__accent {
+    color: currentColor;
+    position: relative;
+    display: inline-block;
+}
+
+/* Green reveal overlay (width controlled by --reveal) */
+.less-is-more__accent::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--reveal, 0) * 1%);
+    overflow: hidden;
+    white-space: nowrap;
     color: var(--color-accent-green);
+    pointer-events: none;
 }
 
 /* Button */
