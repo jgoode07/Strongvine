@@ -573,6 +573,10 @@ img {
     height: 1em;
 }
 
+.less-is-more__content {
+    padding-bottom: var(--space-section-xl);
+}
+
 /* Copy block */
 .less-is-more__copy {
     margin-bottom: 1.5rem;

@@ -52,7 +52,7 @@
     // Put the line into data-text so the ::after overlay can use it
     target.setAttribute('data-text', target.textContent.trim());
 
-    const fillDistancePx = 280;
+    const fillDistancePx = 200;
 
     const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
