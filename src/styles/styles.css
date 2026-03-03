@@ -173,7 +173,8 @@ img {
     transform: scale(0.85);
     animation:
         heartIn 250ms ease-out forwards,
-        heartBeat 1200ms ease-in-out infinite;
+        heartBeat 5000ms ease-in-out infinite;
+
     animation-delay:
         /* Appears after "DO YOU LOVE" */
         350ms,
@@ -191,22 +192,31 @@ img {
 /* Subtle throb: small pulses */
 @keyframes heartBeat {
 
+    /* Idle most of the time */
     0%,
-    70%,
-    100% {
+    80% {
         transform: scale(1);
     }
 
-    78% {
+    /* Quick beat cluster */
+    82% {
         transform: scale(1.08);
     }
 
-    86% {
+    84% {
         transform: scale(0.98);
     }
 
-    94% {
+    86% {
         transform: scale(1.06);
+    }
+
+    88% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
 
@@ -371,27 +381,40 @@ img {
 
     /* ANIMATION */
     transform-origin: center bottom;
-    animation: cherryJiggle 2.75s ease-in-out infinite;
+    animation: cherryJiggle 8s ease-in-out infinite;
 }
 
 @keyframes cherryJiggle {
 
+    /* Idle almost the whole time */
     0%,
-    90%,
-    100% {
+    94% {
         transform: rotate(0deg);
     }
 
-    92% {
+    /* Quick jiggle near the end */
+    95% {
         transform: rotate(-6deg);
     }
 
-    95% {
+    96% {
         transform: rotate(6deg);
     }
 
-    98% {
+    97% {
         transform: rotate(-3deg);
+    }
+
+    98% {
+        transform: rotate(3deg);
+    }
+
+    99% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
     }
 }
 
