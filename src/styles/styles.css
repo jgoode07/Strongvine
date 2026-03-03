@@ -301,12 +301,9 @@ img {
 
 /* Video Button */
 .header__video-btn {
-    align-self: flex-end;
-    display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
     margin: var(--space-section-small) 0 0.75rem 0;
-    padding: 0.35rem 0.35rem;
+    padding: 1.25rem 2rem;
     border: none;
     border-radius: 999px;
     background: var(--color-btn-video);
@@ -329,25 +326,6 @@ img {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.header__video-btn-icon {
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background: #ffffff;
-}
-
-.header__video-btn-play {
-    display: inline-block;
-    transform: translate(0.07rem, -0.06rem);
-}
-
-.header__video-btn-text {
-    white-space: nowrap;
-    padding-right: 1.25rem;
 }
 
 /* ---------- CHERRY ---------- */
