@@ -60,6 +60,14 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Accessibility: Disable motion-based animations for users who have
+   enabled "Reduce Motion" in their OS/browser settings */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 body {
     margin: 0;
     background: var(--color-bg-white);
@@ -602,6 +610,47 @@ img {
     transform: translateY(-0.05em);
 }
 
+/* ---------- CLIENT LIST Underline Animation ---------- */
+
+/* Make the text span the underline target (not the rocket) */
+.less-is-more__btn>span:first-child {
+    position: relative;
+    display: inline-block;
+}
+
+/* The underline */
+.less-is-more__btn>span:first-child::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.25em;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms ease;
+}
+
+/* Hover/focus reveal */
+@media (hover: hover) and (pointer: fine) {
+    .less-is-more__btn:hover>span:first-child::after {
+        transform: scaleX(1);
+    }
+}
+
+/* Keyboard accessibility */
+.less-is-more__btn:focus-visible>span:first-child::after {
+    transform: scaleX(1);
+}
+
+/* Reduce motion users */
+@media (prefers-reduced-motion: reduce) {
+    .less-is-more__btn>span:first-child::after {
+        transition: none;
+    }
+}
+
 /* ---------- RESULTS ---------- */
 
 .results {
@@ -842,11 +891,3 @@ img {
 /* =========================================================
    MEDIA QUERIES
 ========================================================= */
-
-/* Accessibility: Disable motion-based animations for users who have
-   enabled "Reduce Motion" in their OS/browser settings */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-}
