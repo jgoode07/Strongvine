@@ -39,7 +39,7 @@
     --space-section-medium: 4rem;
     --space-section-large: 8rem;
     --space-section-xl: 10rem;
-    --space-section-xxl: 20rem;
+    --space-section-xxl: 95vh;
 
     /* ---------- ANIMATIONS ---------- */
     --maple-big: 1.5;
@@ -351,7 +351,7 @@ img {
     margin-right: calc(var(--page-padding) * -1);
 
     /* Space above cherry section */
-    padding: var(--space-section-xl) 0;
+    padding: var(--space-section-xl) 0 0 0;
 }
 
 .cherry__container {
@@ -441,7 +441,7 @@ img {
     margin-right: calc(var(--page-padding) * -1);
 
     /* Space above 'Better' section */
-    padding: var(--space-section-xl) 0;
+    padding: var(--space-section-xxl) 0 0 0;
 }
 
 .better__container {
@@ -474,7 +474,7 @@ img {
 
 .better__title {
     margin-right: calc(var(--page-padding) * -1);
-    padding: var(--space-section-xl) 0 0 0;
+    padding: var(--space-section-xxl) 0 0 0;
 
     text-align: right;
     display: flex;
@@ -499,7 +499,7 @@ img {
     margin-left: calc(var(--page-padding) * -1);
     margin-right: calc(var(--page-padding) * -1);
 
-    padding: var(--space-section-xl) 0;
+    padding: var(--space-section-xxl) 0 0 0;
 }
 
 .less-is-more__container {
