@@ -339,7 +339,7 @@ img {
     }
 
     .header__video-btn:hover {
-        transform: scaleX(1.08);
+        transform: scaleX(1.05);
     }
 }
 
@@ -444,6 +444,17 @@ img {
     padding: 1.2rem 2.25rem;
     background: var(--color-btn-cherry);
     color: var(--color-bg-white);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cherry__btn--cherry {
+        transition: transform 220ms ease;
+        will-change: transform;
+    }
+
+    .cherry__btn--cherry:hover {
+        transform: scaleX(1.05);
+    }
 }
 
 /* ---------- BETTER ---------- */
@@ -837,9 +848,5 @@ img {
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
-    }
-
-    .footer__maple {
-        animation: none;
     }
 }
