@@ -44,6 +44,7 @@
     }, intervalMs);
 })();
 
+
 /* ---------- SCROLL REVEAL (IF YOU WANT SOMETHING RARE) ---------- */
 (() => {
     const target = document.querySelector('.js-rare');
@@ -100,4 +101,26 @@
 
     sync();
     checkbox.addEventListener('change', sync);
+})();
+
+
+/* ---------- FOOTER TITLE REVEAL ON SCROLL ---------- */
+(() => {
+    const title = document.querySelector('.footer__title');
+    if (!title) return;
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (!entry.isIntersecting) return;
+            title.classList.add('is-inview');
+            observer.disconnect(); // run once
+        },
+        {
+            root: null,
+            threshold: 0.25,          // triggers when ~25% visible
+            rootMargin: "0px 0px -10% 0px" // triggers a touch before fully in view
+        }
+    );
+
+    observer.observe(title);
 })();

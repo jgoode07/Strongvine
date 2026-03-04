@@ -827,8 +827,45 @@ img {
     line-height: 1.05;
 }
 
+/* ---------- FOOTER TITLE: delayed fold-in on scroll ---------- */
+
 .footer__title span {
-    display: block;
+    opacity: 0;
+    transform: translateY(0.75rem);
+}
+
+/* When triggered */
+.footer__title.is-inview span {
+    animation: footerTitleIn 380ms ease-out forwards;
+}
+
+/* Stagger like the hero list */
+.footer__title.is-inview span:nth-child(1) {
+    animation-delay: 100ms;
+}
+
+.footer__title.is-inview span:nth-child(2) {
+    animation-delay: 350ms;
+}
+
+.footer__title.is-inview span:nth-child(3) {
+    animation-delay: 600ms;
+}
+
+@keyframes footerTitleIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .footer__title span {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+    }
 }
 
 /* Bottom row */
