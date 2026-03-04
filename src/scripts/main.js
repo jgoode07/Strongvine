@@ -37,7 +37,7 @@
 
 /* ---------- WORD ROTATION ---------- */
 
-// 'Better' word rotation
+/* ---------- BETTER: TYPEWRITER (starts on scroll) ---------- */
 (() => {
     const wordEl = document.querySelector('.better__word');
     if (!wordEl) return;
@@ -51,50 +51,100 @@
         'Compulsive'
     ];
 
-    // Always start with HTML word (Better)
-    let i = words.indexOf(wordEl.textContent.trim());
-    if (i < 0) i = 0;
+    // Word Type Timings
+    const typeSpeed = 140;
+    const deleteSpeed = 80;
+    const holdTime = 1400;     // Pause at full word
+    const betweenTime = 500;   // Pause before typing next word
 
-    // Pre-measure widest word and lock width to prevent shifting
-    const measurer = document.createElement('span');
-    measurer.style.visibility = 'hidden';
-    measurer.style.position = 'absolute';
-    measurer.style.whiteSpace = 'nowrap';
-    measurer.style.font = getComputedStyle(wordEl).font;
-    document.body.appendChild(measurer);
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    let started = false;
+    let timerId = null;
 
-    let maxWidth = 0;
-    words.forEach(w => {
-        measurer.textContent = w;
-        maxWidth = Math.max(maxWidth, measurer.getBoundingClientRect().width);
-    });
+    // Lock width so layout doesn't shift
+    const lockWidth = () => {
+        const measurer = document.createElement('span');
+        measurer.style.visibility = 'hidden';
+        measurer.style.position = 'absolute';
+        measurer.style.whiteSpace = 'nowrap';
+        measurer.style.font = getComputedStyle(wordEl).font;
+        document.body.appendChild(measurer);
 
-    document.body.removeChild(measurer);
-    wordEl.style.width = `${Math.ceil(maxWidth)}px`;
+        let maxWidth = 0;
+        words.forEach(w => {
+            measurer.textContent = w;
+            maxWidth = Math.max(maxWidth, measurer.getBoundingClientRect().width);
+        });
 
-    // Swap every 3 seconds
-    const intervalMs = 3000;
+        document.body.removeChild(measurer);
+        wordEl.style.width = `${Math.ceil(maxWidth)}px`;
+        wordEl.style.display = 'inline-block';
+        wordEl.style.whiteSpace = 'nowrap';
+    };
 
-    // Start ONLY when visible
-    let intervalId = null;
+    lockWidth();
 
-    const startRotation = () => {
-        if (intervalId) return;
-        intervalId = setInterval(() => {
-            i = (i + 1) % words.length;
-            wordEl.textContent = words[i];
-        }, intervalMs);
+    const stop = () => {
+        if (timerId) window.clearTimeout(timerId);
+        timerId = null;
+    };
+
+    const tick = () => {
+        const current = words[wordIndex];
+
+        if (!deleting) {
+            charIndex++;
+            wordEl.textContent = current.slice(0, charIndex);
+
+            if (charIndex >= current.length) {
+                deleting = true;
+                timerId = window.setTimeout(tick, holdTime);
+                return;
+            }
+
+            timerId = window.setTimeout(tick, typeSpeed);
+        } else {
+            charIndex--;
+            wordEl.textContent = current.slice(0, charIndex);
+
+            if (charIndex <= 0) {
+                deleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                timerId = window.setTimeout(tick, betweenTime);
+                return;
+            }
+
+            timerId = window.setTimeout(tick, deleteSpeed);
+        }
+    };
+
+    const start = () => {
+        if (started) return;
+        started = true;
+
+        const initial = wordEl.textContent.trim();
+        const found = words.indexOf(initial);
+        wordIndex = found >= 0 ? found : 0;
+
+        // Start by typing from LEFT (blank → word)
+        wordEl.textContent = '';
+        charIndex = 0;
+        deleting = false;
+
+        timerId = window.setTimeout(tick, 500);
     };
 
     const observer = new IntersectionObserver(([entry]) => {
         if (!entry.isIntersecting) return;
-        startRotation();
-        observer.disconnect(); // run once
-    }, {
-        threshold: 0.6
-    });
+        start();
+        observer.disconnect();
+    }, { threshold: 0.6 });
 
     observer.observe(wordEl);
+
+    window.addEventListener('beforeunload', stop);
 })();
 
 
