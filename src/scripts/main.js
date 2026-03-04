@@ -35,13 +35,29 @@
     document.body.removeChild(measurer);
     wordEl.style.width = `${Math.ceil(maxWidth)}px`;
 
-    // Swap every 5 seconds
+    // Swap every 3 seconds
     const intervalMs = 3000;
 
-    setInterval(() => {
-        i = (i + 1) % words.length;
-        wordEl.textContent = words[i];
-    }, intervalMs);
+    // Start ONLY when visible
+    let intervalId = null;
+
+    const startRotation = () => {
+        if (intervalId) return;
+        intervalId = setInterval(() => {
+            i = (i + 1) % words.length;
+            wordEl.textContent = words[i];
+        }, intervalMs);
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        startRotation();
+        observer.disconnect(); // run once
+    }, {
+        threshold: 0.6
+    });
+
+    observer.observe(wordEl);
 })();
 
 
