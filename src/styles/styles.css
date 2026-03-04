@@ -114,7 +114,8 @@ img {
 .header__brand-text {
     font-family: var(--font-brand);
     font-size: clamp(1.25rem, 1vw, 1.5rem);
-    letter-spacing: 0.5px;
+    letter-spacing: 3.25px;
+    font-weight: 600;
 }
 
 .header__brand-logo {
@@ -122,7 +123,8 @@ img {
 }
 
 .header__brand-logo img {
-    width: 5rem;
+    margin: 0.4rem 0.1rem 0 0;
+    width: 6.5rem;
     height: auto;
 }
 
