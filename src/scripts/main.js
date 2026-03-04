@@ -35,24 +35,24 @@
     onScroll();
 })();
 
-/* ---------- WORD ROTATION ---------- */
 
 /* ---------- BETTER: TYPEWRITER (starts on scroll) ---------- */
+
 (() => {
-    const wordEl = document.querySelector('.better__word');
+    const wordEl = document.querySelector('.better__type');
     if (!wordEl) return;
 
     const words = [
+        'Unique',
         'Better',
         'Sharp',
         'Rare',
         'Clean',
-        'Precise',
-        'Compulsive'
+        'Precise'
     ];
 
     // Word Type Timings
-    const typeSpeed = 140;
+    const typeSpeed = 140;     // Slower typing
     const deleteSpeed = 80;
     const holdTime = 1400;     // Pause at full word
     const betweenTime = 500;   // Pause before typing next word
@@ -62,29 +62,6 @@
     let deleting = false;
     let started = false;
     let timerId = null;
-
-    // Lock width so layout doesn't shift
-    const lockWidth = () => {
-        const measurer = document.createElement('span');
-        measurer.style.visibility = 'hidden';
-        measurer.style.position = 'absolute';
-        measurer.style.whiteSpace = 'nowrap';
-        measurer.style.font = getComputedStyle(wordEl).font;
-        document.body.appendChild(measurer);
-
-        let maxWidth = 0;
-        words.forEach(w => {
-            measurer.textContent = w;
-            maxWidth = Math.max(maxWidth, measurer.getBoundingClientRect().width);
-        });
-
-        document.body.removeChild(measurer);
-        wordEl.style.width = `${Math.ceil(maxWidth)}px`;
-        wordEl.style.display = 'inline-block';
-        wordEl.style.whiteSpace = 'nowrap';
-    };
-
-    lockWidth();
 
     const stop = () => {
         if (timerId) window.clearTimeout(timerId);
@@ -105,26 +82,27 @@
             }
 
             timerId = window.setTimeout(tick, typeSpeed);
-        } else {
-            charIndex--;
-            wordEl.textContent = current.slice(0, charIndex);
-
-            if (charIndex <= 0) {
-                deleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                timerId = window.setTimeout(tick, betweenTime);
-                return;
-            }
-
-            timerId = window.setTimeout(tick, deleteSpeed);
+            return;
         }
+
+        charIndex--;
+        wordEl.textContent = current.slice(0, charIndex);
+
+        if (charIndex <= 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            timerId = window.setTimeout(tick, betweenTime);
+            return;
+        }
+
+        timerId = window.setTimeout(tick, deleteSpeed);
     };
 
     const start = () => {
         if (started) return;
         started = true;
 
-        const initial = wordEl.textContent.trim();
+        const initial = (wordEl.textContent || '').trim();
         const found = words.indexOf(initial);
         wordIndex = found >= 0 ? found : 0;
 
@@ -149,6 +127,7 @@
 
 
 /* ---------- SCROLL REVEAL (IF YOU WANT SOMETHING RARE) ---------- */
+
 (() => {
     const target = document.querySelector('.js-rare');
     if (!target) return;
@@ -208,6 +187,7 @@
 
 
 /* ---------- FOOTER TITLE REVEAL ON SCROLL ---------- */
+
 (() => {
     const title = document.querySelector('.footer__title');
     if (!title) return;
