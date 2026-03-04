@@ -120,12 +120,30 @@ img {
 
 .header__brand-logo {
     display: block;
+    margin: 0.4rem 0.1rem 0 0;
 }
 
 .header__brand-logo img {
-    margin: 0.4rem 0.1rem 0 0;
+    margin: 0;
     width: 6.5rem;
     height: auto;
+}
+
+/* Sticky/fading logo behaviour */
+.header__brand-logo {
+  opacity: 1;
+  transform: translate3d(0, var(--logoY, 0px), 0);
+  transition: opacity 200ms ease;
+  will-change: transform, opacity;
+}
+
+.header__brand-logo.is-fading {
+  opacity: 0.35;
+}
+
+.header__brand-logo.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Hero */

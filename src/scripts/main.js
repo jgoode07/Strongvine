@@ -1,3 +1,40 @@
+/* ---------- LOGO STICKY ON SCROLL/FADE ---------- */
+
+(() => {
+    const logo = document.querySelector('.header__brand-logo');
+    if (!logo) return;
+
+    const moveUntil = Math.round(window.innerHeight * 0.18); // How long it "travels"
+    const hideAt = Math.round(window.innerHeight * 0.25);    // When it disappears
+
+    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+    const onScroll = () => {
+        const y = window.scrollY;
+
+        if (y < 10) {
+            logo.style.setProperty('--logoY', '0px');
+            logo.classList.remove('is-fading', 'is-hidden');
+            return;
+        }
+
+        // Move with scroll, capped so it doesn't keep drifting forever
+        const travel = clamp(y, 0, moveUntil);
+        logo.style.setProperty('--logoY', `${travel}px`);
+
+        // Start fading once it’s moving
+        logo.classList.add('is-fading');
+
+        // Hide before it overlaps content
+        if (y >= hideAt) logo.classList.add('is-hidden');
+        else logo.classList.remove('is-hidden');
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+})();
+
 /* ---------- WORD ROTATION ---------- */
 
 // 'Better' word rotation
