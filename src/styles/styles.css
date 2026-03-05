@@ -546,14 +546,25 @@ img {
     line-height: 1;
 }
 
+/* Hide type text until JS starts it */
 .better__type {
-    display: inline-block;
-    white-space: nowrap;
+    opacity: 0;
+}
+
+.better__type.is-ready {
+    opacity: 1;
 }
 
 .better__cursor {
     display: inline-block;
-    color: var(--color-accent-green);
+    width: 0.04em;
+    height: 0.7em;
+    background: var(--color-accent-green);
+    margin-left: 0.15em;
+
+    /* Align it to the letters */
+    vertical-align: baseline;
+
     animation: cursorBlink 1s steps(1) infinite;
 }
 

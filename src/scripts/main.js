@@ -63,6 +63,10 @@
     let started = false;
     let timerId = null;
 
+    // Start hidden + blank so nothing shows while scrolling
+    wordEl.textContent = '';
+    wordEl.classList.remove('is-ready');
+
     const stop = () => {
         if (timerId) window.clearTimeout(timerId);
         timerId = null;
@@ -82,36 +86,33 @@
             }
 
             timerId = window.setTimeout(tick, typeSpeed);
-            return;
+        } else {
+            charIndex--;
+            wordEl.textContent = current.slice(0, charIndex);
+
+            if (charIndex <= 0) {
+                deleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                timerId = window.setTimeout(tick, betweenTime);
+                return;
+            }
+
+            timerId = window.setTimeout(tick, deleteSpeed);
         }
-
-        charIndex--;
-        wordEl.textContent = current.slice(0, charIndex);
-
-        if (charIndex <= 0) {
-            deleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            timerId = window.setTimeout(tick, betweenTime);
-            return;
-        }
-
-        timerId = window.setTimeout(tick, deleteSpeed);
     };
 
     const start = () => {
         if (started) return;
         started = true;
 
-        const initial = (wordEl.textContent || '').trim();
-        const found = words.indexOf(initial);
-        wordIndex = found >= 0 ? found : 0;
-
-        // Start by typing from LEFT (blank → word)
+        // Reveal + type from blank immediately
+        wordEl.classList.add('is-ready');
         wordEl.textContent = '';
+        wordIndex = 0;
         charIndex = 0;
         deleting = false;
 
-        timerId = window.setTimeout(tick, 500);
+        timerId = window.setTimeout(tick, 0);
     };
 
     const observer = new IntersectionObserver(([entry]) => {
@@ -121,7 +122,6 @@
     }, { threshold: 0.6 });
 
     observer.observe(wordEl);
-
     window.addEventListener('beforeunload', stop);
 })();
 
