@@ -39,7 +39,8 @@
     --space-section-medium: 4rem;
     --space-section-large: 8rem;
     --space-section-xl: 10rem;
-    --space-section-xxl: 95vh;
+    --space-section-xxl: 18rem;
+    --space-section-full: 95vh;
 
     /* ---------- ANIMATIONS ---------- */
     --maple-big: 1.5;
@@ -379,23 +380,42 @@ img {
     margin-left: calc(var(--page-padding) * -1);
     margin-right: calc(var(--page-padding) * -1);
 
-    /* Space above cherry section */
-    padding: var(--space-section-xxl) 0 0 0;
+    position: relative;
+    padding: 0;
+}
+
+.cherry__label {
+    position: absolute;
+    top: 16rem;
+    left: var(--page-padding);
+    z-index: 2;
+}
+
+.strongvine--white {
+    font-size: clamp(1.25rem, 1vw, 1.5rem);
+    letter-spacing: 3.25px;
+    font-family: var(--font-brand);
+    font-weight: 600;
+    justify-self: start;
+    color: var(--color-btn-video);
 }
 
 .cherry__container {
-    padding: 0 var(--page-padding);
+    padding: 33.5rem var(--page-padding) 0;
     min-height: 100vh;
+
     display: grid;
     justify-items: end;
     text-align: right;
+
     align-content: end;
+
     gap: 0.75rem;
 }
 
 .cherry__icon {
     font-family: var(--font-emoji);
-    font-size: 3rem;
+    font-size: 4.5rem;
     display: inline-block;
 
     /* ANIMATION */
@@ -438,15 +458,16 @@ img {
 }
 
 .cherry__intro {
-    max-width: 50ch;
-    font-size: clamp(1.15rem, 1vw, 1.25rem);
-    line-height: 1.5;
-    margin-top: 0.25rem;
+    max-width: 40ch;
+    font-size: clamp(1.25rem, 1vw, 1.45rem);
+    line-height: 1.25;
+    margin-top: 1rem;
 }
 
 .cherry__actions {
+    margin-top: 0.75rem;
     display: inline-flex;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .cherry__btn {
@@ -455,20 +476,20 @@ img {
     justify-content: center;
     border-radius: 999px;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
 }
 
 .cherry__btn--portfolio {
-    padding: 1.2rem 2.5rem;
-    background: var(--color-btn-portfolio);
+    padding: 1.15rem 2.5rem;
+    border: 2px solid #414142;
     color: var(--color-bg-white);
 }
 
 .cherry__btn--cherry {
-    padding: 1.2rem 2.25rem;
-    background: var(--color-btn-cherry);
+    padding: 1.55rem 2.65rem;
+    border: 2px solid var(--color-btn-cherry);
     color: var(--color-bg-white);
 }
 
