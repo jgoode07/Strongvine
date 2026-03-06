@@ -11,15 +11,18 @@
     --color-bg-black: #000000;
 
     /* Text */
-    --color-text-dark: #010101;
+    --color-title-dark: #1b191a;
+    --color-text-dark: #414042;
+    --color-text-light: #e2e2e2;
 
     /* Accent / Brand */
     --color-accent-green: #88b24b;
 
     /* Buttons */
-    --color-btn-cherry: #af0c1a;
-    --color-btn-portfolio: #1a1919;
-    --color-btn-video: #f4eeee;
+    --color-btn-cherry: #AF0C1A;
+    --color-btn-portfolio: #4D4D4F;
+    --color-btn-video: #D9DADB;
+    --color-btn-clients: #363638;
 
     /* ---------- TYPOGRAPHY ---------- */
 
@@ -41,10 +44,6 @@
     --space-section-xl: 10rem;
     --space-section-xxl: 18rem;
     --space-section-full: 95vh;
-
-    /* ---------- ANIMATIONS ---------- */
-    --maple-big: 1.5;
-    --maple-small: 1.35;
 }
 
 /* =========================================================
@@ -692,14 +691,9 @@ img {
     white-space: nowrap;
 }
 
-.less-is-more__btn-rocket {
-    display: inline-block;
-    transform: translateY(-0.05em);
-}
-
 /* ---------- CLIENT LIST Underline Animation ---------- */
 
-/* Make the text span the underline target (not the rocket) */
+/* Make the text span the underline target */
 .less-is-more__btn>span:first-child {
     position: relative;
     display: inline-block;
@@ -962,17 +956,6 @@ img {
     letter-spacing: 0.2px;
     line-height: 1.2;
     opacity: 0.9;
-}
-
-/* Add depth to the maple leaf */
-.footer__left {
-    perspective: 900px;
-}
-
-.footer__maple img {
-    display: block;
-    width: 1.25rem;
-    height: auto;
 }
 
 .footer__fine {
