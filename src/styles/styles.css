@@ -33,7 +33,7 @@
 
     --page-padding: 3rem;
 
-    --hero-height: 95vh;
+    --hero-height: 94vh;
 
     --space-section-small: 2rem;
     --space-section-medium: 4rem;
@@ -152,23 +152,44 @@ img {
     padding-bottom: var(--page-padding);
     display: grid;
     width: 100%;
-    grid-template-columns: minmax(30rem, 35rem) 2fr;
+    grid-template-columns: minmax(24rem, 29.5rem) 2fr;
     align-items: end;
 }
 
 .header__hero-intro {
-    margin-bottom: 0.5rem;
-    font-size: clamp(1.3rem, 1vw, 1.4rem);
+    margin-bottom: 0.35rem;
+    font-size: 1rem;
     font-weight: 400;
-    letter-spacing: 0.1px;
-    line-height: 1.33;
+    line-height: 1.425rem;
+    letter-spacing: 0.0475em;
     color: var(--color-text-dark);
+}
+
+.header__video-btn-wrap {
+    margin-bottom: 1rem;
+}
+
+/* Video Button */
+.header__video-btn {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 2.75rem;
+    padding: 1.5rem 3rem;
+    border: 2px solid #D8DADB;
+    border-radius: 999px;
+    background-color: var(--color-bg-white);
+    color: var(--color-text-dark);
+    font-family: var(--font-primary);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
 }
 
 /* Hero side column */
 .header__hero-side {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     justify-self: end;
+    letter-spacing: 0.04em;
     text-align: right;
 
     /* ANIMATION */
@@ -252,7 +273,7 @@ img {
 
 .header__hero-services {
     list-style: none;
-    margin: 0 0 3rem;
+    margin: 0 0 3.25rem;
     padding: 0;
 }
 
@@ -327,49 +348,6 @@ img {
     }
 }
 
-/* Video Button */
-.header__video-btn {
-    display: inline-flex;
-    align-items: center;
-    margin: var(--space-section-small) 0 0.75rem 0;
-    padding: 1.5rem 3rem;
-    border: 2px solid #D8DADB;
-    border-radius: 999px;
-    background-color: var(--color-bg-white);
-    color: var(--color-text-dark);
-    font-family: var(--font-primary);
-    letter-spacing: 0.2px;
-    cursor: pointer;
-}
-
-/* Video Button - load-in animation */
-.header__video-btn-wrap {
-    opacity: 0;
-    transform: translateY(0.75rem);
-    animation: heroVideoBtnIn 350ms ease-out forwards;
-
-    /* comes after 'WE DO TOO' */
-    animation-delay: 1450ms;
-}
-
-@keyframes heroVideoBtnIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .header__video-btn {
-        transition: transform 220ms ease;
-        will-change: transform;
-    }
-
-    .header__video-btn:hover {
-        transform: scaleX(1.05);
-    }
-}
-
 /* ---------- CHERRY ---------- */
 
 .cherry {
@@ -389,15 +367,6 @@ img {
     top: 16rem;
     left: var(--page-padding);
     z-index: 2;
-}
-
-.strongvine--white {
-    font-size: clamp(1.25rem, 1vw, 1.5rem);
-    letter-spacing: 3.25px;
-    font-family: var(--font-brand);
-    font-weight: 600;
-    justify-self: start;
-    color: var(--color-btn-video);
 }
 
 .cherry__container {
