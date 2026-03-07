@@ -442,19 +442,11 @@ img {
     background: var(--color-bg-black);
     color: var(--color-bg-white);
 
-    /* Break out of page padding */
     margin-left: calc(var(--page-padding) * -1);
     margin-right: calc(var(--page-padding) * -1);
 
     position: relative;
     padding: 0;
-}
-
-.cherry__label {
-    position: absolute;
-    top: 16rem;
-    left: var(--page-padding);
-    z-index: 2;
 }
 
 .cherry__container {
@@ -463,32 +455,35 @@ img {
 
     display: grid;
     justify-items: end;
-    text-align: right;
-
     align-content: end;
-
+    text-align: right;
     gap: 0.75rem;
 }
 
 .cherry__icon {
-    font-family: var(--font-emoji);
-    font-size: 4.5rem;
     display: inline-block;
-
-    /* ANIMATION */
+    width: 4rem;
     transform-origin: center bottom;
     animation: cherryJiggle 8s ease-in-out infinite;
+
+    position: relative;
+    left: -0.5rem;
+    top: -0.55rem;
+}
+
+.cherry__icon img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 @keyframes cherryJiggle {
 
-    /* Idle almost the whole time */
     0%,
     94% {
         transform: rotate(0deg);
     }
 
-    /* Quick jiggle near the end */
     95% {
         transform: rotate(-6deg);
     }
@@ -515,14 +510,14 @@ img {
 }
 
 .cherry__intro {
-    max-width: 40ch;
-    font-size: clamp(1.25rem, 1vw, 1.45rem);
-    line-height: 1.25;
+    max-width: 38ch;
     margin-top: 1rem;
+    font-size: 1.35rem;
+    line-height: 1.2;
 }
 
 .cherry__actions {
-    margin-top: 0.75rem;
+    margin-top: 1.1rem;
     display: inline-flex;
     gap: 0.75rem;
 }
