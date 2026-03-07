@@ -92,6 +92,105 @@ img {
 }
 
 /* =========================================================
+   BUTTONS
+========================================================= */
+
+:root {
+    --btn-border-width: 2px;
+    --btn-radius-pill: 999px;
+
+    --btn-underline-offset: -0.15em;
+    --btn-underline-height: 0.75px;
+    --btn-transition-speed: 220ms;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid;
+    border-radius: 999px;
+
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    white-space: nowrap;
+
+    background: transparent;
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.btn>span {
+    position: relative;
+    display: inline-block;
+}
+
+.btn>span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: var(--btn-underline-offset);
+    width: 100%;
+    height: var(--btn-underline-height);
+    background: currentColor;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--btn-transition-speed) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover>span::after {
+        transform: scaleX(1);
+    }
+}
+
+.btn:focus-visible>span::after {
+    transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn>span::after {
+        transition: none;
+    }
+}
+
+/* Colour variants */
+.btn--video {
+    border-color: var(--color-btn-video);
+    background-color: var(--color-bg-white);
+    color: var(--color-text-dark);
+}
+
+.btn--portfolio {
+    border-color: var(--color-btn-portfolio);
+    background-color: transparent;
+    color: var(--color-bg-white);
+}
+
+.btn--clients {
+    border-color: var(--color-btn-clients);
+    color: var(--color-btn-clients);
+}
+
+.btn--cherry {
+    border-color: var(--color-btn-cherry);
+    background-color: transparent;
+    color: var(--color-bg-white);
+}
+
+.btn--footer {
+    border-color: var(--color-btn-portfolio);
+    color: var(--color-bg-portfolio);
+}
+
+/* =========================================================
    SECTIONS
 ========================================================= */
 
@@ -170,18 +269,8 @@ img {
 
 /* Video Button */
 .header__video-btn {
-    display: inline-flex;
-    align-items: center;
     margin-top: 2.75rem;
-    padding: 1.5rem 3rem;
-    border: 2px solid #D8DADB;
-    border-radius: 999px;
-    background-color: var(--color-bg-white);
-    color: var(--color-text-dark);
-    font-family: var(--font-primary);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    cursor: pointer;
+    padding: 1.65rem 3rem;
 }
 
 /* Hero side column */
@@ -438,81 +527,12 @@ img {
     gap: 0.75rem;
 }
 
-.cherry__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
+.cherry__portfolio-btn {
+    padding: 1.35rem 3.1rem;
 }
 
-.cherry__btn--portfolio {
-    padding: 1.15rem 2.5rem;
-    border: 2px solid #414142;
-    color: var(--color-bg-white);
-}
-
-.cherry__btn--cherry {
-    padding: 1.55rem 2.65rem;
-    border: 2px solid var(--color-btn-cherry);
-    color: var(--color-bg-white);
-}
-
-/* Underline target */
-.cherry__btn--cherry>span {
-    position: relative;
-    display: inline-block;
-}
-
-/* Underline */
-.cherry__btn--cherry>span::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -0.25em;
-    width: 100%;
-    height: 1px;
-    background: currentColor;
-
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 220ms ease;
-}
-
-/* Reveal underline on hover */
-@media (hover: hover) and (pointer: fine) {
-    .cherry__btn--cherry:hover>span::after {
-        transform: scaleX(1);
-    }
-}
-
-/* Keyboard Accessibility */
-.cherry__btn--cherry:focus-visible>span::after {
-    transform: scaleX(1);
-}
-
-/* Reduce motion */
-@media (prefers-reduced-motion: reduce) {
-    .cherry__btn--cherry>span::after {
-        transition: none;
-    }
-}
-
-@media (hover: hover) and (pointer: fine) {
-
-    /* Enable transform animation */
-    .cherry__btn--cherry {
-        transition: transform 220ms ease;
-        will-change: transform;
-    }
-
-    /* Horizontal swell */
-    .cherry__btn--cherry:hover {
-        transform: scaleX(1.05);
-    }
+.cherry__top-btn {
+    padding: 1.75rem 2.9rem;
 }
 
 /* ---------- BETTER ---------- */
@@ -675,20 +695,8 @@ img {
 
 /* Button */
 .less-is-more__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-
     padding: 1rem 1.75rem;
-    border-radius: 999px;
-
-    text-decoration: none;
-    background: var(--color-btn-portfolio);
-    color: var(--color-bg-white);
-
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
+    gap: 0.6rem;
 }
 
 /* ---------- CLIENT LIST Underline Animation ---------- */
@@ -975,16 +983,8 @@ img {
 }
 
 .footer__cta {
-    border: none;
-    border-radius: 999px;
     margin-top: 1.5rem;
     padding: 0.9rem 1.75rem;
-    background: var(--color-btn-portfolio);
-    color: var(--color-bg-white);
-    font-family: var(--font-primary);
-    font-size: 0.7rem;
-    letter-spacing: 0.5px;
-    cursor: pointer;
 }
 
 .footer__note {
