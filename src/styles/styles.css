@@ -820,9 +820,9 @@ img {
 
     /* Break out of page padding */
     margin-left: calc(var(--page-padding) * -1);
-    margin-right: calc(var(--page-padding) * -1);
+    margin-right: calc(var(--page-padding) * -1.25);
 
-    padding: var(--space-section-xxl) 0 var(--page-padding);
+    padding: 33rem 0 var(--page-padding);
 }
 
 .footer__container {
@@ -833,38 +833,46 @@ img {
 .footer__title {
     margin: 0;
     text-align: right;
-
     display: grid;
     justify-items: end;
 
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 400;
+    letter-spacing: -0.0225em;
     line-height: 1.05;
 }
 
-/* ---------- FOOTER TITLE: delayed fold-in on scroll ---------- */
-
-.footer__title span {
+.footer__title-line {
+    display: inline-block;
     opacity: 0;
     transform: translateY(0.75rem);
 }
 
-/* When triggered */
-.footer__title.is-inview span {
+/* ---------- FOOTER TITLE: delayed fold-in on scroll ---------- */
+.footer__title.is-inview .footer__title-line {
     animation: footerTitleIn 380ms ease-out forwards;
 }
 
-/* Stagger like the hero list */
-.footer__title.is-inview span:nth-child(1) {
+.footer__title.is-inview .footer__title-line:nth-child(1) {
     animation-delay: 100ms;
 }
 
-.footer__title.is-inview span:nth-child(2) {
+.footer__title.is-inview .footer__title-line:nth-child(2) {
     animation-delay: 350ms;
 }
 
-.footer__title.is-inview span:nth-child(3) {
+.footer__title.is-inview .footer__title-line:nth-child(3) {
     animation-delay: 600ms;
+}
+
+.footer__title-line--creative {
+    margin-right: -0.5rem;
+}
+
+.footer__period {
+    display: inline-block;
+    color: var(--color-accent-green);
+    margin-left: -0.08em;
 }
 
 @keyframes footerTitleIn {
@@ -874,9 +882,8 @@ img {
     }
 }
 
-/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
-    .footer__title span {
+    .footer__title-line {
         opacity: 1;
         transform: none;
         animation: none !important;
@@ -895,7 +902,7 @@ img {
 .footer__left {
     text-align: left;
     display: grid;
-    gap: 1.25rem;
+    gap: 3rem;
     justify-items: start;
 }
 
@@ -929,12 +936,12 @@ img {
 }
 
 .footer__cta {
-    margin-top: 1.5rem;
-    padding: 0.9rem 1.75rem;
+    margin: 2rem 1rem 0 0;
+    padding: 1.75rem 3rem;
 }
 
 .footer__note {
-    margin: 0;
+    margin: 1rem 1.75rem 0 0;
     font-size: 0.65rem;
     letter-spacing: 0.2px;
     line-height: 1.2;
