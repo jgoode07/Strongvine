@@ -543,7 +543,7 @@ img {
 }
 
 .better__container {
-    padding: var(--space-section-xl, 8rem) var(--page-padding);
+    padding: 23.75rem calc(var(--page-padding) + 0.25rem) 0 var(--page-padding);
     min-height: 100vh;
 
     display: grid;
@@ -560,33 +560,18 @@ img {
     display: flex;
     flex-direction: column;
     text-align: right;
-    font-size: clamp(2rem, 1vw, 2.25rem);
-    line-height: 1.15;
-}
-
-.better__lead-row {
-    display: inline-flex;
-    gap: 0.35em;
-}
-
-.better__accent {
-    color: var(--color-accent-green);
-}
-
-.better__bottom {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: var(--space-section-xxl) 0;
+    font-size: 2.5rem;
+    line-height: 1.17;
 }
 
 .better__title {
     margin: 0;
+    padding-top: 27.5rem;
     display: inline-flex;
     align-items: baseline;
     gap: 0.06em;
 
-    font-size: clamp(4rem, 12vw, 11rem);
+    font-size: clamp(4rem, 13vw, 12em);
     font-weight: 400;
     line-height: 1;
 }
@@ -602,12 +587,11 @@ img {
 
 .better__cursor {
     display: inline-block;
-    width: 0.04em;
-    height: 0.7em;
+    width: 0.037em;
+    height: 0.715em;
     background: var(--color-accent-green);
     margin-left: 0.15em;
 
-    /* Align it to the letters */
     vertical-align: baseline;
 
     animation: cursorBlink 1s steps(1) infinite;
@@ -624,6 +608,13 @@ img {
     100% {
         opacity: 0;
     }
+}
+
+.better__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: var(--space-section-xxl) 0;
 }
 
 /* ---------- LESS IS MORE ---------- */

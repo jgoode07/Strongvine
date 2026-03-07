@@ -51,11 +51,12 @@
         'Precise'
     ];
 
-    // Word Type Timings
-    const typeSpeed = 140;     // Slower typing
+    const EMPTY_CHAR = '\u200B';
+
+    const typeSpeed = 140;
     const deleteSpeed = 80;
-    const holdTime = 1400;     // Pause at full word
-    const betweenTime = 500;   // Pause before typing next word
+    const holdTime = 1400;
+    const betweenTime = 500;
 
     let wordIndex = 0;
     let charIndex = 0;
@@ -63,8 +64,7 @@
     let started = false;
     let timerId = null;
 
-    // Start hidden + blank so nothing shows while scrolling
-    wordEl.textContent = '';
+    wordEl.textContent = EMPTY_CHAR;
     wordEl.classList.remove('is-ready');
 
     const stop = () => {
@@ -88,15 +88,17 @@
             timerId = window.setTimeout(tick, typeSpeed);
         } else {
             charIndex--;
-            wordEl.textContent = current.slice(0, charIndex);
 
             if (charIndex <= 0) {
+                wordEl.textContent = EMPTY_CHAR;
+                charIndex = 0;
                 deleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
                 timerId = window.setTimeout(tick, betweenTime);
                 return;
             }
 
+            wordEl.textContent = current.slice(0, charIndex);
             timerId = window.setTimeout(tick, deleteSpeed);
         }
     };
@@ -105,9 +107,8 @@
         if (started) return;
         started = true;
 
-        // Reveal + type from blank immediately
         wordEl.classList.add('is-ready');
-        wordEl.textContent = '';
+        wordEl.textContent = EMPTY_CHAR;
         wordIndex = 0;
         charIndex = 0;
         deleting = false;
@@ -124,7 +125,6 @@
     observer.observe(wordEl);
     window.addEventListener('beforeunload', stop);
 })();
-
 
 /* ---------- SCROLL REVEAL (IF YOU WANT SOMETHING RARE) ---------- */
 
