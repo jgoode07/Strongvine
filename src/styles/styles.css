@@ -176,7 +176,7 @@ img {
 
 .btn--clients {
     border-color: var(--color-btn-clients);
-    color: var(--color-btn-clients);
+    color: var(--color-text-light);
 }
 
 .btn--cherry {
@@ -187,7 +187,7 @@ img {
 
 .btn--footer {
     border-color: var(--color-btn-portfolio);
-    color: var(--color-bg-portfolio);
+    color: var(--color-text-light);
 }
 
 /* =========================================================
