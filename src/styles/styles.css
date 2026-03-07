@@ -701,7 +701,7 @@ img {
 }
 
 .results__container {
-    padding: 0 var(--page-padding);
+    padding: 15.5rem var(--page-padding);
     min-height: 100vh;
 
     display: grid;
@@ -720,17 +720,17 @@ img {
 .results__title {
     margin: 0;
     margin-right: calc(var(--page-padding) * -0.33);
-    font-size: clamp(4rem, 12vw, 11rem);
+    font-size: clamp(4rem, 14vw, 12rem);
     font-weight: 400;
     line-height: 1;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.015em;
 }
 
 .results__copy {
     margin: 0;
-    max-width: 52ch;
-    font-size: clamp(1.15rem, 1vw, 1.25rem);
-    line-height: 1.33;
+    max-width: 51ch;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    line-height: 1.25;
 }
 
 /* ON ( Green title colour state) */
@@ -748,8 +748,8 @@ img {
     align-items: center;
     justify-content: center;
     text-align: left;
-    margin: 0;
-    min-height: 12rem;
+    margin: 1.5rem 2.5rem 0 0;
+    min-height: 11rem;
     padding: 2rem 0;
     overflow: visible;
     perspective-origin: calc(50% + 10rem) calc(50% - 10rem);
