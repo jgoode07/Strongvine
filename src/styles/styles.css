@@ -566,12 +566,12 @@ img {
 
 .better__title {
     margin: 0;
-    padding-top: 27.5rem;
+    padding-top: 19.5rem;
     display: inline-flex;
     align-items: baseline;
     gap: 0.06em;
 
-    font-size: clamp(4rem, 13vw, 12em);
+    font-size: clamp(4rem, 13vw, 12.5em);
     font-weight: 400;
     line-height: 1;
 }
@@ -614,7 +614,7 @@ img {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    padding: var(--space-section-xxl) 0;
+    padding: var(--space-section-xxl) 0 19.25rem 0;
 }
 
 /* ---------- LESS IS MORE ---------- */
@@ -646,7 +646,7 @@ img {
 }
 
 .less-is-more__content {
-    padding-bottom: var(--space-section-xxl);
+    padding-bottom: 23rem;
 }
 
 /* Copy block */
@@ -656,6 +656,7 @@ img {
     flex-direction: column;
 
     font-size: clamp(2rem, 1vw, 2.25rem);
+    letter-spacing: 0.009em;
     line-height: 1.15;
 }
 
@@ -681,49 +682,8 @@ img {
 
 /* Button */
 .less-is-more__btn {
-    padding: 1rem 1.75rem;
-    gap: 0.6rem;
-}
-
-/* ---------- CLIENT LIST Underline Animation ---------- */
-
-/* Make the text span the underline target */
-.less-is-more__btn>span:first-child {
-    position: relative;
-    display: inline-block;
-}
-
-/* The underline */
-.less-is-more__btn>span:first-child::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -0.25em;
-    width: 100%;
-    height: 1px;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 220ms ease;
-}
-
-/* Hover/focus reveal */
-@media (hover: hover) and (pointer: fine) {
-    .less-is-more__btn:hover>span:first-child::after {
-        transform: scaleX(1);
-    }
-}
-
-/* Keyboard accessibility */
-.less-is-more__btn:focus-visible>span:first-child::after {
-    transform: scaleX(1);
-}
-
-/* Reduce motion users */
-@media (prefers-reduced-motion: reduce) {
-    .less-is-more__btn>span:first-child::after {
-        transition: none;
-    }
+    padding: 1.75rem 3rem;
+    margin-top: 1.5rem;
 }
 
 /* ---------- RESULTS ---------- */
