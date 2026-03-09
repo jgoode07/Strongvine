@@ -1,39 +1,58 @@
+/* ---------- SMOOTH SCROLL (LENIS) ---------- */
+
+// Create single Lenis instance and start the raf loop
+const lenis = new Lenis({
+    // Drop lerp entirely; use duration to control easing
+    duration: 0.15,              // Very short animation time for instant feel
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+    wheelMultiplier: 2.0,        // Boost wheel sensitivity
+    smoothTouch: false,          // Mobile touch is already smooth
+    touchMultiplier: 2,          // Increase touch responsiveness
+    infinite: false              // Don't allow infinite scrolling
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
 /* ---------- LOGO STICKY ON SCROLL/FADE ---------- */
 
-(() => {
-    const logo = document.querySelector('.header__brand-logo');
-    if (!logo) return;
+// (() => {
+//     const logo = document.querySelector('.header__brand-logo');
+//     if (!logo) return;
 
-    const moveUntil = Math.round(window.innerHeight * 0.18); // How long it "travels"
-    const hideAt = Math.round(window.innerHeight * 0.25);    // When it disappears
+//     const moveUntil = Math.round(window.innerHeight * 0.18); // How long it "travels"
+//     const hideAt = Math.round(window.innerHeight * 0.25);    // When it disappears
 
-    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+//     const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
-    const onScroll = () => {
-        const y = window.scrollY;
+//     const onScroll = (y = window.scrollY) => {
+//         if (y < 10) {
+//             logo.style.setProperty('--logoY', '0px');
+//             logo.classList.remove('is-fading', 'is-hidden');
+//             return;
+//         }
 
-        if (y < 10) {
-            logo.style.setProperty('--logoY', '0px');
-            logo.classList.remove('is-fading', 'is-hidden');
-            return;
-        }
+//         // Move with scroll, capped so it doesn't keep drifting forever
+//         const travel = clamp(y, 0, moveUntil);
+//         logo.style.setProperty('--logoY', `${travel}px`);
 
-        // Move with scroll, capped so it doesn't keep drifting forever
-        const travel = clamp(y, 0, moveUntil);
-        logo.style.setProperty('--logoY', `${travel}px`);
+//         // Start fading once it’s moving
+//         logo.classList.add('is-fading');
 
-        // Start fading once it’s moving
-        logo.classList.add('is-fading');
+//         // Hide before it overlaps content
+//         if (y >= hideAt) logo.classList.add('is-hidden');
+//         else logo.classList.remove('is-hidden');
+//     };
 
-        // Hide before it overlaps content
-        if (y >= hideAt) logo.classList.add('is-hidden');
-        else logo.classList.remove('is-hidden');
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    onScroll();
-})();
+//     // Listen for Lenis scroll event; lenis updates window.scrollY as well
+//     lenis.on('scroll', ({ scroll }) => onScroll(scroll));
+//     window.addEventListener('resize', () => onScroll(lenis.scroll));
+//     onScroll(lenis.scroll);
+// })();
 
 
 /* ---------- BETTER: TYPEWRITER (starts on scroll) ---------- */
@@ -155,14 +174,14 @@
 
     // rAF throttle for smoothness without lag
     let ticking = false;
-    window.addEventListener('scroll', () => {
+    lenis.on('scroll', () => {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(() => {
             update();
             ticking = false;
         });
-    }, { passive: true });
+    });
 
     window.addEventListener('resize', update);
 })();
