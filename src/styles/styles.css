@@ -26,10 +26,7 @@
 
     /* ---------- TYPOGRAPHY ---------- */
 
-    --font-brand: "Open Sans", sans-serif;
     --font-primary: "Space Mono", monospace;
-
-    /* Temporary until I sort what to use for emojis */
     --font-emoji: "Noto Emoji", sans-serif;
 
     /* ---------- LAYOUT ---------- */
@@ -210,11 +207,15 @@ img {
     align-items: flex-start;
 }
 
-.header__brand-text {
-    font-family: var(--font-brand);
-    font-size: clamp(1.25rem, 1vw, 1.5rem);
-    letter-spacing: 3.25px;
-    font-weight: 600;
+.header__brand-wordmark {
+    display: block;
+    margin: 0;
+}
+
+.header__brand-wordmark img {
+    display: block;
+    width: 10rem;
+    height: auto;
 }
 
 .header__brand-logo {
@@ -229,7 +230,7 @@ img {
 }
 
 /* Sticky/fading logo behaviour */
-.header__brand-logo {
+/* .header__brand-logo {
     opacity: 1;
     transform: translate3d(0, var(--logoY, 0px), 0);
     transition: opacity 200ms ease;
@@ -243,7 +244,7 @@ img {
 .header__brand-logo.is-hidden {
     opacity: 0;
     pointer-events: none;
-}
+} */
 
 /* Hero */
 .header__hero {
