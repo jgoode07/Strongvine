@@ -11,7 +11,6 @@
     --color-bg-black: #000000;
 
     /* Text */
-    --color-title-dark: #1b191a;
     --color-text-dark: #414042;
     --color-text-light: #e2e2e2;
 
@@ -27,7 +26,6 @@
     /* ---------- TYPOGRAPHY ---------- */
 
     --font-primary: "Space Mono", monospace;
-    --font-emoji: "Noto Emoji", sans-serif;
 
     /* ---------- LAYOUT ---------- */
 
@@ -35,12 +33,8 @@
 
     --hero-height: 94vh;
 
-    --space-section-small: 2rem;
     --space-section-medium: 4rem;
-    --space-section-large: 8rem;
-    --space-section-xl: 10rem;
     --space-section-xxl: 18rem;
-    --space-section-full: 95vh;
 }
 
 /* =========================================================
@@ -93,9 +87,6 @@ img {
 ========================================================= */
 
 :root {
-    --btn-border-width: 2px;
-    --btn-radius-pill: 999px;
-
     --btn-underline-offset: -0.15em;
     --btn-underline-height: 0.75px;
     --btn-transition-speed: 220ms;
@@ -637,13 +628,6 @@ img {
 
     display: grid;
     align-content: space-between;
-}
-
-.less-is-more__cursor {
-    display: inline-block;
-    background: var(--color-accent-green);
-    width: 0.12em;
-    height: 1em;
 }
 
 .less-is-more__content {
