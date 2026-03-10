@@ -943,3 +943,73 @@ img {
 /* =========================================================
    MEDIA QUERIES
 ========================================================= */
+
+@media (max-width: 767px) {
+    .page {
+        padding: 2rem;
+        padding-bottom: 0;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header__container {
+        min-height: auto;
+    }
+
+    .header__brand {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header__brand-logo {
+        margin: 0;
+    }
+
+    .header__brand-logo img {
+        width: 5rem;
+    }
+
+    .header__brand-wordmark img {
+        width: 9rem;
+    }
+
+    .header__hero {
+        grid-template-columns: 1fr;
+        align-items: start;
+        padding-bottom: 0;
+    }
+
+    .header__hero-side {
+        order: 1;
+        justify-self: end;
+        text-align: right;
+        padding: var(--space-section-large) 0 var(--space-section-large);
+        margin-bottom: 0;
+        max-width: 7rem;
+    }
+
+    .header__hero-services {
+        padding: var(--space-section-medium) 0 3rem 0;
+    }
+
+    .header__hero-left {
+        order: 2;
+        max-width: 75%;
+        margin: 8rem 0 30rem;
+    }
+
+    .header__hero-intro {
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+
+    .header__video-btn-wrap {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 550px) {
+    .header__hero-left {
+        max-width: 90%;
+    }
+}
