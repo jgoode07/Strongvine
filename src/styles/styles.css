@@ -1006,6 +1006,50 @@ img {
     .header__video-btn-wrap {
         margin-bottom: 0;
     }
+
+    /* ---------- CHERRY ---------- */
+
+    .cherry {
+        margin-left: calc(var(--page-padding) * -1);
+        margin-right: calc(var(--page-padding) * -1);
+    }
+
+    .cherry__container {
+        min-height: auto;
+        justify-items: end;
+        align-content: start;
+        padding-bottom: var(--space-section-large);
+        gap: 1rem;
+    }
+
+    .cherry__icon {
+        width: 3.25rem;
+        left: -0.1rem;
+        top: 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .cherry__intro {
+        max-width: 75%;
+        margin-top: 0;
+        line-height: 1.45;
+    }
+
+    .cherry__actions {
+        margin-top: 0.75rem;
+        display: grid;
+        justify-items: end;
+        gap: 2rem;
+    }
+
+    .cherry__top-btn {
+        order: 1;
+    }
+
+    .cherry__portfolio-btn {
+        padding: 1.75rem 3.1rem;
+        order: 2;
+    }
 }
 
 @media (max-width: 550px) {
