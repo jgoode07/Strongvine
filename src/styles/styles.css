@@ -1083,7 +1083,7 @@ img {
     .header__hero-intro,
     .cherry__intro,
     .less-is-more__copy {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         line-height: 1.4;
     }
 
@@ -1117,11 +1117,6 @@ img {
     }
 
     /* ---------- BETTER ---------- */
-    .better,
-    .better__container {
-        padding-top: var(--space-section-medium);
-    }
-
     .better__lead {
         font-size: 1.6rem;
     }
