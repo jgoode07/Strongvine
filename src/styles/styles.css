@@ -646,9 +646,10 @@ img {
     display: flex;
     flex-direction: column;
 
-    font-size: clamp(2rem, 1vw, 2.25rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     letter-spacing: 0.009em;
     line-height: 1.15;
+    max-width: 32ch;
 }
 
 /* Accent text starts WHITE like the rest */
@@ -1066,6 +1067,15 @@ img {
     .better__lead {
         font-size: 1.7rem;
     }
+
+    .less-is-more__copy {
+        font-size: clamp(1.15rem, 3vw, 2rem);
+    }
+
+    .less-is-more__btn {
+        padding: 1.5rem 3rem;
+        margin-top: 0.5rem;
+    }
 }
 
 /* ---------- SMALL MOBILE ---------- */
@@ -1076,7 +1086,8 @@ img {
     .header__hero-service,
     .header__hero-too,
     .header__hero-intro,
-    .cherry__intro {
+    .cherry__intro,
+    .less-is-more__copy {
         font-size: 0.85rem;
         line-height: 1.4;
     }
@@ -1084,7 +1095,7 @@ img {
     .header__video-btn,
     .cherry__top-btn,
     .cherry__portfolio-btn,
-    .btn--clients {
+    .less-is-more__btn {
         font-size: 0.6rem;
     }
 
@@ -1122,5 +1133,11 @@ img {
 
     .better__title {
         font-size: clamp(3rem, 10vw, 10rem);
+    }
+
+    /* ---------- LESS IS MORE ---------- */
+    .less-is-more__btn {
+        padding: 1.5rem 2.5rem;
+        margin-top: 0.1rem;
     }
 }
