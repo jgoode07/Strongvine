@@ -721,7 +721,7 @@ img {
 
 .results__copy {
     margin: 0;
-    max-width: 51ch;
+    max-width: 43ch;
     font-size: clamp(1.15rem, 2vw, 1.35rem);
     line-height: 1.25;
 }
@@ -729,10 +729,6 @@ img {
 /* ON ( Green title colour state) */
 .results.is-lit .results__title {
     color: var(--color-accent-green);
-}
-
-.results__copy span {
-    display: block;
 }
 
 /* Ball Toggle */
@@ -958,13 +954,13 @@ img {
     }
 
     .header__brand {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .header__brand-logo {
-        margin: 0;
+        margin: 2rem 0 0 0;
     }
 
     .header__brand-logo img {
@@ -987,7 +983,6 @@ img {
         text-align: right;
         padding: var(--space-section-large) 0 var(--space-section-large);
         margin-bottom: 0;
-        max-width: 7rem;
     }
 
     .header__hero-services {
@@ -1025,7 +1020,7 @@ img {
         justify-items: end;
         align-content: start;
         padding-bottom: var(--space-section-large);
-        gap: 1rem;
+        gap: 0.5rem;
     }
 
     .cherry__icon {
@@ -1137,7 +1132,7 @@ img {
 
     /* ---------- LESS IS MORE ---------- */
     .less-is-more__btn {
-        padding: 1.5rem 2.5rem;
+        padding: 1.35rem 2.5rem;
         margin-top: 0.1rem;
     }
 }

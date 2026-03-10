@@ -135,7 +135,7 @@
     // Put the line into data-text so the ::after overlay can use it
     target.setAttribute('data-text', target.textContent.trim());
 
-    const fillDistancePx = 200;
+    const fillDistancePx = 150;
 
     const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
@@ -143,7 +143,7 @@
         const rect = target.getBoundingClientRect();
 
         // Start filling when the line hits around mid-screen
-        const startY = window.innerHeight * 0.55;
+        const startY = window.innerHeight * 0.7;
 
         // Progress 0..1 based on how far past startY it has moved
         const progress = clamp((startY - rect.top) / fillDistancePx, 0, 1);
