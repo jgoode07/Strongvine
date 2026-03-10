@@ -1056,6 +1056,16 @@ img {
         padding: 1.75rem 3.1rem;
         order: 2;
     }
+
+    /* ---------- BETTER ---------- */
+    .better,
+    .better__container {
+        padding-top: var(--space-section-large);
+    }
+
+    .better__lead {
+        font-size: 1.7rem;
+    }
 }
 
 /* ---------- SMALL MOBILE ---------- */
@@ -1101,4 +1111,16 @@ img {
     }
 
     /* ---------- BETTER ---------- */
+    .better,
+    .better__container {
+        padding-top: var(--space-section-medium);
+    }
+
+    .better__lead {
+        font-size: 1.6rem;
+    }
+
+    .better__title {
+        font-size: clamp(3rem, 10vw, 10rem);
+    }
 }
