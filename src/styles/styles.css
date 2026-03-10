@@ -33,8 +33,10 @@
 
     --hero-height: 94vh;
 
-    --space-section-medium: 4rem;
-    --space-section-xxl: 18rem;
+    --space-section-small: 4rem;
+    --space-section-medium: 10rem;
+    --space-section-large: 20rem;
+    --space-section-xxl: 40rem;
 }
 
 /* =========================================================
@@ -304,7 +306,7 @@ img {
     transform: scale(0.85);
     animation:
         heartIn 250ms ease-out forwards,
-        heartBeat 5000ms ease-in-out infinite;
+        heartBeat 4000ms ease-in-out infinite;
 
     animation-delay:
         /* Appears after "DO YOU LOVE" */
@@ -396,6 +398,10 @@ img {
     animation-delay: 1150ms;
 }
 
+.header__hero-service:nth-child(8) {
+    animation-delay: 1300ms;
+}
+
 @keyframes heroSideIn {
     to {
         opacity: 1;
@@ -418,7 +424,7 @@ img {
     opacity: 0;
     transform: translateY(0.5rem);
     animation: heroTooIn 300ms ease-out forwards;
-    animation-delay: 1300ms;
+    animation-delay: 1450ms;
 }
 
 @keyframes heroTooIn {
@@ -442,7 +448,7 @@ img {
 }
 
 .cherry__container {
-    padding: 33.5rem var(--page-padding) 0;
+    padding: 55rem var(--page-padding) 0;
     min-height: 100vh;
 
     display: grid;
@@ -606,7 +612,7 @@ img {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    padding: var(--space-section-xxl) 0 19.25rem 0;
+    padding: var(--space-section-xxl) 0 var(--space-section-large) 0;
 }
 
 /* ---------- LESS IS MORE ---------- */
@@ -631,7 +637,7 @@ img {
 }
 
 .less-is-more__content {
-    padding-bottom: 23rem;
+    padding-bottom: var(--space-section-xxl);
 }
 
 /* Copy block */
@@ -706,6 +712,7 @@ img {
     margin: 0;
     margin-right: calc(var(--page-padding) * -0.33);
     font-size: clamp(4rem, 14vw, 12rem);
+    color: #232223;
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.015em;
@@ -917,7 +924,7 @@ img {
     text-align: right;
     display: grid;
     justify-items: end;
-    gap: var(--space-section-medium);
+    gap: var(--space-section-small);
 }
 
 .footer__cta {
