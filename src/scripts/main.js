@@ -1,22 +1,22 @@
 /* ---------- SMOOTH SCROLL (LENIS) ---------- */
 
-// Create single Lenis instance and start the raf loop
-const lenis = new Lenis({
-    // Drop lerp entirely; use duration to control easing
-    duration: 0.15,              // Very short animation time for instant feel
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smooth: true,
-    wheelMultiplier: 2.0,        // Boost wheel sensitivity
-    smoothTouch: false,          // Mobile touch is already smooth
-    touchMultiplier: 2,          // Increase touch responsiveness
-    infinite: false              // Don't allow infinite scrolling
-});
+// // Create single Lenis instance and start the raf loop
+// const lenis = new Lenis({
+//     // Drop lerp entirely; use duration to control easing
+//     duration: 0.15,              // Very short animation time for instant feel
+//     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+//     smooth: true,
+//     wheelMultiplier: 2.0,        // Boost wheel sensitivity
+//     smoothTouch: false,          // Mobile touch is already smooth
+//     touchMultiplier: 2,          // Increase touch responsiveness
+//     infinite: false              // Don't allow infinite scrolling
+// });
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
+// function raf(time) {
+//     lenis.raf(time);
+//     requestAnimationFrame(raf);
+// }
+// requestAnimationFrame(raf);
 
 /* ---------- LOGO STICKY ON SCROLL/FADE ---------- */
 
