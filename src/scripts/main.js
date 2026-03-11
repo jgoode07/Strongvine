@@ -1,3 +1,23 @@
+/* ---------- LENIS SMOOTH SCROLL ---------- */
+(() => {
+    if (typeof Lenis === 'undefined') {
+        console.warn('Lenis not found – smooth scrolling disabled');
+        return;
+    }
+
+    const lenis = new Lenis({
+        autoRaf: true,
+        smoothWheel: true,
+        lerp: 0.10,
+        wheelMultiplier: 1,
+        touchMultiplier: 1,
+        infinite: false,
+        overscroll: false
+    });
+
+    window.__lenis = lenis;
+})();
+
 /* ---------- LOGO STICKY ON SCROLL/FADE ---------- */
 
 (() => {

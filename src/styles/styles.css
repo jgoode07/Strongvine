@@ -49,18 +49,6 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-/* Accessibility: Disable motion-based animations for users who have
-   enabled "Reduce Motion" in their OS/browser settings */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-}
-
 body {
     margin: 0;
     background: var(--color-bg-white);
