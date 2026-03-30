@@ -928,6 +928,53 @@ img {
 /* =========================================================
    MEDIA QUERIES
 ========================================================= */
+@media (max-width: 900px) {
+    .footer {
+        padding: 18rem 0 var(--page-padding);
+        margin-right: calc(var(--page-padding) * -1);
+    }
+
+    .footer__title {
+        font-size: clamp(2.5rem, 6.5vw, 4rem);
+        line-height: 1.05;
+    }
+
+    .footer__bottom {
+        grid-template-columns: 1fr auto;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        align-items: end;
+    }
+
+    .footer__left {
+        gap: 2rem;
+        max-width: 26ch;
+    }
+
+    .footer__right {
+        gap: 1.5rem;
+    }
+
+    .footer__cta {
+        margin: 0;
+        padding: 1.5rem 2.6rem;
+        font-size: 0.75rem;
+    }
+
+    .footer__line {
+        font-size: 0.75rem;
+    }
+
+    .footer__fine,
+    .footer__note {
+        font-size: 0.7rem;
+        line-height: 1.35;
+    }
+
+    .footer__note {
+        margin: 0;
+    }
+}
 
 /* ---------- LARGE MOBILE/TABLET ---------- */
 @media (max-width: 767px) {
