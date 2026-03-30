@@ -700,7 +700,7 @@ img {
 .results__title {
     margin: 0;
     margin-right: calc(var(--page-padding) * -0.33);
-    font-size: clamp(4rem, 14vw, 12rem);
+    font-size: clamp(6rem, 14vw, 12rem);
     color: #232223;
     font-weight: 400;
     line-height: 1;
@@ -1051,6 +1051,7 @@ img {
         font-size: 1.7rem;
     }
 
+    /* ---------- LESS IS MORE ---------- */
     .less-is-more__copy {
         font-size: clamp(1.15rem, 3vw, 2rem);
     }
@@ -1058,6 +1059,38 @@ img {
     .less-is-more__btn {
         padding: 1.5rem 3rem;
         margin-top: 0.5rem;
+    }
+
+    /* ---------- RESULTS ---------- */
+    .results__copy {
+        max-width: 38ch;
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .respect__toggle {
+        margin: 1.25rem 2rem 0 0;
+        min-height: 9rem;
+        padding: 1.5rem 0;
+        perspective-origin: calc(50% + 8rem) calc(50% - 8rem);
+        perspective: 28em;
+    }
+
+    .respect__toggle [type=checkbox]+label {
+        width: 8.5rem;
+        height: 4.25rem;
+        border: solid 0.55rem #f0f0f0;
+        border-radius: 4.25rem;
+    }
+
+    .respect__toggle [type=checkbox]+label:before,
+    .respect__toggle [type=checkbox]+label:after {
+        width: 4.25rem;
+        height: 4.25rem;
+    }
+
+    .respect__toggle [type=checkbox]+label:before {
+        top: calc(50% + 0.7rem);
     }
 }
 
@@ -1070,7 +1103,8 @@ img {
     .header__hero-too,
     .header__hero-intro,
     .cherry__intro,
-    .less-is-more__copy {
+    .less-is-more__copy,
+    .results__copy {
         font-size: 0.9rem;
         line-height: 1.4;
     }
@@ -1117,5 +1151,49 @@ img {
     .less-is-more__btn {
         padding: 1.35rem 2.55rem;
         margin-top: 0.1rem;
+    }
+
+    /* ---------- RESULTS ---------- */
+    .results__title {
+        font-size: clamp(4rem, 10vw, 10rem);
+        margin-right: 0;
+    }
+
+    .results__copy {
+        max-width: 33ch;
+    }
+
+    .results__container {
+        padding: 8rem var(--page-padding);
+        gap: 0.75rem;
+    }
+
+    .respect__toggle {
+        margin: 1rem 1rem 0 0;
+        min-height: 7rem;
+        padding: 1rem 0;
+        perspective-origin: calc(50% + 6rem) calc(50% - 6rem);
+        perspective: 24em;
+    }
+
+    .respect__toggle [type=checkbox]+label {
+        width: 7rem;
+        height: 3.5rem;
+        border: solid 0.45rem #f0f0f0;
+        border-radius: 3.5rem;
+    }
+
+    .respect__toggle [type=checkbox]+label:before,
+    .respect__toggle [type=checkbox]+label:after {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .respect__toggle [type=checkbox]+label:before {
+        top: calc(50% + 0.6rem);
+    }
+
+    .respect__toggle [type=checkbox]+label:after {
+        box-shadow: -1px 1px 0.1rem rgba(206, 255, 206, 0.5);
     }
 }
