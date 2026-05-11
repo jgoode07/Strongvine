@@ -1,251 +1,301 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Strongvine</title>
-    <meta name="description"
-        content="Strongvine is a design-first agency specializing in web design, development, and digital branding.">
-
-    <link rel="icon" href="src/assets/icons/strongvine-favi.ico" type="image/x-icon">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="src/styles/styles.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+      name="description"
+      content="Strongvine is a design-first agency specializing in web design, development, and digital branding."
+    />
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
+      rel="icon"
+      href="src/assets/icons/strongvine-favi.ico"
+      type="image/x-icon"
+    />
 
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.18/dist/lenis.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/styles/styles.css" />
 
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.18/dist/lenis.css"
+    />
+  </head>
+
+  <body>
     <div class="page">
+      <!-- Top header/nav area -->
+      <header class="header">
+        <div class="header__container">
+          <div class="header__brand">
+            <a
+              class="header__brand-wordmark"
+              href="#"
+              aria-label="Strongvine home"
+            >
+              <img
+                src="src/assets/img/strongvine.png"
+                alt="Strongvine wordmark logo"
+              />
+            </a>
 
-        <!-- Top header/nav area -->
-        <header class="header">
-            <div class="header__container">
-                <div class="header__brand">
+            <a class="header__brand-logo" href="#" aria-label="Strongvine home">
+              <img
+                src="src/assets/img/strongvine-logo.png"
+                alt="Strongvine logo"
+              />
+            </a>
+          </div>
+          <!-- Hero content area -->
+          <div class="header__hero">
+            <div class="header__hero-left">
+              <!-- Introductory brand statement -->
+              <div class="header__specializing">
+                <p class="header__specializing-label">Specializing in:</p>
 
-                    <a class="header__brand-wordmark" href="#" aria-label="Strongvine home">
-                        <img src="src/assets/img/strongvine.png" alt="Strongvine wordmark logo">
-                    </a>
-
-                    <a class="header__brand-logo" href="#" aria-label="Strongvine home">
-                        <img src="src/assets/img/strongvine-logo.png" alt="Strongvine logo">
-                    </a>
-
-                </div>
-                <!-- Hero content area -->
-                <div class="header__hero">
-
-                    <div class="header__hero-left">
-                        <!-- Introductory brand statement -->
-                        <h1 class="header__hero-intro">
-                            We’ve been design-first since 2004—before smartphones, shortcuts,
-                            and cookie-cutter AI templates. We come from the era where designers
-                            mastered print and web, so we see the whole picture, not just the tech.
-                            Clients choose us because we are really good at what we do and we stay
-                            in our lane.
-                        </h1>
-
-                        <!-- Primary video CTA (now under paragraph on the left) -->
-                        <div class="header__video-btn-wrap">
-                            <button class="btn btn--video header__video-btn" type="button">
-                                <span>Watch Video</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Right-side service column -->
-                    <aside class="header__hero-side">
-
-                        <!-- Decorative "Do You Love" prompt -->
-                        <div class="header__hero-love">
-                            <span class="header__hero-love-text">
-                                <span>Do</span>
-                                <span>you</span>
-                                <span>love</span>
-                            </span>
-                            <span class="header__hero-love-heart" aria-hidden="true">❤️</span>
-                        </div>
-
-                        <!-- Services list -->
-                        <ul class="header__hero-services" aria-label="Services">
-                            <li class="header__hero-service">Design</li>
-                            <li class="header__hero-service">Websites</li>
-                            <li class="header__hero-service">Audio</li>
-                            <li class="header__hero-service">Video</li>
-                            <li class="header__hero-service">Branding</li>
-                            <li class="header__hero-service">Graphics</li>
-                            <li class="header__hero-service">Print</li>
-                            <li class="header__hero-service">AI</li>
-                        </ul>
-
-                        <!-- Keep this under the aside (bottom of the right column) -->
-                        <p class="header__hero-too">We do too...</p>
-
-                    </aside>
-
-                </div>
-            </div>
-        </header>
-
-        <main class="main">
-            <section class="cherry">
-
-                <!-- Cherry content area -->
-                <div class="cherry__container">
-
-                    <div class="cherry__icon" aria-hidden="true">
-                        <img src="src/assets/img/cherry.png" alt="">
-                    </div>
-
-                    <p class="cherry__intro">
-                        We’ve been owning design for 20+ years, but we don’t hand out our portfolio. Design evolves,
-                        clients value privacy, and our work is simply too good. If you’re here, you’re referred,
-                        connected, or lucky. We don’t do tire-kickers—we work with people ready to grow. Our pricing is
-                        intentional, not insane. Reach out, show you’re serious, and you’ll see why we’re in a league of
-                        our own.</p>
-
-                    <!-- Cherry buttons -->
-                    <div class="cherry__actions">
-                        <a class="btn btn--portfolio cherry__portfolio-btn" href="#">
-                            <span>Request Portfolio</span>
-                        </a>
-
-                        <a class="btn btn--cherry cherry__top-btn" href="#">
-                            <span>Cherry On-Top</span>
-                        </a>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <!-- Better section -->
-            <section class="better">
-                <div class="better__container">
-
-                    <div class="better__top">
-                        <p class="better__lead">
-                            <span>We are</span>
-                            <span>Abnormally</span>
-                            <span>Obsessively</span>
-                            <span>& Compulsively</span>
-                        </p>
-                    </div>
-
-                    <div class="better__bottom">
-                        <h2 class="better__title">
-                            <span class="better__type">Unique</span>
-                            <span class="better__cursor" aria-hidden="true"></span>
-                        </h2>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Less is more section -->
-            <section class="less-is-more">
-                <div class="less-is-more__container">
-
-                    <!-- Copy block -->
-                    <div class="less-is-more__content">
-                        <p class="less-is-more__copy">
-                            Less is more—and today’s
-                            web/design forgets that. Templates
-                            everywhere, AI cloning everything.
-                            <span class="less-is-more__accent js-rare">If you want something rare,</span>
-                            crafted, and results-driven by
-                            people who’ve done this forever,
-                            reach out. We build what trends
-                            can’t copy.
-                        </p>
-
-                        <!-- CTA -->
-                        <a class="btn btn--clients less-is-more__btn" href="#">
-                            <span>Client List</span>
-                        </a>
-
-                    </div>
-
-                </div>
-            </section>
-            <!-- Results section -->
-            <section class="results">
-                <div class="results__container">
-
-                    <!-- Big title -->
-                    <h2 class="results__title">
-                        <span>Results</span>
-                    </h2>
-
-                    <!-- Copy block -->
-                    <p class="results__copy">
-                        Strongvine is built on results. Every client—individual, organization, or institution—has unique
-                        challenges, so every process is tailored. We succeed only when our work drives measurable
-                        outcomes, meaningful movement, and real impact. If we’re not creating solid results for you, we
-                        haven’t done our job and frankly, we don’t do jobs we can’t crush.
-                    </p>
-
-                    <!-- Toggle animation -->
-                    <div class="respect__toggle">
-                        <input type="checkbox" id="c3d" class="respect__toggle-input">
-                        <label for="c3d" class="respect__toggle-label">light</label>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer__container">
-
-                <!-- Big statement (top-right) -->
-                <h2 class="footer__title">
-                    <span class="footer__title-line">Remaining</span>
-                    <span class="footer__title-line">Authentically</span>
-                    <span class="footer__title-line footer__title-line--creative">
-                        Creative<span class="footer__period">.</span>
-                    </span>
+                <h2 class="header__specializing-title">
+                  <span class="header__specializing-word js-specializing-word">
+                    Website Creation
+                  </span>
                 </h2>
+              </div>
 
-                <!-- Bottom row -->
-                <div class="footer__bottom">
+              <h1 class="header__hero-intro">
+                We’ve been design-first since 2004—before smartphones,
+                shortcuts, and cookie-cutter AI templates. We come from the era
+                where designers mastered print and web, so we see the whole
+                picture, not just the tech. Clients choose us because we are
+                really good at what we do and we stay in our lane.
+              </h1>
 
-                    <!-- Left: contact + copyright -->
-                    <div class="footer__left">
-                        <div class="footer__contact">
-                            <p class="footer__line">Direct Email</p>
-                            <p class="footer__line">613.884.5659</p>
-                        </div>
-
-                        <p class="footer__fine">
-                            Strongvine Visual Communications, 2004–2050 ~TRON~ All Rights Reserved
-                        </p>
-                    </div>
-
-                    <!-- Right: CTA + note -->
-                    <div class="footer__right">
-                        <button class="btn btn--footer footer__cta" type="button">
-                            <span>Get Started</span>
-                        </button>
-                        <p class="footer__note">PS ... Can’t wait to hear from you!</p>
-                    </div>
-
+              <!-- Primary video CTA (now under paragraph on the left) -->
+              <div class="header__hero-actions">
+                <!-- Primary video CTA -->
+                <div class="header__video-btn-wrap">
+                  <button
+                    class="btn btn--video header__video-btn"
+                    type="button"
+                  >
+                    <span>Watch Video</span>
+                  </button>
                 </div>
 
-            </div>
-        </footer>
+                <div
+                  class="header__contact-line"
+                  aria-label="Strongvine contact information"
+                >
+                  <span class="header__contact-status-wrap">
+                    <span class="header__contact-star" aria-hidden="true"
+                      >*</span
+                    >
+                    <span class="header__contact-status"
+                      >Accepting Clients</span
+                    >
+                  </span>
 
+                  <span class="header__contact-divider" aria-hidden="true"
+                    >|</span
+                  >
+
+                  <a
+                    class="header__contact-link"
+                    href="mailto:hello@strongvine.com"
+                  >
+                    Email Us
+                  </a>
+
+                  <span class="header__contact-divider" aria-hidden="true"
+                    >|</span
+                  >
+
+                  <a class="header__contact-link" href="tel:16138845659">
+                    613.884.5659
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right-side service column -->
+            <aside class="header__hero-side">
+              <!-- Decorative "Do You Love" prompt -->
+              <div class="header__hero-love">
+                <span class="header__hero-love-text">
+                  <span>Do</span>
+                  <span>you</span>
+                  <span>love</span>
+                </span>
+                <span class="header__hero-love-heart" aria-hidden="true"
+                  >❤️</span
+                >
+              </div>
+
+              <!-- Services list -->
+              <ul class="header__hero-services" aria-label="Services">
+                <li class="header__hero-service">Design</li>
+                <li class="header__hero-service">Websites</li>
+                <li class="header__hero-service">Audio</li>
+                <li class="header__hero-service">Video</li>
+                <li class="header__hero-service">Branding</li>
+                <li class="header__hero-service">Graphics</li>
+                <li class="header__hero-service">Print</li>
+                <li class="header__hero-service">AI</li>
+              </ul>
+
+              <!-- Keep this under the aside (bottom of the right column) -->
+              <p class="header__hero-too">We do too...</p>
+            </aside>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="cherry">
+          <!-- Cherry content area -->
+          <div class="cherry__container">
+            <div class="cherry__icon" aria-hidden="true">
+              <img src="src/assets/img/cherry.png" alt="" />
+            </div>
+
+            <p class="cherry__intro">
+              We’ve been owning design for 20+ years, but we don’t hand out our
+              portfolio. Design evolves, clients value privacy, and our work is
+              simply too good. If you’re here, you’re referred, connected, or
+              lucky. We don’t do tire-kickers—we work with people ready to grow.
+              Our pricing is intentional, not insane. Reach out, show you’re
+              serious, and you’ll see why we’re in a league of our own.
+            </p>
+
+            <!-- Cherry buttons -->
+            <div class="cherry__actions">
+              <a class="btn btn--portfolio cherry__portfolio-btn" href="#">
+                <span>Request Portfolio</span>
+              </a>
+
+              <a class="btn btn--cherry cherry__top-btn" href="#">
+                <span>Cherry On-Top</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Better section -->
+        <section class="better">
+          <div class="better__container">
+            <div class="better__top">
+              <p class="better__lead">
+                <span>We are</span>
+                <span>Abnormally</span>
+                <span>Obsessively</span>
+                <span>& Compulsively</span>
+              </p>
+            </div>
+
+            <div class="better__bottom">
+              <h2 class="better__title">
+                <span class="better__type">Unique</span>
+                <span class="better__cursor" aria-hidden="true"></span>
+              </h2>
+            </div>
+          </div>
+        </section>
+
+        <!-- Less is more section -->
+        <section class="less-is-more">
+          <div class="less-is-more__container">
+            <!-- Copy block -->
+            <div class="less-is-more__content">
+              <p class="less-is-more__copy">
+                Less is more—and today’s web/design forgets that. Templates
+                everywhere, AI cloning everything.
+                <span class="less-is-more__accent js-rare"
+                  >If you want something rare,</span
+                >
+                crafted, and results-driven by people who’ve done this forever,
+                reach out. We build what trends can’t copy.
+              </p>
+
+              <!-- CTA -->
+              <a class="btn btn--clients less-is-more__btn" href="#">
+                <span>Client List</span>
+              </a>
+            </div>
+          </div>
+        </section>
+        <!-- Results section -->
+        <section class="results">
+          <div class="results__container">
+            <!-- Big title -->
+            <h2 class="results__title">
+              <span>Results</span>
+            </h2>
+
+            <!-- Copy block -->
+            <p class="results__copy">
+              Strongvine is built on results. Every client—individual,
+              organization, or institution—has unique challenges, so every
+              process is tailored. We succeed only when our work drives
+              measurable outcomes, meaningful movement, and real impact. If
+              we’re not creating solid results for you, we haven’t done our job
+              and frankly, we don’t do jobs we can’t crush.
+            </p>
+
+            <!-- Toggle animation -->
+            <div class="respect__toggle">
+              <input type="checkbox" id="c3d" class="respect__toggle-input" />
+              <label for="c3d" class="respect__toggle-label">light</label>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__container">
+          <!-- Big statement (top-right) -->
+          <h2 class="footer__title">
+            <span class="footer__title-line">Remaining</span>
+            <span class="footer__title-line">Authentically</span>
+            <span class="footer__title-line footer__title-line--creative">
+              Creative<span class="footer__period">.</span>
+            </span>
+          </h2>
+
+          <!-- Bottom row -->
+          <div class="footer__bottom">
+            <!-- Left: contact + copyright -->
+            <div class="footer__left">
+              <div class="footer__contact">
+                <p class="footer__line">Direct Email</p>
+                <p class="footer__line">613.884.5659</p>
+              </div>
+
+              <p class="footer__fine">
+                Strongvine Visual Communications, 2004–2050 ~TRON~ All Rights
+                Reserved
+              </p>
+            </div>
+
+            <!-- Right: CTA + note -->
+            <div class="footer__right">
+              <button class="btn btn--footer footer__cta" type="button">
+                <span>Get Started</span>
+              </button>
+              <p class="footer__note">PS ... Can’t wait to hear from you!</p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <!-- Scripts -->
@@ -254,6 +304,5 @@
     <script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
 
     <script src="src/scripts/main.js"></script>
-</body>
-
+  </body>
 </html>
