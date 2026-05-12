@@ -35,6 +35,7 @@
   --space-section-small: 4rem;
   --space-section-medium: 10rem;
   --space-section-large: 20rem;
+  --space-section-xl: 30rem;
   --space-section-xxl: 40rem;
 }
 
@@ -181,6 +182,10 @@ img {
 }
 
 /* Brand row */
+.header__date {
+  display: none;
+}
+
 .header__brand {
   display: flex;
   justify-content: space-between;
@@ -526,6 +531,10 @@ img {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.3;
+}
+
+.header__hero-too-dots::after {
+  content: "";
 }
 
 /* ANIMATION */
@@ -1184,6 +1193,73 @@ img {
 /* =========================================================
    MEDIA QUERIES
 ========================================================= */
+/* ---------- HEADER ---------- */
+@media (max-width: 1020px) {
+  .header__hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding-bottom: 0;
+  }
+
+  .header__hero-side {
+    order: 1;
+    justify-self: end;
+    text-align: right;
+    padding: 10.75rem 0;
+    margin-bottom: 0;
+  }
+
+  .header__hero-left {
+    order: 2;
+    max-width: 90%;
+    margin: 8rem 0 10rem;
+  }
+
+  .header__video-btn {
+    margin-top: 2rem;
+  }
+
+  .header__hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+
+  .header__contact-line {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.75rem;
+    row-gap: 0.6rem;
+
+    white-space: normal;
+  }
+
+  .header__contact-status-wrap {
+    display: contents;
+  }
+
+  .header__contact-star {
+    grid-column: 1;
+    grid-row: 1 / 4;
+
+    align-self: start;
+    margin-right: 0;
+  }
+
+  .header__contact-status,
+  .header__contact-link {
+    grid-column: 2;
+  }
+
+  .header__contact-divider {
+    display: none;
+  }
+
+  .header__hero-too-dots::after {
+    content: "........";
+  }
+}
+
 @media (max-width: 900px) {
   .footer {
     padding: 18rem 0 var(--page-padding);
@@ -1239,64 +1315,46 @@ img {
     padding-bottom: 0;
   }
 
-  /* ---------- HEADER ---------- */
-  .header__container {
-    min-height: auto;
+  .header__date {
+    display: block;
+    margin: 0;
+
+    align-self: start;
+
+    font-size: 0.7rem;
+    line-height: 1;
+    letter-spacing: 0.05em;
   }
 
   .header__brand {
     flex-direction: column-reverse;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .header__brand-logo {
-    margin: 2rem 0 0 0;
+    margin: 4rem 0 0 0;
   }
 
   .header__brand-logo img {
-    width: 5rem;
+    width: 7rem;
   }
 
   .header__brand-wordmark img {
     width: 9rem;
   }
 
-  .header__hero {
-    grid-template-columns: 1fr;
-    align-items: start;
-    padding-bottom: 0;
-  }
-
   .header__hero-side {
-    order: 1;
-    justify-self: end;
-    text-align: right;
-    padding: var(--space-section-large) 0 var(--space-section-large);
-    margin-bottom: 0;
-  }
-
-  .header__hero-services {
-    padding: var(--space-section-medium) 0 3rem 0;
+    padding: 7rem 0 10rem;
   }
 
   .header__hero-left {
-    order: 2;
-    max-width: 90%;
-    margin: 8rem 0 30rem;
+    max-width: 95%;
+    margin: 4rem 0 6rem;
   }
 
-  .header__hero-intro {
-    font-size: 0.95rem;
-    line-height: 1.45;
-  }
-
-  .header__video-btn-wrap {
-    margin-bottom: 0;
-  }
-
-  .header__video-btn {
-    margin-top: 2rem;
+  .header__hero-response {
+    padding: var(--space-section-xl) 0 var(--space-section-large);
   }
 
   /* ---------- CHERRY ---------- */
