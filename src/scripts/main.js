@@ -141,40 +141,44 @@
   window.addEventListener("beforeunload", stop);
 })();
 
-/* ---------- SCROLL REVEAL (IF YOU WANT SOMETHING RARE) ---------- */
+/* ---------- SCROLL REVEAL (LESS IS MORE GREEN TEXT) ---------- */
 
 (() => {
-  const target = document.querySelector(".js-rare");
-  if (!target) return;
-
-  // Put the line into data-text so the ::after overlay can use it
-  target.setAttribute("data-text", target.textContent.trim());
+  const targets = document.querySelectorAll(".js-rare, .js-reach");
+  if (!targets.length) return;
 
   const fillDistancePx = 150;
-
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
+  targets.forEach((target) => {
+    target.setAttribute("data-text", target.textContent.trim());
+  });
+
   const update = () => {
-    const rect = target.getBoundingClientRect();
+    targets.forEach((target) => {
+      const rect = target.getBoundingClientRect();
 
-    // Start filling when the line hits around mid-screen
-    const startY = window.innerHeight * 0.7;
+      const startY = target.classList.contains("js-reach")
+        ? window.innerHeight * 0.82
+        : window.innerHeight * 0.85;
 
-    // Progress 0..1 based on how far past startY it has moved
-    const progress = clamp((startY - rect.top) / fillDistancePx, 0, 1);
+      const progress = clamp((startY - rect.top) / fillDistancePx, 0, 1);
 
-    target.style.setProperty("--reveal", (progress * 100).toFixed(2));
+      target.style.setProperty("--reveal", (progress * 100).toFixed(2));
+    });
   };
 
   update();
 
-  // rAF throttle for smoothness without lag
   let ticking = false;
+
   window.addEventListener(
     "scroll",
     () => {
       if (ticking) return;
+
       ticking = true;
+
       requestAnimationFrame(() => {
         update();
         ticking = false;

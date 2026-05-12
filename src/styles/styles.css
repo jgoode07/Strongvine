@@ -812,11 +812,31 @@ img {
   padding-bottom: var(--space-section-xxl);
 }
 
+/* Eye statement */
+.less-is-more__aside {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.045em;
+}
+
+.less-is-more__eye {
+  display: inline-block;
+  width: 2.5rem;
+}
+
+.less-is-more__eye img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Copy block */
 .less-is-more__copy {
   margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
 
   font-size: clamp(1.5rem, 3vw, 2rem);
   letter-spacing: 0.009em;
@@ -842,6 +862,10 @@ img {
   white-space: nowrap;
   color: var(--color-accent-green);
   pointer-events: none;
+}
+
+.less-is-more__accent--reach {
+  display: inline-block;
 }
 
 /* Button */
