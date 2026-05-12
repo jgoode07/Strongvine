@@ -482,14 +482,34 @@ img {
   }
 }
 
+.header__hero-response {
+  margin-bottom: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.header__hero-ya,
 .header__hero-too {
   margin: 0;
   font-size: 0.9rem;
+  line-height: 1.3;
+}
 
-  /* ANIMATION */
+/* ANIMATION */
+.header__hero-ya,
+.header__hero-too {
   opacity: 0;
   transform: translateY(0.5rem);
   animation: heroTooIn 300ms ease-out forwards;
+}
+
+.header__hero-ya {
+  animation-delay: 1350ms;
+}
+
+.header__hero-too {
   animation-delay: 1450ms;
 }
 
@@ -497,6 +517,79 @@ img {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ---------- SCROLL CUE ---------- */
+
+.scroll-cue {
+  background: var(--color-bg-black);
+  color: var(--color-bg-white);
+
+  margin-left: calc(var(--page-padding) * -1);
+  margin-right: calc(var(--page-padding) * -1);
+
+  padding: 0;
+}
+
+.scroll-cue__container {
+  min-height: 100vh;
+  padding: 12rem var(--page-padding) 0;
+
+  display: grid;
+  justify-items: end;
+  align-items: start;
+}
+
+.scroll-cue__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2.5rem;
+}
+
+.scroll-cue__text {
+  margin: 0;
+
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.scroll-cue__pill {
+  position: relative;
+
+  width: 3rem;
+  height: 4.75rem;
+
+  border: 2px solid var(--color-text-light);
+  border-radius: 999px;
+}
+
+.scroll-cue__mark {
+  position: absolute;
+  left: 50%;
+  top: 0;
+
+  width: 0.15rem;
+  height: 1.25rem;
+
+  background: var(--color-accent-green);
+  border-radius: 999px;
+
+  transform: translateX(-50%);
+
+  animation: scrollCueMark 2000ms ease-in-out infinite;
+}
+
+@keyframes scrollCueMark {
+  0%,
+  100% {
+    top: 0.75rem;
+  }
+
+  50% {
+    top: 2.5rem;
   }
 }
 
@@ -514,7 +607,7 @@ img {
 }
 
 .cherry__container {
-  padding: 55rem var(--page-padding) 0;
+  padding: 40rem var(--page-padding) 0;
   min-height: 100vh;
 
   display: grid;
