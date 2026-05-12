@@ -707,8 +707,19 @@ img {
 }
 
 .better__top {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  justify-items: end;
+  gap: 2.5rem;
+}
+
+.better__intro {
+  max-width: 42ch;
+  margin: 0;
+
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: 0.035em;
 }
 
 .better__lead {
@@ -718,6 +729,10 @@ img {
   text-align: right;
   font-size: 2.5rem;
   line-height: 1.17;
+}
+
+.better__amp {
+  color: var(--color-accent-green);
 }
 
 .better__title {
