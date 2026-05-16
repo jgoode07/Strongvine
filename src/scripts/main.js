@@ -228,3 +228,33 @@
 
   observer.observe(title);
 })();
+
+/* ---------- OVERLAYS ---------- */
+
+(() => {
+  const openButtons = document.querySelectorAll("[data-overlay-open]");
+  const closeButtons = document.querySelectorAll("[data-overlay-close]");
+
+  openButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const overlayName = button.dataset.overlayOpen;
+      const overlay = document.querySelector(`.overlay--${overlayName}`);
+
+      if (!overlay) return;
+
+      overlay.classList.add("is-open");
+    });
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const overlay = button.closest(".overlay");
+
+      if (!overlay) return;
+
+      overlay.classList.remove("is-open");
+    });
+  });
+})();

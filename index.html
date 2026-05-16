@@ -200,7 +200,11 @@
                 <span>Request Portfolio</span>
               </a>
 
-              <a class="btn btn--cherry cherry__top-btn" href="#">
+              <a
+                class="btn btn--cherry cherry__top-btn"
+                href="#"
+                data-overlay-open="cherry"
+              >
                 <span>Cherry On-Top</span>
               </a>
             </div>
@@ -346,6 +350,61 @@
         </div>
       </footer>
     </div>
+
+    <!-- Overlays -->
+
+    <section class="overlay overlay--cherry">
+      <div class="overlay__inner">
+        <img
+          class="overlay__icon"
+          src="src/assets/img/cherry.png"
+          alt=""
+          aria-hidden="true"
+        />
+
+        <h2 class="overlay__title">
+          Not just a <span class="overlay__title-accent">Cherry</span>
+        </h2>
+
+        <p class="overlay__copy overlay__copy--desktop">
+          You clicked this for a reason — and that reason had very little to do
+          with logic. Strong branding captures attention before people even
+          realize why they’re engaging, and that’s often the difference between
+          simple existing online and creating something memorable. At
+          Strongvine, we build websites and branding systems designed around
+          attention, perception, and results. Since 2004, our focus has been
+          creating strategic digital experiences that not only look sharp, but
+          guide engagement, strengthen brand identity, and help companies stand
+          out.
+        </p>
+
+        <p class="overlay__copy overlay__copy--mobile">
+          You clicked this for a reason — and that reason had very little to do
+          with logic. Strong branding captures attention before people even
+          realize why they’re engaging, and that’s often the difference between
+          simple existing online and creating something memorable. At
+          Strongvine, we build websites and branding systems designed around
+          attention, perception, and results.
+        </p>
+
+        <div class="overlay__actions">
+          <button
+            class="btn btn--video overlay__btn"
+            type="button"
+            data-overlay-close
+          >
+            <span>Close Window</span>
+          </button>
+
+          <a
+            class="btn btn--video overlay__btn"
+            href="mailto:info@strongvine.com"
+          >
+            <span>Email Us</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- Scripts -->
 
