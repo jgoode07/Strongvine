@@ -1236,8 +1236,6 @@ img {
 
 .overlay__icon {
   transform-origin: center bottom;
-  animation: cherryJiggle 4s ease-in-out infinite;
-  width: 5rem;
 }
 
 .overlay__title {
@@ -1247,10 +1245,6 @@ img {
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.0475em;
-}
-
-.overlay__title-accent {
-  color: #dc0d27;
 }
 
 .overlay__copy {
@@ -1276,6 +1270,42 @@ img {
 
 .overlay__btn {
   padding: 1.35rem 3rem;
+}
+
+/* Cherry overlay */
+.overlay__title-cherry {
+  color: #dc0d27;
+}
+
+.overlay--cherry .overlay__icon {
+  transform-origin: center bottom;
+  animation: cherryJiggle 8s ease-in-out infinite;
+}
+
+/* Portfolio overlay */
+.overlay--portfolio {
+  background: #03060f;
+  color: var(--color-text-light);
+}
+
+.overlay--portfolio .overlay__icon {
+  position: relative;
+
+  width: 5rem;
+  height: 5rem;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #222e1d;
+}
+
+.overlay__icon--portfolio img {
+  width: 4.2rem;
+  height: auto;
+
+  transform: translateY(-10px);
 }
 
 /* =========================================================

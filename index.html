@@ -196,7 +196,11 @@
 
             <!-- Cherry buttons -->
             <div class="cherry__actions">
-              <a class="btn btn--portfolio cherry__portfolio-btn" href="#">
+              <a
+                class="btn btn--portfolio cherry__portfolio-btn"
+                href="#"
+                data-overlay-open="portfolio"
+              >
                 <span>Request Portfolio</span>
               </a>
 
@@ -351,19 +355,20 @@
       </footer>
     </div>
 
-    <!-- Overlays -->
+    <!---------- Overlays ---------->
 
+    <!-- Cherry On-Top overlay -->
     <section class="overlay overlay--cherry">
       <div class="overlay__inner">
         <img
-          class="overlay__icon"
+          class="overlay__icon overlay__icon--cherry"
           src="src/assets/img/cherry.png"
           alt=""
           aria-hidden="true"
         />
 
         <h2 class="overlay__title">
-          Not just a <span class="overlay__title-accent">Cherry</span>
+          Not just a <span class="overlay__title-cherry">Cherry</span>
         </h2>
 
         <p class="overlay__copy overlay__copy--desktop">
@@ -402,6 +407,55 @@
           >
             <span>Email Us</span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Request Portfolio overlay -->
+    <section class="overlay overlay--portfolio">
+      <div class="overlay__inner">
+        <div class="overlay__icon overlay__icon--portfolio">
+          <img src="src/assets/img/bolt.png" alt="" aria-hidden="true" />
+        </div>
+
+        <h2 class="overlay__title">Portfolio Access</h2>
+
+        <p class="overlay__copy overlay__copy--desktop">
+          Some of our favourite work never actually makes it online. Many of our
+          clients operate within private, federal, and international sectors
+          where discretion is important, and over the years we’ve also had
+          portions of our creative work replicated without permission. Because
+          of that, we keep much of our portfolio private and share it directly
+          with qualified people. Feel free to email us below for private access
+          and project walkthroughs. We avoid fancy contact forms for security
+          reasons and prefer direct communication anyway — it’s faster and much
+          more personal.
+        </p>
+
+        <p class="overlay__copy overlay__copy--mobile">
+          Some of our favourite work never actually makes it online. Many of our
+          clients operate within private, federal, and international sectors
+          where discretion is important, and over the years we’ve also had
+          portions of our creative work replicated without permission. Because
+          of that, we keep much of our portfolio private and share it directly
+          with qualified people.
+        </p>
+
+        <div class="overlay__actions">
+          <a
+            class="btn btn--portfolio overlay__btn"
+            href="mailto:info@strongvine.com?subject=Portfolio Request"
+          >
+            <span>Email Request</span>
+          </a>
+
+          <button
+            class="btn btn--portfolio overlay__btn"
+            type="button"
+            data-overlay-close
+          >
+            <span>Close Window</span>
+          </button>
         </div>
       </div>
     </section>
