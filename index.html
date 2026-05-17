@@ -270,7 +270,11 @@
               </p>
 
               <!-- CTA -->
-              <a class="btn btn--clients less-is-more__btn" href="#">
+              <a
+                class="btn btn--clients less-is-more__btn"
+                href="#"
+                data-overlay-open="clients"
+              >
                 <span>Client List</span>
               </a>
             </div>
@@ -457,6 +461,59 @@
             <span>Close Window</span>
           </button>
         </div>
+      </div>
+    </section>
+
+    <!--  Request Clients overlay -->
+    <section class="overlay overlay--clients">
+      <div class="overlay__inner overlay__inner--clients">
+        <h2 class="overlay__title">
+          Say Hi!<span class="overlay__title-green">...</span>
+        </h2>
+
+        <div class="overlay__clients-content">
+          <div class="overlay__terminal js-terminal">
+            <div class="overlay__terminal-log js-terminal-log"></div>
+          </div>
+
+          <p
+            class="overlay__copy overlay__copy--desktop overlay__copy--clients"
+          >
+            Some relationships are better kept off the homepage. While we keep
+            much of our client work and client list private for confidentiality
+            reasons, we’re always happy to share recent projects and references
+            directly with qualified businesses. We prefer simple
+            person-to-person communication through direct email — a more
+            authentic, grounded, and old-school approach that we still believe
+            works best.
+          </p>
+
+          <p class="overlay__copy overlay__copy--mobile overlay__copy--clients">
+            Some relationships are better kept off the homepage. While we keep
+            much of our client list private for confidentiality reasons, we’re
+            always happy to share recent projects and references directly with
+            qualified people... Real Humans!
+          </p>
+        </div>
+
+        <div class="overlay__actions">
+          <a
+            class="btn btn--portfolio overlay__btn"
+            href="mailto:info@strongvine.com"
+          >
+            <span>Email Us</span>
+          </a>
+
+          <button
+            class="btn btn--portfolio overlay__btn"
+            type="button"
+            data-overlay-close
+          >
+            <span>Close Window</span>
+          </button>
+        </div>
+
+        <p class="overlay__small-note">old-school Yo!</p>
       </div>
     </section>
 

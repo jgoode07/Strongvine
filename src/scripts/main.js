@@ -229,6 +229,84 @@
   observer.observe(title);
 })();
 
+/* ---------- CLIENTS TERMINAL ---------- */
+
+const clientsTerminal = (() => {
+  const log = document.querySelector(".js-terminal-log");
+
+  if (!log) return null;
+
+  const messages = [
+    "running…",
+    "loop iteration…",
+    "still running…",
+    "executing again…",
+    "no break condition…",
+    "cycle continues…",
+  ];
+
+  let count = 0;
+  let speed = 400;
+  let timerId = null;
+  let running = false;
+
+  const reset = () => {
+    count = 0;
+    speed = 400;
+
+    log.innerHTML = "";
+
+    if (timerId) {
+      window.clearTimeout(timerId);
+      timerId = null;
+    }
+
+    running = false;
+  };
+
+  const loop = () => {
+    if (!running) return;
+
+    const line = document.createElement("div");
+
+    line.className = "overlay__terminal-line";
+    line.textContent = `> ${messages[count % messages.length]}`;
+
+    log.prepend(line);
+
+    if (log.children.length > 12) {
+      log.removeChild(log.lastChild);
+    }
+
+    count++;
+
+    speed *= 0.95;
+
+    if (speed < 40) {
+      speed = 40;
+    }
+
+    timerId = window.setTimeout(loop, speed);
+  };
+
+  const start = () => {
+    reset();
+
+    running = true;
+
+    loop();
+  };
+
+  const stop = () => {
+    reset();
+  };
+
+  return {
+    start,
+    stop,
+  };
+})();
+
 /* ---------- OVERLAYS ---------- */
 
 (() => {
@@ -240,11 +318,16 @@
       event.preventDefault();
 
       const overlayName = button.dataset.overlayOpen;
+
       const overlay = document.querySelector(`.overlay--${overlayName}`);
 
       if (!overlay) return;
 
       overlay.classList.add("is-open");
+
+      if (overlayName === "clients" && clientsTerminal) {
+        clientsTerminal.start();
+      }
     });
   });
 
@@ -255,6 +338,10 @@
       if (!overlay) return;
 
       overlay.classList.remove("is-open");
+
+      if (overlay.classList.contains("overlay--clients") && clientsTerminal) {
+        clientsTerminal.stop();
+      }
     });
   });
 })();
