@@ -349,7 +349,11 @@
 
             <!-- Right: CTA + note -->
             <div class="footer__right">
-              <button class="btn btn--footer footer__cta" type="button">
+              <button
+                class="btn btn--footer footer__cta"
+                type="button"
+                data-overlay-open="fun"
+              >
                 <span>Have Some Fun!</span>
               </button>
               <p class="footer__note">PS ... Can’t wait to hear from you!</p>
@@ -517,7 +521,122 @@
       </div>
     </section>
 
+    <!-- Fun footer overlay -->
+    <section class="overlay overlay--fun">
+      <div class="overlay__inner overlay__inner--fun">
+        <!-- Desktop interactive version -->
+        <div class="overlay__fun-desktop">
+          <p class="overlay__fun-kicker">2026 !</p>
+
+          <div class="overlay__fun-main">
+            <h2 class="overlay__fun-brand">by BL/S<span>®</span></h2>
+
+            <div
+              class="overlay__fun-image js-fun-image"
+              style="
+                background-image: url(&quot;src/assets/img/fun-demo.png&quot;);
+              "
+            ></div>
+          </div>
+
+          <div class="overlay__fun-controls">
+            <div class="overlay__fun-shapes">
+              <button
+                class="overlay__fun-shape is-active"
+                type="button"
+                data-shape="rectangle"
+              >
+                1
+              </button>
+              <button
+                class="overlay__fun-shape"
+                type="button"
+                data-shape="triangle"
+              >
+                2
+              </button>
+              <button
+                class="overlay__fun-shape"
+                type="button"
+                data-shape="chevron"
+              >
+                3
+              </button>
+              <button
+                class="overlay__fun-shape"
+                type="button"
+                data-shape="oval"
+              >
+                4
+              </button>
+            </div>
+
+            <button
+              class="btn btn--portfolio overlay__btn overlay__fun-close"
+              type="button"
+              data-overlay-close
+            >
+              <span>Close Window</span>
+            </button>
+
+            <div class="overlay__fun-debug js-fun-debug">
+              <span class="js-fun-rotation">rotation: 0.0</span>
+              <span class="js-fun-scale">scale: 1.0</span>
+              <span class="js-fun-edges">edges: 4.0</span>
+            </div>
+          </div>
+
+          <div class="overlay__fun-effects" aria-hidden="true">
+            <button
+              class="overlay__fun-effect is-active"
+              type="button"
+              data-effect="stroke"
+            >
+              STROKE
+            </button>
+            <span>OR</span>
+            <button
+              class="overlay__fun-effect"
+              type="button"
+              data-effect="shade"
+            >
+              SHADE
+            </button>
+          </div>
+
+          <div class="overlay__fun-cursor js-fun-cursor">
+            <span class="overlay__fun-cursor-text">DRAG</span>
+          </div>
+        </div>
+
+        <!-- Mobile fallback version -->
+        <div class="overlay__fun-mobile">
+          <p class="overlay__fun-mobile-copy">
+            Unfortunately, this tool is best experienced on a desktop device and
+            is not fully optimized for small screen viewing.
+          </p>
+
+          <img
+            class="overlay__fun-mobile-image"
+            src="src/assets/img/fun-demo.png"
+            alt=""
+          />
+
+          <button
+            class="btn btn--portfolio overlay__btn"
+            type="button"
+            data-overlay-close
+          >
+            <span>Close Window</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Scripts -->
+
+    <!-- GSAP animation library (non-module) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
     <!-- Lenis smooth-scroll library (non-module) -->
     <script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
