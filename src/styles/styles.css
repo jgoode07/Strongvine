@@ -718,7 +718,7 @@ img {
 }
 
 .cherry__portfolio-btn {
-  padding: 1.35rem 3.1rem;
+  padding: 1.75rem 3.1rem;
 }
 
 .cherry__top-btn {
@@ -2127,6 +2127,10 @@ img {
   }
 
   /* ---------- BETTER ---------- */
+  .better__intro {
+    font-size: 0.8rem;
+  }
+
   .better__lead {
     font-size: 1.6rem;
   }
