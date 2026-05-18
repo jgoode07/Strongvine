@@ -2189,4 +2189,9 @@ img {
   .footer__bottom {
     gap: 1.25rem;
   }
+
+  /* ---------- OVERLAYS ---------- */
+  .overlay--portfolio .overlay__btn {
+    padding: 1.5rem 2rem;
+  }
 }
