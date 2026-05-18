@@ -2023,7 +2023,7 @@ img {
     font-size: 0.65rem;
   }
 
-  /* Cherry overlay */
+  /* Portfolio overlay */
   .overlay--portfolio .overlay__actions {
     width: 100%;
     gap: 0.75rem;
@@ -2092,7 +2092,8 @@ img {
   .header__hero-too,
   .header__hero-intro,
   .less-is-more__copy,
-  .results__copy {
+  .results__copy,
+  .overlay__copy {
     font-size: 0.9rem;
     line-height: 1.4;
   }
