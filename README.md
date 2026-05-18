@@ -110,6 +110,15 @@ The project continues to evolve through ongoing refinements to:
 
 ---
 
+## Credits / Inspiration
+
+Some interactive overlay effects in this project were adapted and customized from publicly shared CodePen experiments:
+
+- Interactive layered image effect inspired by work from BL/S
+- Terminal animation concept adapted from CodePen user grauconejo13
+
+All effects were heavily modified and integrated into the Strongvine overlay system for educational and portfolio purposes.
+
 ## Live Preview
 
 https://strongvine.netlify.app/
