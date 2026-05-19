@@ -2214,6 +2214,10 @@ img {
     font-size: 1.6rem;
   }
 
+  .better__title {
+    font-size: clamp(2rem, 8.5vw, 2.75rem);
+  }
+
   /* ---------- LESS IS MORE ---------- */
   .less-is-more__aside {
     font-size: 0.9rem;
