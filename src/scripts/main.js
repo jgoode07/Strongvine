@@ -61,7 +61,19 @@
   const wordEl = document.querySelector(".better__type");
   if (!wordEl) return;
 
-  const words = ["Unique", "Better", "Sharp", "Rare", "Clean", "Precise"];
+  const words = [
+    "Intentional",
+    "Meticulous",
+    "Balanced",
+    "Deliberate",
+    "Specialized",
+    "Aesthetic",
+    "Curated",
+    "Balanced",
+    "Selective",
+    "Focused",
+    "Targeted",
+  ];
 
   const EMPTY_CHAR = "\u200B";
 
