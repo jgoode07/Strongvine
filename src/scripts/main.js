@@ -62,16 +62,15 @@
   if (!wordEl) return;
 
   const words = [
-    "Intentional",
-    "Meticulous",
-    "Balanced",
-    "Deliberate",
-    "Specialized",
-    "Aesthetic",
-    "Curated",
-    "Selective",
-    "Focused",
-    "Targeted",
+    "Bold",
+    "Fresh",
+    "Smart",
+    "Crisp",
+    "Sleek",
+    "Clear",
+    "Exact",
+    "Agile",
+    "Pure",
   ];
 
   const EMPTY_CHAR = "\u200B";
