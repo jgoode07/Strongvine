@@ -310,249 +310,382 @@ const clientsTerminal = (() => {
 /* ---------- FUN OVERLAY IMAGE EFFECT ---------- */
 
 const funOverlayEffect = (() => {
-  const image = document.querySelector(".js-fun-image");
-  const cursor = document.querySelector(".js-fun-cursor");
+  const overlay = document.querySelector(".overlay--fun");
+  if (!overlay) return null;
 
-  const rotationInfo = document.querySelector(".js-fun-rotation");
-  const scaleInfo = document.querySelector(".js-fun-scale");
-  const edgesInfo = document.querySelector(".js-fun-edges");
+  const container = overlay.querySelector("[data-fun-image-hover]");
+  const shapeControls = overlay.querySelector("[data-fun-shape-controls]");
 
-  const shapeButtons = document.querySelectorAll(".overlay__fun-shape");
+  if (!container || !shapeControls) return null;
 
-  if (!image) return null;
-
+  let initialized = false;
   let layers = [];
-  let animationFrame = null;
-
-  let mouseX = 0;
-  let mouseY = 0;
-
-  let centerX = 0;
-  let centerY = 0;
+  let stackEl = null;
+  let timeline = null;
 
   let isHovered = false;
-  let isDragging = false;
+  let isParallax = false;
+  let isRotation = false;
+  let isBlur = false;
+  let isColor = false;
+  let isOpacity = false;
+  let is3D = false;
 
-  let dragStartY = 0;
-  let dragDistance = 0;
+  let rect = null;
+  let rafId = null;
+  let pendingMouseEvent = null;
 
-  let currentShape = "rectangle";
+  const duration = 0.8;
+  const ease = "power2.inOut";
+  const scaleInterval = 0.06;
+  const opacityInterval = 0.05;
+  const rotationInterval = 15;
+  const stagger = 0.1;
+  const followStrength = 0.15;
+  const blurSeq = [0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1.0, 1.3, 1.6];
 
-  const layerTotal = 10;
-  const scaleStep = 0.06;
+  const getScale = (i) => Math.max(1 - scaleInterval * i, 0);
 
-  const updateCenter = () => {
-    const rect = image.getBoundingClientRect();
-
-    centerX = rect.left + rect.width / 2;
-    centerY = rect.top + rect.height / 2;
+  const getOpacity = (i) => {
+    if (!isOpacity) return 1;
+    return Math.max(1 - opacityInterval * i, 0.1);
   };
 
-  const getShapeClass = () => {
-    switch (currentShape) {
-      case "triangle":
-        return "overlay__fun-shape-triangle";
-
-      case "chevron":
-        return "overlay__fun-shape-chevron";
-
-      case "oval":
-        return "overlay__fun-shape-oval";
-
-      default:
-        return "overlay__fun-shape-rectangle";
-    }
+  const getRotation = (i) => {
+    if (!isRotation) return 0;
+    return rotationInterval * i * (i % 2 === 0 ? 1 : -1);
   };
 
-  const getEdgeCount = () => {
-    switch (currentShape) {
-      case "triangle":
-        return 3;
-
-      case "chevron":
-        return 6;
-
-      case "oval":
-        return 0;
-
-      default:
-        return 4;
-    }
+  const getBlur = (i) => {
+    if (!isBlur || i === 0) return 0;
+    return blurSeq[Math.min(i, blurSeq.length - 1)];
   };
 
-  const createLayers = () => {
-    const bgImage = image.style.backgroundImage;
+  const getColour = (i) => {
+    if (!isColor) return "none";
+    if (i === 0) return "grayscale(1)";
 
-    image.innerHTML = "";
+    const colourIndex = Math.min(i * 0.15, 1);
+    const saturation = 1 + colourIndex * 0.5;
 
-    for (let i = 0; i < layerTotal; i++) {
-      const layer = document.createElement("div");
-
-      layer.className = `
-        overlay__fun-layer
-        ${i === 0 ? "overlay__fun-layer--base" : ""}
-        ${i === 0 ? "overlay__fun-shape-rectangle" : getShapeClass()}
-      `;
-
-      layer.style.backgroundImage = bgImage;
-
-      image.appendChild(layer);
-
-      layers.push(layer);
-    }
+    return `grayscale(${1 - colourIndex}) saturate(${saturation})`;
   };
 
-  const updateDebug = () => {
-    if (rotationInfo) {
-      rotationInfo.textContent = `rotation: ${(dragDistance * 0.5).toFixed(1)}`;
-    }
+  const applyFilters = () => {
+    layers.forEach((layer, index) => {
+      const blur = getBlur(index);
+      const colour = getColour(index);
 
-    if (scaleInfo) {
-      scaleInfo.textContent = `scale: ${(1 + Math.abs(dragDistance) * 0.01).toFixed(1)}`;
-    }
+      let filter = "";
 
-    if (edgesInfo) {
-      edgesInfo.textContent = `edges: ${getEdgeCount().toFixed(1)}`;
-    }
+      if (blur > 0) {
+        filter += `blur(${blur}px) `;
+      }
+
+      if (colour !== "none") {
+        filter += colour;
+      }
+
+      layer.style.filter = filter.trim() || "none";
+    });
   };
 
-  const updateParallax = () => {
-    const deltaX = (mouseX - centerX) / (image.offsetWidth / 2);
-    const deltaY = (mouseY - centerY) / (image.offsetHeight / 2);
+  const reset2D = () => {
+    gsap.killTweensOf(stackEl);
 
+    gsap.set(layers, {
+      scale: (i, target) => (target === layers[0] ? 1 : 0.95),
+      opacity: (i, target) => (target === layers[0] ? 1 : 0),
+      rotation: 0,
+      x: 0,
+      y: 0,
+      z: 0,
+    });
+
+    gsap.set(stackEl, {
+      rotationX: 0,
+      rotationY: 0,
+      rotationZ: 0,
+      x: 0,
+      y: 0,
+      z: 0,
+      scale: 1,
+    });
+
+    layers.forEach((layer) => {
+      layer.style.filter = "none";
+    });
+  };
+
+  const createTimeline = () => {
+    if (timeline) {
+      timeline.kill();
+    }
+
+    const reversedLayers = [...layers].reverse();
+
+    timeline = gsap.timeline({ paused: true }).to(reversedLayers, {
+      scale: (i, target) => {
+        const index = layers.indexOf(target);
+        return getScale(index);
+      },
+      opacity: (i, target) => {
+        const index = layers.indexOf(target);
+        return index === 0 ? 1 : getOpacity(index);
+      },
+      rotation: (i, target) => {
+        const index = layers.indexOf(target);
+        return getRotation(index);
+      },
+      duration,
+      ease,
+      stagger,
+    });
+
+    applyFilters();
+  };
+
+  const applyShape = (shape) => {
     layers.forEach((layer, index) => {
       if (index === 0) return;
 
-      const depth = index * 0.25;
-
-      const moveX = deltaX * 20 * depth;
-      const moveY = deltaY * 20 * depth;
-
-      const rotation = dragDistance * depth * 0.35;
-
-      const scale = 1 - scaleStep * index;
-
-      gsap.set(layer, {
-        x: moveX,
-        y: moveY,
-        rotationZ: rotation,
-        scale,
-        transformPerspective: 1000,
-      });
+      layer.classList.remove("rectangle", "circle", "diamond", "hexagon");
+      layer.classList.add(shape);
     });
-
-    updateDebug();
   };
 
-  const resetTransforms = () => {
+  const centre2D = () => {
     layers.forEach((layer, index) => {
       if (index === 0) return;
 
       gsap.to(layer, {
         x: 0,
         y: 0,
-        rotationZ: 0,
         duration: 0.6,
         ease: "power2.out",
       });
     });
-
-    dragDistance = 0;
-
-    updateDebug();
   };
 
-  const animate = () => {
-    if (isHovered) {
-      updateParallax();
+  const layout3D = () => {
+    layers.forEach((layer, index) => {
+      const z = index * 36;
+      const scale = Math.max(1 - index * 0.07, 0.35);
+      const opacity = isOpacity
+        ? Math.max(1 - 0.1 * index, 0.1)
+        : Math.max(1 - 0.1 * index, 0.25);
+      const rotationZ = getRotation(index);
+
+      layer.style.transform = `translateZ(${z}px) scale(${scale}) rotateZ(${rotationZ}deg)`;
+      layer.style.opacity = opacity;
+    });
+
+    applyFilters();
+  };
+
+  const enable3D = () => {
+    is3D = true;
+    container.classList.add("is-3d");
+    if (timeline) timeline.pause(0);
+    layout3D();
+  };
+
+  const disable3D = () => {
+    is3D = false;
+    container.classList.remove("is-3d");
+    reset2D();
+    createTimeline();
+  };
+
+  const onEnter = () => {
+    isHovered = true;
+    rect = container.getBoundingClientRect();
+
+    if (is3D) {
+      layout3D();
+    } else if (timeline) {
+      timeline.play();
+    }
+  };
+
+  const onLeave = () => {
+    isHovered = false;
+
+    if (is3D) {
+      gsap.to(stackEl, {
+        rotationX: 0,
+        rotationY: 0,
+        x: 0,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    } else if (timeline && !isParallax) {
+      timeline.reverse();
     }
 
-    animationFrame = requestAnimationFrame(animate);
+    if (isParallax) {
+      centre2D();
+    }
   };
 
-  const changeShape = (shape) => {
-    currentShape = shape;
+  const processMouseMove = () => {
+    if (!pendingMouseEvent) {
+      rafId = null;
+      return;
+    }
+
+    const event = pendingMouseEvent;
+    pendingMouseEvent = null;
+    rafId = null;
+
+    if (!rect) {
+      rect = container.getBoundingClientRect();
+    }
+
+    if (is3D && isHovered) {
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+
+      gsap.to(stackEl, {
+        rotationY: x * 30,
+        rotationX: -y * 30,
+        x: x * 45,
+        y: y * 45,
+        duration: 0.18,
+        ease: "power2.out",
+      });
+
+      return;
+    }
+
+    if (!isParallax || !isHovered) return;
+
+    const rx = (event.clientX - rect.left) / rect.width - 0.5;
+    const ry = (event.clientY - rect.top) / rect.height - 0.5;
 
     layers.forEach((layer, index) => {
       if (index === 0) return;
 
-      layer.classList.remove(
-        "overlay__fun-shape-rectangle",
-        "overlay__fun-shape-triangle",
-        "overlay__fun-shape-chevron",
-        "overlay__fun-shape-oval",
-      );
+      const scale = 1 - scaleInterval * index;
+      const mult = scale > 0 ? (1 - scale) * 3 + 0.2 : 1;
 
-      layer.classList.add(getShapeClass());
-    });
-
-    shapeButtons.forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.shape === shape);
-    });
-
-    updateDebug();
-  };
-
-  const bindEvents = () => {
-    image.addEventListener("mouseenter", () => {
-      isHovered = true;
-
-      updateCenter();
-
-      if (cursor) {
-        cursor.style.opacity = "1";
-      }
-    });
-
-    image.addEventListener("mouseleave", () => {
-      isHovered = false;
-
-      resetTransforms();
-
-      if (cursor) {
-        cursor.style.opacity = "0";
-      }
-    });
-
-    image.addEventListener("mousemove", (event) => {
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
-      if (cursor) {
-        cursor.style.left = `${event.clientX}px`;
-        cursor.style.top = `${event.clientY}px`;
-      }
-    });
-
-    image.addEventListener("mousedown", (event) => {
-      isDragging = true;
-
-      dragStartY = event.clientY;
-
-      image.classList.add("is-dragging");
-
-      event.preventDefault();
-    });
-
-    window.addEventListener("mousemove", (event) => {
-      if (!isDragging) return;
-
-      dragDistance = event.clientY - dragStartY;
-    });
-
-    window.addEventListener("mouseup", () => {
-      isDragging = false;
-
-      image.classList.remove("is-dragging");
-    });
-
-    shapeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        changeShape(button.dataset.shape);
+      gsap.to(layer, {
+        x: rx * 2 * rect.width * followStrength * mult,
+        y: ry * 2 * rect.height * followStrength * mult,
+        duration: 0.6,
+        ease: "power3",
       });
     });
+  };
 
-    window.addEventListener("resize", updateCenter);
+  const onMove = (event) => {
+    pendingMouseEvent = event;
+
+    if (!rafId) {
+      rafId = requestAnimationFrame(processMouseMove);
+    }
+  };
+
+  const initShapeControls = () => {
+    const buttons = shapeControls.querySelectorAll("[data-shape]");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        buttons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+
+        reset2D();
+        applyShape(button.dataset.shape);
+        createTimeline();
+
+        if (isHovered && timeline) {
+          timeline.play();
+        }
+
+        if (is3D) {
+          layout3D();
+        }
+      });
+    });
+  };
+
+  const initToggleControls = () => {
+    const toggles = [
+      ["[data-rotation-toggle]", "rotation"],
+      ["[data-blur-toggle]", "blur"],
+      ["[data-color-toggle]", "color"],
+      ["[data-opacity-toggle]", "opacity"],
+      ["[data-parallax-toggle]", "parallax"],
+      ["[data-3d-toggle]", "3d"],
+    ];
+
+    toggles.forEach(([selector, name]) => {
+      const button = overlay.querySelector(selector);
+      if (!button) return;
+
+      button.addEventListener("click", () => {
+        button.classList.toggle("active");
+
+        const isActive = button.classList.contains("active");
+        button.textContent = isActive ? `${name} on` : name;
+
+        if (name === "rotation") isRotation = isActive;
+        if (name === "blur") isBlur = isActive;
+        if (name === "color") isColor = isActive;
+        if (name === "opacity") isOpacity = isActive;
+        if (name === "parallax") isParallax = isActive;
+
+        if (name === "3d") {
+          isActive ? enable3D() : disable3D();
+          return;
+        }
+
+        if (is3D) {
+          layout3D();
+        } else {
+          createTimeline();
+
+          if (isHovered && timeline) {
+            timeline.progress(1);
+          }
+        }
+      });
+    });
+  };
+
+  const init = () => {
+    if (initialized) return;
+
+    stackEl = document.createElement("div");
+    stackEl.className = "overlay__fun-stack";
+
+    const rawLayers = Array.from(
+      container.querySelectorAll(".overlay__fun-layer"),
+    );
+
+    container.appendChild(stackEl);
+    rawLayers.forEach((layer) => stackEl.appendChild(layer));
+
+    layers = Array.from(stackEl.querySelectorAll(".overlay__fun-layer"));
+
+    rect = container.getBoundingClientRect();
+
+    reset2D();
+    createTimeline();
+
+    container.addEventListener("mouseenter", onEnter);
+    container.addEventListener("mouseleave", onLeave);
+    document.addEventListener("mousemove", onMove);
+
+    window.addEventListener("resize", () => {
+      rect = container.getBoundingClientRect();
+    });
+
+    initShapeControls();
+    initToggleControls();
+
+    initialized = true;
   };
 
   const start = () => {
@@ -561,32 +694,18 @@ const funOverlayEffect = (() => {
       return;
     }
 
-    if (!layers.length) {
-      createLayers();
-      bindEvents();
-    }
-
-    changeShape("rectangle");
-
-    updateCenter();
-    updateDebug();
-
-    if (!animationFrame) {
-      animate();
-    }
+    init();
+    rect = container.getBoundingClientRect();
   };
 
   const stop = () => {
     isHovered = false;
-    isDragging = false;
 
-    dragDistance = 0;
-
-    resetTransforms();
-
-    if (cursor) {
-      cursor.style.opacity = "0";
+    if (timeline) {
+      timeline.reverse();
     }
+
+    centre2D();
   };
 
   return {

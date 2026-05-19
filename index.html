@@ -531,92 +531,76 @@
     <!-- Fun footer overlay -->
     <section class="overlay overlay--fun">
       <div class="overlay__inner overlay__inner--fun">
-        <!-- Desktop interactive version -->
         <div class="overlay__fun-desktop">
-          <p class="overlay__fun-kicker">2026 !</p>
-
-          <div class="overlay__fun-main">
-            <h2 class="overlay__fun-brand">by BL/S<span>®</span></h2>
-
-            <div
-              class="overlay__fun-image js-fun-image"
-              style="
-                background-image: url(&quot;src/assets/img/fun-demo.png&quot;);
-              "
-            ></div>
-          </div>
-
-          <div class="overlay__fun-controls">
-            <div class="overlay__fun-shapes">
-              <button
-                class="overlay__fun-shape is-active"
-                type="button"
-                data-shape="rectangle"
-              >
-                1
-              </button>
-              <button
-                class="overlay__fun-shape"
-                type="button"
-                data-shape="triangle"
-              >
-                2
-              </button>
-              <button
-                class="overlay__fun-shape"
-                type="button"
-                data-shape="chevron"
-              >
-                3
-              </button>
-              <button
-                class="overlay__fun-shape"
-                type="button"
-                data-shape="oval"
-              >
-                4
-              </button>
+          <div class="overlay__fun-demo">
+            <button
+              class="overlay__fun-close-x"
+              type="button"
+              data-overlay-close
+            >
+              Close X
+            </button>
+            <div class="overlay__fun-image-container" data-fun-image-hover>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
+              <div class="overlay__fun-layer rectangle"></div>
             </div>
 
-            <div class="overlay__fun-debug js-fun-debug">
-              <span class="js-fun-rotation">rotation: 0.0</span>
-              <span class="js-fun-scale">scale: 1.0</span>
-              <span class="js-fun-edges">edges: 4.0</span>
+            <div class="overlay__fun-controls">
+              <div class="overlay__fun-shape-controls" data-fun-shape-controls>
+                <button
+                  class="overlay__fun-shape-btn active"
+                  data-shape="rectangle"
+                  aria-label="Rectangle"
+                ></button>
+                <button
+                  class="overlay__fun-shape-btn"
+                  data-shape="circle"
+                  aria-label="Circle"
+                ></button>
+                <button
+                  class="overlay__fun-shape-btn"
+                  data-shape="diamond"
+                  aria-label="Diamond"
+                ></button>
+                <button
+                  class="overlay__fun-shape-btn"
+                  data-shape="hexagon"
+                  aria-label="Hexagon"
+                ></button>
+              </div>
+
+              <div class="overlay__fun-toggle-controls">
+                <button class="overlay__fun-toggle-btn" data-rotation-toggle>
+                  rotation
+                </button>
+                <button class="overlay__fun-toggle-btn" data-blur-toggle>
+                  blur
+                </button>
+                <button class="overlay__fun-toggle-btn" data-color-toggle>
+                  color
+                </button>
+                <button class="overlay__fun-toggle-btn" data-opacity-toggle>
+                  opacity
+                </button>
+                <button class="overlay__fun-toggle-btn" data-parallax-toggle>
+                  parallax
+                </button>
+                <button class="overlay__fun-toggle-btn" data-3d-toggle>
+                  3d
+                </button>
+              </div>
             </div>
-          </div>
-
-          <button
-            class="btn btn--portfolio overlay__btn overlay__fun-close"
-            type="button"
-            data-overlay-close
-          >
-            <span>Close Window</span>
-          </button>
-
-          <div class="overlay__fun-effects" aria-hidden="true">
-            <button
-              class="overlay__fun-effect is-active"
-              type="button"
-              data-effect="stroke"
-            >
-              STROKE
-            </button>
-            <span>OR</span>
-            <button
-              class="overlay__fun-effect"
-              type="button"
-              data-effect="shade"
-            >
-              SHADE
-            </button>
-          </div>
-
-          <div class="overlay__fun-cursor js-fun-cursor">
-            <span class="overlay__fun-cursor-text">DRAG</span>
           </div>
         </div>
 
-        <!-- Mobile fallback version -->
         <div class="overlay__fun-mobile">
           <p class="overlay__fun-mobile-copy">
             Unfortunately, this tool is best experienced on a desktop device and
