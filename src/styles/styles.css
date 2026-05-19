@@ -1391,6 +1391,8 @@ img {
 
   margin: 0;
   font-size: 0.65rem;
+  text-decoration: none;
+  color: inherit;
   opacity: 0.65;
 }
 
