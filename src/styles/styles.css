@@ -2214,10 +2214,6 @@ img {
     font-size: 1.6rem;
   }
 
-  .better__title {
-    font-size: clamp(3rem, 8.5vw, 5rem);
-  }
-
   /* ---------- LESS IS MORE ---------- */
   .less-is-more__aside {
     font-size: 0.9rem;
