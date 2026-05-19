@@ -69,7 +69,6 @@
     "Specialized",
     "Aesthetic",
     "Curated",
-    "Balanced",
     "Selective",
     "Focused",
     "Targeted",
