@@ -783,7 +783,7 @@ img {
   align-items: baseline;
   gap: 0.06em;
 
-  font-size: clamp(3.5rem, 10vw, 10em);
+  font-size: clamp(3rem, 10vw, 10em);
   font-weight: 400;
   line-height: 1;
 }
