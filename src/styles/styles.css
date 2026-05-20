@@ -2184,7 +2184,8 @@ img {
   .header__hero-intro,
   .less-is-more__copy,
   .results__copy,
-  .overlay__copy {
+  .overlay__copy,
+  .overlay__fun-mobile-copy {
     font-size: 0.9rem;
     line-height: 1.4;
   }
