@@ -1304,8 +1304,52 @@ img {
   display: grid;
   place-items: center;
 
+  background: transparent;
+}
+
+.overlay__icon--portfolio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
   border-radius: 50%;
   background: #222e1d;
+
+  animation: portfolioPulse 1.5s linear infinite;
+}
+
+.overlay__icon--portfolio img {
+  position: relative;
+  z-index: 1;
+
+  width: 4.2rem;
+  height: auto;
+
+  transform: translateY(-10px);
+}
+
+@keyframes portfolioPulse {
+  0%,
+  90%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  92% {
+    transform: scale(1.12);
+    opacity: 0.72;
+  }
+
+  94% {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+
+  96% {
+    transform: scale(1.09);
+    opacity: 0.78;
+  }
 }
 
 .overlay__icon--portfolio img {
