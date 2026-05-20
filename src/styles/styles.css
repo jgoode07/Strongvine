@@ -1211,6 +1211,8 @@ img {
   z-index: 1000;
 
   min-height: 100vh;
+  min-height: 100dvh;
+
   padding: 6rem var(--page-padding);
 
   display: grid;
