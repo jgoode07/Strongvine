@@ -1352,13 +1352,6 @@ img {
   }
 }
 
-.overlay__icon--portfolio img {
-  width: 4.2rem;
-  height: auto;
-
-  transform: translateY(-10px);
-}
-
 /* Clients overlay */
 .overlay--clients {
   background: #03060f;
@@ -1658,11 +1651,6 @@ img {
   color: var(--color-accent-green);
 }
 
-.overlay__fun-close {
-  margin-top: 2rem;
-  padding: 1.25rem 2.75rem;
-}
-
 .overlay__fun-mobile {
   display: none;
 }
@@ -1678,101 +1666,6 @@ img {
 .overlay__fun-mobile-image {
   width: 100%;
   max-width: 24rem;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 767px) {
-  .overlay__fun-desktop {
-    display: none;
-  }
-
-  .overlay__fun-mobile {
-    display: grid;
-    justify-items: center;
-    text-align: center;
-  }
-}
-
-/* ---------- CURSOR ---------- */
-
-.overlay__fun-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1200;
-
-  pointer-events: none;
-  opacity: 0;
-
-  transform: translate(-50%, -50%);
-}
-
-.overlay__fun-cursor-text {
-  font-size: 0.7rem;
-  line-height: 1;
-}
-
-/* ---------- IMAGE LAYERS ---------- */
-
-.overlay__fun-layer {
-  position: absolute;
-  inset: 0;
-
-  background-size: cover;
-  background-position: center;
-
-  will-change: transform;
-}
-
-.overlay__fun-layer--base {
-  z-index: 1;
-}
-
-.overlay__fun-layer:not(.overlay__fun-layer--base) {
-  z-index: 2;
-}
-
-/* ---------- IMAGE EFFECT SHAPES ---------- */
-
-.overlay__fun-shape-rectangle {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-}
-
-.overlay__fun-shape-triangle {
-  clip-path: polygon(50% 5%, 10% 95%, 90% 95%);
-}
-
-.overlay__fun-shape-chevron {
-  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-}
-
-.overlay__fun-shape-oval {
-  clip-path: ellipse(45% 35% at 50% 50%);
-}
-
-.overlay__fun-close {
-  margin-top: 3rem;
-  padding: 1.25rem 2.75rem;
-}
-
-/* ---------- MOBILE ---------- */
-
-.overlay__fun-mobile {
-  display: none;
-}
-
-.overlay__fun-mobile-copy {
-  max-width: 40ch;
-  margin: 2rem 0;
-
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-}
-
-.overlay__fun-mobile-image {
-  width: 100%;
-  max-width: 24rem;
-
   margin-bottom: 2rem;
 }
 
