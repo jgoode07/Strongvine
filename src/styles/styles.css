@@ -411,7 +411,7 @@ img {
   transform: scale(0.85);
   animation:
     heartIn 250ms ease-out forwards,
-    heartBeat 3000ms ease-in-out infinite;
+    heartBeat 2000ms ease-in-out infinite;
 
   animation-delay:
         /* Appears after "DO YOU LOVE" */
@@ -1396,6 +1396,32 @@ img {
   opacity: 0.65;
 }
 
+.overlay__small-note::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: var(--btn-underline-offset);
+
+  width: 100%;
+  height: var(--btn-underline-height);
+
+  background: currentColor;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--btn-transition-speed) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .overlay__small-note:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.overlay__small-note:focus-visible::after {
+  transform: scaleX(1);
+}
+
 /* =========================================================
    FUN OVERLAY
 ========================================================= */
@@ -1472,7 +1498,7 @@ img {
 .overlay__fun-layer {
   position: absolute;
   inset: 0;
-  background-image: url("https://assets.codepen.io/7558/portrait-fashion-009.jpg");
+  background-image: url("../assets/img/fun-demo.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
