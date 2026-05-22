@@ -2310,6 +2310,10 @@ img {
     padding: 1.5rem 2.75rem;
   }
 
+  .header__specializing-title {
+    font-size: clamp(1.5rem, 6vw, 1.75rem);
+  }
+
   /* ---------- CHERRY ---------- */
   .scroll-cue__text {
     font-size: 0.8rem;
@@ -2399,5 +2403,17 @@ img {
   /* ---------- OVERLAYS ---------- */
   .overlay--portfolio .overlay__btn {
     padding: 1.5rem 2rem;
+  }
+}
+
+/* ---------- Extra Small Phones ---------- */
+@media (max-width: 375px) {
+  .header__specializing-title {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+
+  .header__specializing-word,
+  .header__specializing-clip {
+    min-width: 19ch;
   }
 }
