@@ -87,6 +87,7 @@
                   <button
                     class="btn btn--video header__video-btn"
                     type="button"
+                    data-open-video
                   >
                     <span>Watch Video</span>
                   </button>
@@ -361,6 +362,30 @@
           </div>
         </div>
       </footer>
+    </div>
+
+    <!---------- Lightbox ---------->
+    <div class="video-popup" aria-hidden="true">
+      <div class="video-popup__inner">
+        <button class="video-close" type="button" aria-label="Close video">
+          Close X
+        </button>
+
+        <iframe
+          class="video-popup__iframe"
+          src=""
+          title="Strongvine video"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+          "
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
 
     <!---------- Overlays ---------->

@@ -70,7 +70,7 @@
     "Evocative Marketing",
     "Building Perception",
   ];
-  const intervalTime = 5000;
+  const intervalTime = 4000;
   const animationTime = 900;
 
   let currentIndex = 0;
@@ -136,6 +136,68 @@
 
   window.addEventListener("beforeunload", () => {
     if (timerId) window.clearInterval(timerId);
+  });
+})();
+
+/* ---------- VIDEO LIGHTBOX ---------- */
+
+(() => {
+  const openers = document.querySelectorAll("[data-open-video]");
+  const popup = document.querySelector(".video-popup");
+
+  if (!openers.length || !popup) return;
+
+  const closeBtn = popup.querySelector(".video-close");
+  const iframe = popup.querySelector(".video-popup__iframe");
+
+  const videoUrl = "https://www.youtube.com/embed/_cj6TJfLYVI?autoplay=1";
+
+  const open = () => {
+    popup.classList.add("is-open");
+    popup.setAttribute("aria-hidden", "false");
+    document.documentElement.classList.add("is-video-open");
+
+    if (iframe) {
+      iframe.src = videoUrl;
+    }
+
+    if (window.__lenis) {
+      window.__lenis.stop();
+    }
+  };
+
+  const close = () => {
+    popup.classList.remove("is-open");
+    popup.setAttribute("aria-hidden", "true");
+    document.documentElement.classList.remove("is-video-open");
+
+    if (iframe) {
+      iframe.src = "";
+    }
+
+    if (window.__lenis) {
+      window.__lenis.start();
+    }
+  };
+
+  openers.forEach((button) => {
+    button.addEventListener("click", open);
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", close);
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && popup.classList.contains("is-open")) {
+      close();
+    }
+  });
+
+  popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      close();
+    }
   });
 })();
 
