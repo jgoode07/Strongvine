@@ -55,6 +55,90 @@
   onScroll();
 })();
 
+/* ---------- HERO SPECIALIZING WORD ROLL ---------- */
+
+(() => {
+  const wordEl = document.querySelector(".js-specializing-word");
+  if (!wordEl) return;
+
+  const words = [
+    "Website Creation",
+    "Brand Identity",
+    "Video Storytelling",
+    "Print Media",
+    "Creative Design",
+    "Evocative Marketing",
+    "Building Perception",
+  ];
+  const intervalTime = 5000;
+  const animationTime = 900;
+
+  let currentIndex = 0;
+  let timerId = null;
+
+  const createWord = (word, modifierClass) => {
+    const line = document.createElement("span");
+    line.className = `header__specializing-word-line ${modifierClass}`;
+
+    for (let i = 0; i < word.length; i++) {
+      const char = document.createElement("span");
+      char.className = "header__specializing-char";
+      char.textContent = word.charAt(i) === " " ? "\u00A0" : word.charAt(i);
+      line.appendChild(char);
+    }
+
+    return line;
+  };
+
+  const renderWords = (currentWord, nextWord) => {
+    wordEl.innerHTML = "";
+
+    const clip = document.createElement("span");
+    clip.className = "header__specializing-clip";
+    clip.setAttribute("aria-hidden", "true");
+
+    clip.appendChild(
+      createWord(currentWord, "header__specializing-word-line--current"),
+    );
+
+    clip.appendChild(
+      createWord(nextWord, "header__specializing-word-line--next"),
+    );
+
+    wordEl.appendChild(clip);
+    wordEl.setAttribute("aria-label", currentWord);
+  };
+
+  const rollToNext = () => {
+    const currentWord = words[currentIndex];
+    const nextIndex = (currentIndex + 1) % words.length;
+    const nextWord = words[nextIndex];
+
+    renderWords(currentWord, nextWord);
+
+    requestAnimationFrame(() => {
+      wordEl.offsetHeight;
+      wordEl.classList.add("is-rolling");
+    });
+
+    window.setTimeout(() => {
+      currentIndex = nextIndex;
+      wordEl.classList.remove("is-rolling");
+
+      const followingIndex = (currentIndex + 1) % words.length;
+      renderWords(words[currentIndex], words[followingIndex]);
+    }, animationTime);
+  };
+
+  renderWords(words[currentIndex], words[1]);
+
+  timerId = window.setInterval(rollToNext, intervalTime);
+
+  window.addEventListener("beforeunload", () => {
+    if (timerId) window.clearInterval(timerId);
+  });
+})();
+
 /* ---------- BETTER: TYPEWRITER (starts on scroll) ---------- */
 
 (() => {
