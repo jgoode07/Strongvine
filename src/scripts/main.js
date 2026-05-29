@@ -393,11 +393,13 @@
 
   const updateGallery = () => {
     const rect = section.getBoundingClientRect();
+    const sectionHeight = section.offsetHeight;
+    const viewportHeight = window.innerHeight;
+
+    const scrollableDistance = sectionHeight - viewportHeight;
+    const progress = clamp(-rect.top / scrollableDistance, 0, 1);
 
     const maxTranslate = gallery.scrollWidth - window.innerWidth;
-    const scrollableDistance = Math.max(maxTranslate, 1);
-
-    const progress = clamp(-rect.top / scrollableDistance, 0, 1);
 
     gallery.style.transform = `translateX(${-maxTranslate * progress}px)`;
   };
@@ -425,6 +427,7 @@
 
   window.addEventListener("scroll", updateGallery, { passive: true });
   window.addEventListener("resize", updateGallery);
+  window.addEventListener("load", updateGallery);
 
   updateGallery();
 })();

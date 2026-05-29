@@ -1210,16 +1210,16 @@ img {
 /* ---------- RESULTS GALLERY ---------- */
 
 .results-gallery {
-  --gallery-scroll-distance: 600vh;
-
   background: var(--color-bg-white);
   color: var(--color-text-dark);
 
   margin-left: calc(var(--page-padding) * -1);
   margin-right: calc(var(--page-padding) * -1);
-  padding: 0 0 var(--space-section-xxl) 0;
 
-  height: var(--gallery-scroll-distance);
+  height: 500vh;
+  padding-bottom: 0;
+  margin-bottom: var(--space-section-xxl);
+
   position: relative;
 }
 
@@ -2067,6 +2067,34 @@ html.is-video-open {
   .header__hero-too-dots::after {
     content: "........";
   }
+
+  .results-gallery {
+    height: 475vh;
+  }
+
+  .results-gallery__track {
+    gap: 2rem;
+    padding: 3rem 2rem;
+  }
+
+  .results-gallery__item {
+    transform: none !important;
+  }
+
+  .results-gallery__item--big,
+  .results-gallery__item--big.results-gallery__item--horizontal {
+    width: 34vw;
+  }
+
+  .results-gallery__item--normal,
+  .results-gallery__item--normal.results-gallery__item--horizontal {
+    width: 28vw;
+  }
+
+  .results-gallery__item--small,
+  .results-gallery__item--small.results-gallery__item--horizontal {
+    width: 22vw;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2263,22 +2291,27 @@ html.is-video-open {
 
   /* ---------- RESULTS GALLERY ---------- */
   .results-gallery {
-    --gallery-scroll-distance: 260vh;
+    height: 450vh;
   }
 
   .results-gallery__track {
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 3rem 2rem;
   }
 
   .results-gallery__item--big,
-  .results-gallery__item--normal,
-  .results-gallery__item--small {
-    width: 70vw;
+  .results-gallery__item--big.results-gallery__item--horizontal {
+    width: 38vw;
   }
 
-  .results-gallery__item--horizontal {
-    width: 82vw;
+  .results-gallery__item--normal,
+  .results-gallery__item--normal.results-gallery__item--horizontal {
+    width: 32vw;
+  }
+
+  .results-gallery__item--small,
+  .results-gallery__item--small.results-gallery__item--horizontal {
+    width: 26vw;
   }
 
   /* ---------- FOOTER ---------- */
