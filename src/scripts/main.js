@@ -363,6 +363,72 @@
   checkbox.addEventListener("change", sync);
 })();
 
+/* ---------- RESULTS GALLERY ---------- */
+
+(() => {
+  const section = document.querySelector(".results-gallery");
+  const gallery = document.querySelector(".js-results-gallery");
+
+  if (!section || !gallery) return;
+
+  const items = gallery.querySelectorAll(".results-gallery__item");
+  if (!items.length) return;
+
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  const showImages = () => {
+    items.forEach((item) => {
+      item.classList.remove("is-clicked");
+      item.classList.add("is-active");
+    });
+  };
+
+  const hideImages = () => {
+    items.forEach((item) => {
+      item.classList.remove("is-active");
+    });
+
+    window.setTimeout(showImages, 2000);
+  };
+
+  const updateGallery = () => {
+    const rect = section.getBoundingClientRect();
+
+    const maxTranslate = gallery.scrollWidth - window.innerWidth;
+    const scrollableDistance = Math.max(maxTranslate, 1);
+
+    const progress = clamp(-rect.top / scrollableDistance, 0, 1);
+
+    gallery.style.transform = `translateX(${-maxTranslate * progress}px)`;
+  };
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      item.classList.add("is-clicked");
+      hideImages();
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+      showImages();
+      observer.disconnect();
+    },
+    {
+      threshold: 0.01,
+      rootMargin: "0px 0px -10% 0px",
+    },
+  );
+
+  observer.observe(section);
+
+  window.addEventListener("scroll", updateGallery, { passive: true });
+  window.addEventListener("resize", updateGallery);
+
+  updateGallery();
+})();
+
 /* ---------- FOOTER TITLE REVEAL ON SCROLL ---------- */
 
 (() => {
