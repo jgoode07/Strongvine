@@ -1216,11 +1216,11 @@ img {
   margin-left: calc(var(--page-padding) * -1);
   margin-right: calc(var(--page-padding) * -1);
 
-  padding: 8rem var(--page-padding) var(--space-section-xxl);
+  padding: var(--space-section-xl) var(--page-padding) var(--space-section-xxl);
 }
 
 .results-morph__container {
-  min-height: 100vh;
+  min-height: 70vh;
 
   display: grid;
   place-items: center;
