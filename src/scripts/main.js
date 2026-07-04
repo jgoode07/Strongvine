@@ -445,7 +445,7 @@
     window.setTimeout(() => {
       image.setAttribute("href", src);
       image.classList.remove("is-changing");
-    }, 450);
+    }, 700);
   };
 
   const morphTo = (nextState) => {
@@ -501,7 +501,7 @@
     morphTo(states[currentIndex]);
   };
 
-  const intervalId = window.setInterval(loop, 3000);
+  const intervalId = window.setInterval(loop, 3800);
 
   window.addEventListener("beforeunload", () => {
     window.clearInterval(intervalId);

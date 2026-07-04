@@ -1240,7 +1240,7 @@ img {
 
 .results-morph__image {
   opacity: 1;
-  transition: opacity 900ms ease-in-out;
+  transition: opacity 1400ms ease-in-out;
 }
 
 .results-morph__image.is-changing {
