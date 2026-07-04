@@ -363,73 +363,153 @@
   checkbox.addEventListener("change", sync);
 })();
 
-/* ---------- RESULTS GALLERY ---------- */
+/* ---------- RESULTS MORPH SVG ---------- */
 
 (() => {
-  const section = document.querySelector(".results-gallery");
-  const gallery = document.querySelector(".js-results-gallery");
+  const image = document.querySelector(".js-results-morph-image");
+  const shape = document.querySelector(".js-results-morph-shape");
 
-  if (!section || !gallery) return;
+  if (!image || !shape) return;
 
-  const items = gallery.querySelectorAll(".results-gallery__item");
-  if (!items.length) return;
-
-  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-
-  const showImages = () => {
-    items.forEach((item) => {
-      item.classList.remove("is-clicked");
-      item.classList.add("is-active");
-    });
-  };
-
-  const hideImages = () => {
-    items.forEach((item) => {
-      item.classList.remove("is-active");
-    });
-
-    window.setTimeout(showImages, 2000);
-  };
-
-  const updateGallery = () => {
-    const rect = section.getBoundingClientRect();
-    const sectionHeight = section.offsetHeight;
-    const viewportHeight = window.innerHeight;
-
-    const scrollableDistance = sectionHeight - viewportHeight;
-    const progress = clamp(-rect.top / scrollableDistance, 0, 1);
-
-    const maxTranslate = gallery.scrollWidth - window.innerWidth;
-
-    gallery.style.transform = `translateX(${-maxTranslate * progress}px)`;
-  };
-
-  items.forEach((item) => {
-    item.addEventListener("click", () => {
-      item.classList.add("is-clicked");
-      hideImages();
-    });
-  });
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (!entry.isIntersecting) return;
-      showImages();
-      observer.disconnect();
+  const states = [
+    {
+      img: "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2340&auto=format&fit=crop",
+      points:
+        "0.5,496.237 0.5,350.195 84.903,350.195 84.903,82.23 195.431,82.23 195.431,0.5 387.012,0.5 387.012,157.93 525.675,157.93 525.675,247.699 689.792,247.699 689.792,112.376 881.373,112.376 881.373,32.656 938.312,32.656 938.312,112.376 993.241,112.376 993.241,223.582 1047.5,223.582 1047.5,332.778 993.241,332.778 993.241,388.381 938.312,388.381 938.312,443.314 881.373,443.314 881.373,388.381 689.792,388.381 689.792,550.5 495.531,550.5 495.531,388.381 303.949,388.381 303.949,496.237",
     },
     {
-      threshold: 0.01,
-      rootMargin: "0px 0px -10% 0px",
+      img: "https://images.unsplash.com/photo-1609869644293-6714a930d4f4?q=80&w=1837&auto=format&fit=crop",
+      points:
+        "0.5,392 0.5,235 92,235 92,53 359,53 359,235 508,235 508,165.5 735.5,165.5 735.5,0.5 809.5,0.5 809.5,215.5 1047.5,215.5 1047.5,335 957,335 957,428 747,428 747,281.5 645,281.5 645,550 397.5,550 397.5,335 256,335 256,451 148,451 148,392",
     },
-  );
+    {
+      img: "https://images.unsplash.com/photo-1527576539890-dfa815648363?q=80&w=1365&auto=format&fit=crop",
+      points:
+        "0.5,399.622 0.5,186.328 329.039,186.328 329.039,0.5 492.724,0.5 492.724,121.464 747.021,121.464 747.021,246.518 1047.5,246.518 1047.5,341.185 954.55,341.185 954.55,613.5 640.041,613.5 640.041,341.185 534.815,341.185 534.815,553.31 256.55,553.31 256.55,341.185 133.786,341.185 133.786,399.622",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1531591022136-eb8b0da1e6d0?q=80&w=2012&auto=format&fit=crop",
+      points:
+        "0.5,293.497 0.5,61.474 54.953,61.474 54.953,31.257 164.936,31.257 164.936,132.699 415.095,132.699 415.095,242.776 440.434,242.776 440.434,71.726 494.348,71.726 494.348,0.5 604.331,0.5 604.331,132.699 580.609,132.699 580.609,242.776 658.784,242.776 658.784,112.195 773.619,112.195 773.619,242.776 939.134,242.776 939.134,323.714 1047.5,323.714 1047.5,403.573 1017.31,403.573 1017.31,491.526 962.856,491.526 962.856,552.5 793.567,552.5 793.567,403.573 658.784,403.573 658.784,530.377 330.451,530.377 330.451,467.784 494.348,467.784 494.348,403.573 550.418,403.573 550.418,323.714 294.868,323.714 294.868,242.776 190.275,242.776 190.275,351.233 78.675,351.233 78.675,293.497",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1598818384697-62330d600309?q=80&w=987&auto=format&fit=crop",
+      points:
+        "0.5,369.446 0.5,207.288 329.408,207.288 329.408,0.5 522.14,0.5 522.14,300.268 615.901,300.268 615.901,69.677 784.076,69.677 784.076,272.002 848.816,272.002 848.816,170.84 944.809,170.84 944.809,136.623 1047.5,136.623 1047.5,369.446 944.809,369.446 944.809,604.5 784.076,604.5 784.076,529.372 615.901,529.372 615.901,466.889 423.169,466.889 423.169,604.5 256.483,604.5 256.483,466.889 96.494,466.889 96.494,369.446",
+    },
+  ];
 
-  observer.observe(section);
+  const parsePoints = (points) =>
+    points.split(" ").map((point) => point.split(",").map(Number));
 
-  window.addEventListener("scroll", updateGallery, { passive: true });
-  window.addEventListener("resize", updateGallery);
-  window.addEventListener("load", updateGallery);
+  const buildPoints = (points) =>
+    points.map(([x, y]) => `${x.toFixed(3)},${y.toFixed(3)}`).join(" ");
 
-  updateGallery();
+  const normalisePoints = (fromPoints, toPoints) => {
+    const maxLength = Math.max(fromPoints.length, toPoints.length);
+
+    const stretch = (points) => {
+      const stretched = [...points];
+
+      while (stretched.length < maxLength) {
+        stretched.push(stretched[stretched.length - 1]);
+      }
+
+      return stretched;
+    };
+
+    return [stretch(fromPoints), stretch(toPoints)];
+  };
+
+  const easeInOut = (t) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  states.forEach((state) => {
+    const preload = new Image();
+    preload.src = state.img;
+    state.parsedPoints = parsePoints(state.points);
+  });
+
+  let currentIndex = 0;
+  let currentPoints = states[0].parsedPoints;
+  let frameId = null;
+
+  const setShape = (points) => {
+    const value = buildPoints(points);
+    shape.setAttribute("points", value);
+  };
+
+  const fadeToImage = (src) => {
+    image.classList.add("is-changing");
+
+    window.setTimeout(() => {
+      image.setAttribute("href", src);
+      image.classList.remove("is-changing");
+    }, 450);
+  };
+
+  const morphTo = (nextState) => {
+    const [fromPoints, toPoints] = normalisePoints(
+      currentPoints,
+      nextState.parsedPoints,
+    );
+
+    const duration = 1600;
+    const start = performance.now();
+    let imageChanged = false;
+
+    const animate = (now) => {
+      const elapsed = now - start;
+      const rawProgress = Math.min(elapsed / duration, 1);
+      const progress = easeInOut(rawProgress);
+
+      const interpolated = fromPoints.map(([fromX, fromY], index) => {
+        const [toX, toY] = toPoints[index];
+
+        return [
+          fromX + (toX - fromX) * progress,
+          fromY + (toY - fromY) * progress,
+        ];
+      });
+
+      setShape(interpolated);
+
+      if (!imageChanged && rawProgress >= 0.48) {
+        imageChanged = true;
+        fadeToImage(nextState.img);
+      }
+
+      if (rawProgress < 1) {
+        frameId = requestAnimationFrame(animate);
+      } else {
+        currentPoints = nextState.parsedPoints;
+      }
+    };
+
+    if (frameId) {
+      cancelAnimationFrame(frameId);
+    }
+
+    frameId = requestAnimationFrame(animate);
+  };
+
+  image.setAttribute("href", states[0].img);
+  setShape(currentPoints);
+
+  const loop = () => {
+    currentIndex = (currentIndex + 1) % states.length;
+    morphTo(states[currentIndex]);
+  };
+
+  const intervalId = window.setInterval(loop, 3000);
+
+  window.addEventListener("beforeunload", () => {
+    window.clearInterval(intervalId);
+
+    if (frameId) {
+      cancelAnimationFrame(frameId);
+    }
+  });
 })();
 
 /* ---------- FOOTER TITLE REVEAL ON SCROLL ---------- */

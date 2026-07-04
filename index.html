@@ -307,112 +307,49 @@
           </div>
         </section>
 
-        <!-- Results gallery section -->
-        <section class="results-gallery" aria-label="Strongvine visual gallery">
-          <div class="results-gallery__sticky">
-            <div class="results-gallery__track js-results-gallery">
-              <div class="results-gallery__item results-gallery__item--normal">
-                <img src="https://picsum.photos/id/1005/300/400" alt="" />
-              </div>
-
-              <div class="results-gallery__item results-gallery__item--big">
-                <img src="https://picsum.photos/id/1019/600/800" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--small results-gallery__item--horizontal"
+        <!-- Results Gallery Morph Section -->
+        <section
+          class="results-morph"
+          aria-label="Strongvine visual results showcase"
+        >
+          <div class="results-morph__container">
+            <div class="results-morph__stage">
+              <svg
+                class="results-morph__svg"
+                viewBox="-20 -20 1087 653"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
-                <img src="https://picsum.photos/id/1027/400/300" alt="" />
-              </div>
+                <defs>
+                  <mask id="resultsMorphMask">
+                    <rect
+                      x="-20"
+                      y="-20"
+                      width="1087"
+                      height="653"
+                      fill="black"
+                    />
+                    <polygon
+                      class="results-morph__mask-shape js-results-morph-shape"
+                      fill="white"
+                    />
+                  </mask>
+                </defs>
 
-              <div class="results-gallery__item results-gallery__item--normal">
-                <img src="https://picsum.photos/id/1028/300/400" alt="" />
-              </div>
+                <rect x="-20" y="-20" width="1087" height="653" fill="#fff" />
 
-              <div
-                class="results-gallery__item results-gallery__item--normal results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/1041/400/300" alt="" />
-              </div>
+                <image
+                  class="results-morph__image js-results-morph-image"
+                  x="-20"
+                  y="-20"
+                  width="1087"
+                  height="653"
+                  preserveAspectRatio="xMidYMid slice"
+                  mask="url(#resultsMorphMask)"
+                />
 
-              <div
-                class="results-gallery__item results-gallery__item--big results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/1042/800/600" alt="" />
-              </div>
-
-              <div class="results-gallery__item results-gallery__item--small">
-                <img src="https://picsum.photos/id/1049/300/400" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--normal results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/1056/300/400" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--small results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/1062/400/300" alt="" />
-              </div>
-
-              <div class="results-gallery__item results-gallery__item--big">
-                <img src="https://picsum.photos/id/1068/600/800" alt="" />
-              </div>
-              <div
-                class="results-gallery__item results-gallery__item--normal results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/1069/400/300" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--normal results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/1072/300/400" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--small results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/1075/400/300" alt="" />
-              </div>
-
-              <div class="results-gallery__item results-gallery__item--big">
-                <img src="https://picsum.photos/id/1081/600/800" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--normal results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/111/400/300" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--small results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/129/400/300" alt="" />
-              </div>
-
-              <div class="results-gallery__item results-gallery__item--big">
-                <img src="https://picsum.photos/id/137/600/800" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--normal results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/141/300/400" alt="" />
-              </div>
-
-              <div
-                class="results-gallery__item results-gallery__item--small results-gallery__item--horizontal"
-              >
-                <img src="https://picsum.photos/id/145/400/300" alt="" />
-              </div>
-
-              <div class="results-gallery__item results-gallery__item--normal">
-                <img src="https://picsum.photos/id/147/300/400" alt="" />
-              </div>
+                <path class="results-morph__sample js-results-morph-sample" />
+              </svg>
             </div>
           </div>
         </section>
