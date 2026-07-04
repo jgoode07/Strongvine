@@ -366,10 +366,30 @@
 /* ---------- RESULTS MORPH SVG ---------- */
 
 (() => {
+  const svg = document.querySelector(".results-morph__svg");
   const image = document.querySelector(".js-results-morph-image");
   const shape = document.querySelector(".js-results-morph-shape");
+  const background = document.querySelector(".js-results-morph-bg");
+  const maskBackground = document.querySelector(".js-results-morph-mask-bg");
 
-  if (!image || !shape) return;
+  if (!svg || !image || !shape || !background || !maskBackground) return;
+
+  const desktopCanvas = {
+    x: -20,
+    y: -20,
+    width: 1087,
+    height: 653,
+  };
+
+  const mobileCanvas = {
+    x: -20,
+    y: -20,
+    width: 653,
+    height: 1087,
+  };
+
+  const sourceHeight = 614;
+  const mobileMedia = window.matchMedia("(max-width: 640px)");
 
   const states = [
     {
@@ -424,15 +444,61 @@
   const easeInOut = (t) =>
     t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
+  const getBounds = (points) =>
+    points.reduce(
+      (bounds, [x, y]) => ({
+        minX: Math.min(bounds.minX, x),
+        maxX: Math.max(bounds.maxX, x),
+        minY: Math.min(bounds.minY, y),
+        maxY: Math.max(bounds.maxY, y),
+      }),
+      {
+        minX: Infinity,
+        maxX: -Infinity,
+        minY: Infinity,
+        maxY: -Infinity,
+      },
+    );
+
+  const rotatePointsForMobile = (points) => {
+    const rotatedPoints = points.map(([x, y]) => [sourceHeight - y, x]);
+    const bounds = getBounds(rotatedPoints);
+    const shapeWidth = bounds.maxX - bounds.minX;
+    const xOffset = (sourceHeight - shapeWidth) / 2 - bounds.minX;
+
+    return rotatedPoints.map(([x, y]) => [x + xOffset, y]);
+  };
+
   states.forEach((state) => {
     const preload = new Image();
     preload.src = state.img;
-    state.parsedPoints = parsePoints(state.points);
+    state.desktopPoints = parsePoints(state.points);
+    state.mobilePoints = rotatePointsForMobile(state.desktopPoints);
   });
 
   let currentIndex = 0;
-  let currentPoints = states[0].parsedPoints;
+  let isMobileLayout = mobileMedia.matches;
+  let currentPoints = isMobileLayout
+    ? states[0].mobilePoints
+    : states[0].desktopPoints;
   let frameId = null;
+
+  const setSvgCanvas = () => {
+    const canvas = isMobileLayout ? mobileCanvas : desktopCanvas;
+    const viewBox = `${canvas.x} ${canvas.y} ${canvas.width} ${canvas.height}`;
+
+    svg.setAttribute("viewBox", viewBox);
+
+    [background, maskBackground, image].forEach((element) => {
+      element.setAttribute("x", canvas.x);
+      element.setAttribute("y", canvas.y);
+      element.setAttribute("width", canvas.width);
+      element.setAttribute("height", canvas.height);
+    });
+  };
+
+  const getStatePoints = (state) =>
+    isMobileLayout ? state.mobilePoints : state.desktopPoints;
 
   const setShape = (points) => {
     const value = buildPoints(points);
@@ -445,16 +511,17 @@
     window.setTimeout(() => {
       image.setAttribute("href", src);
       image.classList.remove("is-changing");
-    }, 700);
+    }, 1200);
   };
 
   const morphTo = (nextState) => {
+    const nextPoints = getStatePoints(nextState);
     const [fromPoints, toPoints] = normalisePoints(
       currentPoints,
-      nextState.parsedPoints,
+      nextPoints,
     );
 
-    const duration = 1600;
+    const duration = 1800;
     const start = performance.now();
     let imageChanged = false;
 
@@ -482,7 +549,7 @@
       if (rawProgress < 1) {
         frameId = requestAnimationFrame(animate);
       } else {
-        currentPoints = nextState.parsedPoints;
+        currentPoints = nextPoints;
       }
     };
 
@@ -493,8 +560,32 @@
     frameId = requestAnimationFrame(animate);
   };
 
+  setSvgCanvas();
   image.setAttribute("href", states[0].img);
   setShape(currentPoints);
+
+  const syncLayout = () => {
+    const nextIsMobileLayout = mobileMedia.matches;
+
+    if (nextIsMobileLayout === isMobileLayout) return;
+
+    if (frameId) {
+      cancelAnimationFrame(frameId);
+      frameId = null;
+    }
+
+    isMobileLayout = nextIsMobileLayout;
+    currentPoints = getStatePoints(states[currentIndex]);
+
+    setSvgCanvas();
+    setShape(currentPoints);
+  };
+
+  if (typeof mobileMedia.addEventListener === "function") {
+    mobileMedia.addEventListener("change", syncLayout);
+  } else {
+    mobileMedia.addListener(syncLayout);
+  }
 
   const loop = () => {
     currentIndex = (currentIndex + 1) % states.length;
@@ -508,6 +599,12 @@
 
     if (frameId) {
       cancelAnimationFrame(frameId);
+    }
+
+    if (typeof mobileMedia.removeEventListener === "function") {
+      mobileMedia.removeEventListener("change", syncLayout);
+    } else {
+      mobileMedia.removeListener(syncLayout);
     }
   });
 })();

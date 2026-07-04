@@ -1240,11 +1240,11 @@ img {
 
 .results-morph__image {
   opacity: 1;
-  transition: opacity 1400ms ease-in-out;
+  transition: opacity 1200ms ease-in-out;
 }
 
 .results-morph__image.is-changing {
-  opacity: 0;
+  opacity: 0.16;
 }
 
 .results-morph__sample {
@@ -1263,11 +1263,16 @@ img {
 
 @media (max-width: 640px) {
   .results-morph {
-    padding: 4rem 1.25rem var(--space-section-large);
+    padding: 3rem 1.25rem var(--space-section-large);
   }
 
   .results-morph__container {
-    min-height: 55vh;
+    min-height: 82vh;
+  }
+
+  .results-morph__stage {
+    width: 100%;
+    aspect-ratio: 653 / 1087;
   }
 }
 
