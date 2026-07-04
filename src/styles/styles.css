@@ -1227,7 +1227,7 @@ img {
 }
 
 .results-morph__stage {
-  width: min(56rem, 100%);
+  width: min(90vw, 1400px);
   aspect-ratio: 1087 / 653;
 }
 
