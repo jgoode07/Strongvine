@@ -1227,7 +1227,7 @@ img {
 }
 
 .results-morph__stage {
-  width: min(90vw, 1400px);
+  width: min(84vw, 1280px);
   aspect-ratio: 1087 / 653;
 }
 
@@ -1240,11 +1240,11 @@ img {
 
 .results-morph__image {
   opacity: 1;
-  transition: opacity 1200ms ease-in-out;
+  transition: opacity 400ms linear;
 }
 
 .results-morph__image.is-changing {
-  opacity: 0.16;
+  opacity: 0;
 }
 
 .results-morph__sample {
@@ -1271,7 +1271,7 @@ img {
   }
 
   .results-morph__stage {
-    width: 100%;
+    width: min(76vw, 420px);
     aspect-ratio: 653 / 1087;
   }
 }

@@ -441,8 +441,13 @@
     return [stretch(fromPoints), stretch(toPoints)];
   };
 
-  const easeInOut = (t) =>
-    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const easeInOut = (t) => {
+    if (t === 0 || t === 1) return t;
+
+    return t < 0.5
+      ? Math.pow(2, 20 * t - 10) / 2
+      : (2 - Math.pow(2, -20 * t + 10)) / 2;
+  };
 
   const getBounds = (points) =>
     points.reduce(
@@ -506,12 +511,15 @@
   };
 
   const fadeToImage = (src) => {
+    image.style.transition = "none";
     image.classList.add("is-changing");
+    image.setAttribute("href", src);
+    void image.getBoundingClientRect();
+    image.style.removeProperty("transition");
 
-    window.setTimeout(() => {
-      image.setAttribute("href", src);
+    requestAnimationFrame(() => {
       image.classList.remove("is-changing");
-    }, 1200);
+    });
   };
 
   const morphTo = (nextState) => {
@@ -521,7 +529,7 @@
       nextPoints,
     );
 
-    const duration = 1800;
+    const duration = 1600;
     const start = performance.now();
     let imageChanged = false;
 
@@ -541,7 +549,7 @@
 
       setShape(interpolated);
 
-      if (!imageChanged && rawProgress >= 0.48) {
+      if (!imageChanged && elapsed >= 750) {
         imageChanged = true;
         fadeToImage(nextState.img);
       }
@@ -592,7 +600,7 @@
     morphTo(states[currentIndex]);
   };
 
-  const intervalId = window.setInterval(loop, 3800);
+  const intervalId = window.setInterval(loop, 3000);
 
   window.addEventListener("beforeunload", () => {
     window.clearInterval(intervalId);
