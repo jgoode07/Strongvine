@@ -70,7 +70,7 @@
     "Evocative Marketing",
     "Building Perception",
   ];
-  const intervalTime = 4000;
+  const intervalTime = 3000;
   const animationTime = 900;
 
   let currentIndex = 0;
@@ -524,10 +524,7 @@
 
   const morphTo = (nextState) => {
     const nextPoints = getStatePoints(nextState);
-    const [fromPoints, toPoints] = normalisePoints(
-      currentPoints,
-      nextPoints,
-    );
+    const [fromPoints, toPoints] = normalisePoints(currentPoints, nextPoints);
 
     const duration = 1600;
     const start = performance.now();
@@ -615,6 +612,20 @@
       mobileMedia.removeListener(syncLayout);
     }
   });
+})();
+
+/* ---------- INDUSTRIES MARQUEE ---------- */
+
+(() => {
+  const track = document.querySelector(".industries-marquee__track");
+  const group = track?.querySelector(".industries-marquee__group");
+
+  if (!track || !group) return;
+
+  const clone = group.cloneNode(true);
+  clone.setAttribute("aria-hidden", "true");
+  track.appendChild(clone);
+  track.classList.add("is-ready");
 })();
 
 /* ---------- FOOTER TITLE REVEAL ON SCROLL ---------- */
