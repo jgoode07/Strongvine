@@ -1216,18 +1216,16 @@ img {
   margin-left: calc(var(--page-padding) * -1);
   margin-right: calc(var(--page-padding) * -1);
 
-  padding: var(--space-section-xl) var(--page-padding) var(--space-section-xxl);
+  padding: clamp(9rem, 12vw, 13rem) var(--page-padding);
 }
 
 .results-morph__container {
-  min-height: 70vh;
-
   display: grid;
   place-items: center;
 }
 
 .results-morph__stage {
-  width: min(84vw, 1280px);
+  width: min(78vw, 1100px);
   aspect-ratio: 1087 / 653;
 }
 
@@ -1253,21 +1251,17 @@ img {
 
 @media (max-width: 1020px) {
   .results-morph {
-    padding: 6rem 2rem var(--space-section-xl);
+    padding: clamp(7rem, 12vw, 9rem) 2rem;
   }
 
-  .results-morph__container {
-    min-height: 70vh;
+  .results-morph__stage {
+    width: min(84vw, 1280px);
   }
 }
 
 @media (max-width: 640px) {
   .results-morph {
-    padding: 3rem 1.25rem var(--space-section-large);
-  }
-
-  .results-morph__container {
-    min-height: 82vh;
+    padding: 8rem 1.25rem;
   }
 
   .results-morph__stage {
