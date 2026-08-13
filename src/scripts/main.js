@@ -366,13 +366,16 @@
 /* ---------- RESULTS MORPH SVG ---------- */
 
 (() => {
+  const section = document.querySelector(".results-morph");
   const svg = document.querySelector(".results-morph__svg");
   const image = document.querySelector(".js-results-morph-image");
   const shape = document.querySelector(".js-results-morph-shape");
   const background = document.querySelector(".js-results-morph-bg");
   const maskBackground = document.querySelector(".js-results-morph-mask-bg");
 
-  if (!svg || !image || !shape || !background || !maskBackground) return;
+  if (!section || !svg || !image || !shape || !background || !maskBackground) {
+    return;
+  }
 
   const desktopCanvas = {
     x: -20,
@@ -487,6 +490,7 @@
     ? states[0].mobilePoints
     : states[0].desktopPoints;
   let frameId = null;
+  let intervalId = null;
 
   const setSvgCanvas = () => {
     const canvas = isMobileLayout ? mobileCanvas : desktopCanvas;
@@ -597,14 +601,51 @@
     morphTo(states[currentIndex]);
   };
 
-  const intervalId = window.setInterval(loop, 3000);
+  const startLoop = () => {
+    if (intervalId) return;
 
-  window.addEventListener("beforeunload", () => {
-    window.clearInterval(intervalId);
+    intervalId = window.setInterval(loop, 5000);
+  };
+
+  const stopLoop = () => {
+    if (intervalId) {
+      window.clearInterval(intervalId);
+      intervalId = null;
+    }
 
     if (frameId) {
       cancelAnimationFrame(frameId);
+      frameId = null;
     }
+  };
+
+  if (typeof IntersectionObserver !== "undefined") {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+          startLoop();
+          return;
+        }
+
+        stopLoop();
+      },
+      {
+        root: null,
+        threshold: [0, 0.3],
+      },
+    );
+
+    observer.observe(section);
+
+    window.addEventListener("beforeunload", () => {
+      observer.disconnect();
+    });
+  } else {
+    startLoop();
+  }
+
+  window.addEventListener("beforeunload", () => {
+    stopLoop();
 
     if (typeof mobileMedia.removeEventListener === "function") {
       mobileMedia.removeEventListener("change", syncLayout);
@@ -617,15 +658,65 @@
 /* ---------- INDUSTRIES MARQUEE ---------- */
 
 (() => {
+  const marquee = document.querySelector(".industries-marquee");
   const track = document.querySelector(".industries-marquee__track");
   const group = track?.querySelector(".industries-marquee__group");
 
-  if (!track || !group) return;
+  if (!marquee || !track || !group) return;
 
   const clone = group.cloneNode(true);
   clone.setAttribute("aria-hidden", "true");
   track.appendChild(clone);
-  track.classList.add("is-ready");
+
+  let currentDistance = 0;
+
+  const setDistance = () => {
+    const distance = Math.round(group.getBoundingClientRect().width);
+
+    if (distance === currentDistance) return;
+
+    currentDistance = distance;
+    track.style.setProperty("--industries-marquee-distance", `-${distance}px`);
+    track.classList.add("is-ready");
+  };
+
+  setDistance();
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(setDistance);
+  }
+
+  if (typeof ResizeObserver !== "undefined") {
+    const observer = new ResizeObserver(setDistance);
+    observer.observe(group);
+
+    window.addEventListener("beforeunload", () => {
+      observer.disconnect();
+    });
+  } else {
+    window.addEventListener("resize", setDistance);
+  }
+
+  if (typeof IntersectionObserver !== "undefined") {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        track.classList.toggle("is-visible", entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "20% 0px",
+        threshold: 0,
+      },
+    );
+
+    observer.observe(marquee);
+
+    window.addEventListener("beforeunload", () => {
+      observer.disconnect();
+    });
+  } else {
+    track.classList.add("is-visible");
+  }
 })();
 
 /* ---------- FOOTER TITLE REVEAL ON SCROLL ---------- */
