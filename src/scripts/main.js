@@ -493,7 +493,7 @@
   let intervalId = null;
   let isVisible = false;
 
-  const getLoopDelay = () => (isMobileLayout ? 3500 : 5000);
+  const getLoopDelay = () => (isMobileLayout ? 3000 : 3500);
 
   const setSvgCanvas = () => {
     const canvas = isMobileLayout ? mobileCanvas : desktopCanvas;
@@ -533,7 +533,7 @@
     const nextPoints = getStatePoints(nextState);
     const [fromPoints, toPoints] = normalisePoints(currentPoints, nextPoints);
 
-    const duration = 1600;
+    const duration = 1300;
     const start = performance.now();
     let imageChanged = false;
 
@@ -612,6 +612,7 @@
   const startLoop = () => {
     if (intervalId) return;
 
+    loop();
     intervalId = window.setInterval(loop, getLoopDelay());
   };
 
@@ -630,7 +631,7 @@
   if (typeof IntersectionObserver !== "undefined") {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.3;
+        isVisible = entry.isIntersecting;
 
         if (isVisible) {
           startLoop();
@@ -641,7 +642,7 @@
       },
       {
         root: null,
-        threshold: [0, 0.3],
+        threshold: 0,
       },
     );
 

@@ -579,7 +579,7 @@ img {
   transform: scale(0.85);
   animation:
     heartIn 250ms ease-out forwards,
-    heartBeat 2000ms ease-in-out infinite;
+    heartBeat 1400ms ease-in-out infinite;
 
   animation-delay:
         /* Appears after "DO YOU LOVE" */
