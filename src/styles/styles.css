@@ -742,7 +742,6 @@ img {
 }
 
 .scroll-cue__container {
-  min-height: 100vh;
   padding: 12rem var(--page-padding) 0;
 
   display: grid;
@@ -817,11 +816,10 @@ img {
 
 .cherry__container {
   padding: var(--space-main-story-gap) var(--page-padding) 0;
-  min-height: 100vh;
 
   display: grid;
   justify-items: end;
-  align-content: end;
+  align-content: start;
   text-align: right;
   gap: 0.75rem;
 }
@@ -904,16 +902,15 @@ img {
   margin-left: calc(var(--page-padding) * -1);
   margin-right: calc(var(--page-padding) * -1);
 
-  padding: var(--space-section-large) 0 0 0;
+  padding: 0;
 }
 
 .better__container {
   padding: var(--space-main-story-gap) calc(var(--page-padding) + 0.25rem) 0
     var(--page-padding);
-  min-height: 100vh;
 
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
 }
 
 .better__top {
@@ -947,7 +944,7 @@ img {
 
 .better__title {
   margin: 0;
-  padding-top: 19.5rem;
+  padding-top: 0;
   display: inline-flex;
   align-items: baseline;
   gap: 0.06em;
@@ -994,7 +991,7 @@ img {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: var(--space-section-xxl) 0 var(--space-section-large) 0;
+  padding: var(--space-main-story-gap) 0 0;
 }
 
 /* ---------- LESS IS MORE ---------- */
@@ -1007,19 +1004,18 @@ img {
   margin-left: calc(var(--page-padding) * -1);
   margin-right: calc(var(--page-padding) * -1);
 
-  padding: var(--space-main-story-gap) 0 0 0;
+  padding: var(--space-main-story-gap) 0 var(--space-results-transition-gap);
 }
 
 .less-is-more__container {
   padding: 0 var(--page-padding);
-  min-height: 100vh;
 
   display: grid;
-  align-content: space-between;
+  align-content: start;
 }
 
 .less-is-more__content {
-  padding-bottom: var(--space-section-xxl);
+  padding-bottom: 0;
 }
 
 /* Eye statement */
@@ -1093,7 +1089,7 @@ img {
   margin-left: calc(var(--page-padding) * -1);
   margin-right: calc(var(--page-padding) * -1);
 
-  padding: var(--space-results-transition-gap) 0 6rem;
+  padding: var(--space-results-transition-gap) 0 0;
 
   transition:
     background-color 250ms ease,
@@ -1101,12 +1097,11 @@ img {
 }
 
 .results__container {
-  padding: 15.5rem var(--page-padding) 6rem;
-  min-height: 100vh;
+  padding: 0 var(--page-padding);
 
   display: grid;
   justify-items: end;
-  align-content: center;
+  align-content: start;
   gap: 1.25rem;
 
   text-align: right;
@@ -1752,7 +1747,7 @@ img {
   }
 
   .results .results__container {
-    align-content: end;
+    align-content: start;
     padding-bottom: 0;
   }
 
@@ -2673,7 +2668,7 @@ html.is-video-open {
     min-height: auto;
     justify-items: end;
     align-content: start;
-    padding-bottom: var(--space-section-large);
+    padding-bottom: 0;
     gap: 0.5rem;
   }
 
@@ -2710,7 +2705,7 @@ html.is-video-open {
   /* ---------- BETTER ---------- */
   .better,
   .better__container {
-    padding-top: var(--space-section-large);
+    padding-top: 0;
   }
 
   .better__intro {
@@ -3037,7 +3032,7 @@ html.is-video-open {
   }
 
   .results__container {
-    padding: 8rem var(--page-padding);
+    padding: 0 var(--page-padding);
     gap: 0.75rem;
   }
 
