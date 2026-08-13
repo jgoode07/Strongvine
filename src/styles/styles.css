@@ -39,8 +39,8 @@
   --space-section-xxl: 40rem;
 
   /* Jay-approved section spacing, translated from Photoshop pixels to viewport rhythm */
-  --space-story-1100: clamp(44rem, 86vh, 68rem);
-  --space-story-1300: clamp(54rem, 104vh, 82rem);
+  --space-story-1100: 80vh;
+  --space-story-1300: 90vh;
   --space-gallery-gap: var(--space-story-1100);
   --space-main-story-gap: var(--space-story-1300);
   --space-results-transition-gap: var(--space-story-1100);
@@ -2491,8 +2491,8 @@ html.is-video-open {
 /* ---------- HEADER ---------- */
 @media (max-width: 1020px) {
   :root {
-    --space-story-1100: clamp(34rem, 78vh, 52rem);
-    --space-story-1300: clamp(42rem, 92vh, 64rem);
+    --space-story-1100: 80vh;
+    --space-story-1300: 90vh;
   }
 
   .header__hero {
@@ -2611,8 +2611,8 @@ html.is-video-open {
 @media (max-width: 767px) {
   :root {
     --page-padding: 2rem;
-    --space-story-1100: clamp(22rem, 72vh, 38rem);
-    --space-story-1300: clamp(28rem, 86vh, 46rem);
+    --space-story-1100: 80vh;
+    --space-story-1300: 90vh;
   }
 
   .page {
