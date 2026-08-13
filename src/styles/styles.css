@@ -1263,6 +1263,8 @@ img {
 
 @media (max-width: 1020px) {
   .results-morph {
+    --results-morph-top-gap: 70vh;
+
     padding-right: 2rem;
     padding-left: 2rem;
   }
@@ -1274,6 +1276,8 @@ img {
 
 @media (max-width: 640px) {
   .results-morph {
+    --results-morph-top-gap: 70vh;
+
     padding-right: 1.25rem;
     padding-left: 1.25rem;
   }
@@ -2610,6 +2614,10 @@ html.is-video-open {
     --space-story-1300: 90vh;
   }
 
+  .results-morph {
+    --results-morph-top-gap: 70vh;
+  }
+
   .page {
     padding: 2rem;
     padding-bottom: 0;
@@ -2651,7 +2659,7 @@ html.is-video-open {
 
   .header__hero-left {
     max-width: 95%;
-    margin: 4rem 0 6rem;
+    margin: 4rem 0 3rem;
   }
 
   .header__hero-response {

@@ -70,7 +70,7 @@
     "Evocative Marketing",
     "Building Perception",
   ];
-  const intervalTime = 3000;
+  const intervalTime = 2000;
   const animationTime = 900;
 
   let currentIndex = 0;
