@@ -491,6 +491,9 @@
     : states[0].desktopPoints;
   let frameId = null;
   let intervalId = null;
+  let isVisible = false;
+
+  const getLoopDelay = () => (isMobileLayout ? 3500 : 5000);
 
   const setSvgCanvas = () => {
     const canvas = isMobileLayout ? mobileCanvas : desktopCanvas;
@@ -588,6 +591,11 @@
 
     setSvgCanvas();
     setShape(currentPoints);
+
+    if (isVisible) {
+      stopLoop();
+      startLoop();
+    }
   };
 
   if (typeof mobileMedia.addEventListener === "function") {
@@ -604,7 +612,7 @@
   const startLoop = () => {
     if (intervalId) return;
 
-    intervalId = window.setInterval(loop, 5000);
+    intervalId = window.setInterval(loop, getLoopDelay());
   };
 
   const stopLoop = () => {
@@ -622,7 +630,9 @@
   if (typeof IntersectionObserver !== "undefined") {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+        isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.3;
+
+        if (isVisible) {
           startLoop();
           return;
         }
@@ -641,6 +651,7 @@
       observer.disconnect();
     });
   } else {
+    isVisible = true;
     startLoop();
   }
 

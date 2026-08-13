@@ -57,6 +57,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -1210,7 +1214,8 @@ img {
 /* ---------- RESULTS MORPH ---------- */
 
 .results-morph {
-  --results-morph-gap: clamp(24rem, 30vw, 34rem);
+  --results-morph-top-gap: clamp(30rem, 34vw, 42rem);
+  --results-morph-bottom-gap: clamp(40rem, 45vw, 56rem);
 
   background: var(--color-bg-white);
   color: var(--color-text-dark);
@@ -1218,7 +1223,8 @@ img {
   margin-left: calc(var(--page-padding) * -1);
   margin-right: calc(var(--page-padding) * -1);
 
-  padding: var(--results-morph-gap) var(--page-padding);
+  padding: var(--results-morph-top-gap) var(--page-padding)
+    var(--results-morph-bottom-gap);
 }
 
 .results-morph__container {
@@ -1253,7 +1259,8 @@ img {
 
 @media (max-width: 1020px) {
   .results-morph {
-    --results-morph-gap: clamp(18rem, 30vw, 24rem);
+    --results-morph-top-gap: clamp(22rem, 34vw, 30rem);
+    --results-morph-bottom-gap: clamp(30rem, 44vw, 40rem);
 
     padding-right: 2rem;
     padding-left: 2rem;
@@ -1266,7 +1273,8 @@ img {
 
 @media (max-width: 640px) {
   .results-morph {
-    --results-morph-gap: 17rem;
+    --results-morph-top-gap: 24rem;
+    --results-morph-bottom-gap: 32rem;
 
     padding-right: 1.25rem;
     padding-left: 1.25rem;
@@ -2605,6 +2613,10 @@ html.is-video-open {
 
 /* ---------- LARGE MOBILE/TABLET ---------- */
 @media (max-width: 767px) {
+  :root {
+    --page-padding: 2rem;
+  }
+
   .page {
     padding: 2rem;
     padding-bottom: 0;
