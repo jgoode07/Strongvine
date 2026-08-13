@@ -1383,9 +1383,12 @@ img {
 /* ---------- WE STACK UP ---------- */
 
 .stack-up {
-  --stack-up-gap: clamp(12rem, 18vw, 18rem);
+  --stack-up-gap: clamp(24rem, 30vw, 34rem);
+  --stack-up-results-tail-gap: clamp(27rem, 42.5vh, 35rem);
   --stack-up-top-gap: var(--stack-up-gap);
-  --stack-up-bottom-gap: calc(var(--stack-up-gap) + 12rem);
+  --stack-up-bottom-gap: calc(
+    var(--stack-up-gap) + var(--stack-up-results-tail-gap)
+  );
   --lego-unit: 0.4rem;
   --lego-motion-unit: var(--lego-unit);
   --lego-bounce: linear(
@@ -1731,9 +1734,12 @@ img {
 
 @media (max-width: 1020px) {
   .stack-up {
-    --stack-up-gap: clamp(9rem, 18vw, 12rem);
+    --stack-up-gap: clamp(18rem, 30vw, 24rem);
+    --stack-up-results-tail-gap: clamp(21rem, 39vh, 28rem);
     --stack-up-top-gap: var(--stack-up-gap);
-    --stack-up-bottom-gap: var(--stack-up-gap);
+    --stack-up-bottom-gap: calc(
+      var(--stack-up-gap) + var(--stack-up-results-tail-gap)
+    );
   }
 }
 
@@ -1748,11 +1754,14 @@ img {
   }
 
   .stack-up {
-    --stack-up-gap: 9rem;
-    --stack-up-top-gap: 12.5rem;
-    --stack-up-bottom-gap: var(--stack-up-gap);
-    --lego-unit: 0.4rem;
-    --lego-motion-unit: 0.2rem;
+    --stack-up-gap: 17rem;
+    --stack-up-results-tail-gap: 36vh;
+    --stack-up-top-gap: var(--stack-up-gap);
+    --stack-up-bottom-gap: calc(
+      var(--stack-up-gap) + var(--stack-up-results-tail-gap)
+    );
+    --lego-unit: 0.28rem;
+    --lego-motion-unit: 0.14rem;
 
     margin-right: 0;
     margin-left: 0;
@@ -1768,20 +1777,20 @@ img {
   .stack-up__body {
     grid-template-columns: minmax(0, 1fr);
     justify-items: start;
-    gap: 4rem;
+    gap: 3rem;
     width: 100%;
     margin: 4rem 0 0;
   }
 
   .stack-up__lego {
-    width: 8rem;
-    height: 19.625rem;
-    margin-left: 2.5rem;
+    width: 6rem;
+    height: 13.75rem;
+    margin-left: 0.5rem;
   }
 
   .stack-up__lego-content {
     position: relative;
-    top: -0.65rem;
+    top: -0.45rem;
   }
 
   .stack-up__copy {
