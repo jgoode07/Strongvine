@@ -1140,9 +1140,9 @@ img {
   align-items: center;
   justify-content: center;
   text-align: left;
-  margin: 1.5rem 2.5rem 0 0;
-  min-height: 11rem;
-  padding: 2rem 0;
+  margin: 2.25rem 1.25rem 0 0;
+  min-height: 15rem;
+  padding: 3rem 0;
   overflow: visible;
   perspective-origin: calc(50% + 10rem) calc(50% - 10rem);
   perspective: 32em;
@@ -1156,10 +1156,10 @@ img {
 .respect__toggle [type="checkbox"] + label {
   --s: 0;
   position: relative;
-  border: solid 0.625rem #f0f0f0;
-  width: 10rem;
-  height: 5rem;
-  border-radius: 5rem;
+  border: solid 0.875rem #f0f0f0;
+  width: 14rem;
+  height: 7rem;
+  border-radius: 7rem;
   transform-style: preserve-3d;
   transform: rotatex(90deg) rotate(22.5deg) rotatey(22.5deg);
   box-shadow:
@@ -1179,17 +1179,17 @@ img {
 .respect__toggle [type="checkbox"] + label:before,
 .respect__toggle [type="checkbox"] + label:after {
   position: absolute;
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   transition: 0.35s cubic-bezier(0.21, 0.61, 0.35, 1);
   content: "";
 }
 
 .respect__toggle [type="checkbox"] + label:before {
-  top: calc(50% + 0.875rem);
+  top: calc(50% + 1.225rem);
   transform-origin: 100% 0;
-  transform: translate(calc(var(--s) * (100% + 1rem))) scale(0.8)
+  transform: translate(calc(var(--s) * (100% + 1.4rem))) scale(0.8)
     skewx(-22.5deg);
   background: radial-gradient(
     at 50% 25%,
@@ -1200,7 +1200,7 @@ img {
 }
 
 .respect__toggle [type="checkbox"] + label:after {
-  transform: translate(calc(var(--s) * (100% + 1rem))) rotatey(-22.5deg)
+  transform: translate(calc(var(--s) * (100% + 1.4rem))) rotatey(-22.5deg)
     rotate(-22.5deg) rotatex(-90deg) translatey(-50%) rotate(45deg);
   box-shadow: -1px 1px 0.125rem rgba(206, 255, 206, 0.5);
   background:
@@ -1391,7 +1391,7 @@ img {
 .stack-up {
   --stack-up-top-gap: var(--space-main-story-gap);
   --stack-up-bottom-gap: var(--space-stack-footer-gap);
-  --lego-unit: 0.4rem;
+  --lego-unit: 0.36rem;
   --lego-motion-unit: var(--lego-unit);
   --lego-bounce: linear(
     0 0%,
@@ -1453,17 +1453,17 @@ img {
 
   font-size: 125px;
   font-weight: 400;
-  line-height: 0.96;
+  line-height: 0.9;
   letter-spacing: 0.025em;
 }
 
 .stack-up__body {
   display: grid;
-  grid-template-columns: 8rem minmax(0, 43ch);
+  grid-template-columns: 7.2rem minmax(0, 43ch);
   align-items: center;
-  gap: 4rem;
+  gap: 5.5rem;
 
-  margin: clamp(8rem, 12vw, 12rem) 0 0 3rem;
+  margin: calc(clamp(8rem, 12vw, 12rem) - 3rem) 0 0 2.5rem;
 }
 
 .stack-up__copy {
@@ -1489,8 +1489,8 @@ img {
 
 .stack-up__lego {
   position: relative;
-  width: 8rem;
-  height: 18rem;
+  width: 7.2rem;
+  height: 16.2rem;
   perspective: 80rem;
 }
 
@@ -1754,8 +1754,8 @@ img {
   .stack-up {
     --stack-up-top-gap: var(--space-main-story-gap);
     --stack-up-bottom-gap: var(--space-stack-footer-gap);
-    --lego-unit: 0.28rem;
-    --lego-motion-unit: 0.14rem;
+    --lego-unit: 0.252rem;
+    --lego-motion-unit: 0.126rem;
 
     margin-right: 0;
     margin-left: 0;
@@ -1765,7 +1765,7 @@ img {
 
   .stack-up__title {
     font-size: 60px;
-    line-height: 1;
+    line-height: 0.94;
   }
 
   .stack-up__body {
@@ -1773,12 +1773,12 @@ img {
     justify-items: start;
     gap: 3rem;
     width: 100%;
-    margin: 4rem 0 0;
+    margin: calc(4rem - 8px) 0 0;
   }
 
   .stack-up__lego {
-    width: 6rem;
-    height: 13.75rem;
+    width: 5.4rem;
+    height: 12.375rem;
     margin-left: 0.5rem;
   }
 
@@ -2736,28 +2736,29 @@ html.is-video-open {
   }
 
   .respect__toggle {
-    margin: 1.25rem 2rem 0 0;
-    min-height: 9rem;
-    padding: 1.5rem 0;
-    perspective-origin: calc(50% + 8rem) calc(50% - 8rem);
-    perspective: 28em;
+    justify-self: end;
+    margin: 1.5rem 1rem 0 0;
+    min-height: 10rem;
+    padding: 1.35rem 0;
+    perspective-origin: calc(50% + 9.6rem) calc(50% - 9.6rem);
+    perspective: 34em;
   }
 
   .respect__toggle [type="checkbox"] + label {
-    width: 8.5rem;
-    height: 4.25rem;
-    border: solid 0.55rem #f0f0f0;
-    border-radius: 4.25rem;
+    width: 10.2rem;
+    height: 5.1rem;
+    border: solid 0.66rem #f0f0f0;
+    border-radius: 5.1rem;
   }
 
   .respect__toggle [type="checkbox"] + label:before,
   .respect__toggle [type="checkbox"] + label:after {
-    width: 4.25rem;
-    height: 4.25rem;
+    width: 5.1rem;
+    height: 5.1rem;
   }
 
   .respect__toggle [type="checkbox"] + label:before {
-    top: calc(50% + 0.7rem);
+    top: calc(50% + 0.84rem);
   }
 
   /* ---------- FOOTER ---------- */
@@ -3040,28 +3041,29 @@ html.is-video-open {
   }
 
   .respect__toggle {
-    margin: 1rem 1rem 0 0;
-    min-height: 7rem;
-    padding: 1rem 0;
-    perspective-origin: calc(50% + 6rem) calc(50% - 6rem);
-    perspective: 24em;
+    justify-self: end;
+    margin: 1.35rem 1rem 0 0;
+    min-height: 8.5rem;
+    padding: 1.2rem 0;
+    perspective-origin: calc(50% + 7.2rem) calc(50% - 7.2rem);
+    perspective: 29em;
   }
 
   .respect__toggle [type="checkbox"] + label {
-    width: 7rem;
-    height: 3.5rem;
-    border: solid 0.45rem #f0f0f0;
-    border-radius: 3.5rem;
+    width: 8.4rem;
+    height: 4.2rem;
+    border: solid 0.54rem #f0f0f0;
+    border-radius: 4.2rem;
   }
 
   .respect__toggle [type="checkbox"] + label:before,
   .respect__toggle [type="checkbox"] + label:after {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4.2rem;
+    height: 4.2rem;
   }
 
   .respect__toggle [type="checkbox"] + label:before {
-    top: calc(50% + 0.6rem);
+    top: calc(50% + 0.72rem);
   }
 
   .respect__toggle [type="checkbox"] + label:after {
