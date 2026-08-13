@@ -2703,9 +2703,12 @@ html.is-video-open {
   }
 
   /* ---------- BETTER ---------- */
-  .better,
-  .better__container {
+  .better {
     padding-top: 0;
+  }
+
+  .better__container {
+    padding-top: var(--space-main-story-gap);
   }
 
   .better__intro {
