@@ -4,11 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Strongvine</title>
+    <title>Strongvine Visual Communications | Branding &amp; Web Design</title>
     <meta
       name="description"
-      content="Strongvine is a design-first agency specializing in web design, development, and digital branding."
+      content="Strongvine Visual Communications: branding, web design, development and e-commerce, graphics, print, audio, video, and AI. Design-first since 2004."
     />
+    <meta name="author" content="Strongvine Visual Communications" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://strongvine.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Strongvine Visual Communications" />
+    <meta property="og:url" content="https://strongvine.com/" />
+    <meta property="og:title" content="Strongvine Visual Communications | Branding &amp; Web Design" />
+    <meta property="og:description" content="Design-first since 2004. Branding, web design, development and e-commerce, graphics, print, audio, video, and AI, with strategy and design working together." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Strongvine Visual Communications | Branding &amp; Web Design" />
+    <meta name="twitter:description" content="Design-first since 2004. Branding, web design, development and e-commerce, graphics, print, audio, video, and AI, with strategy and design working together." />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://strongvine.com/#organization",
+            "name": "Strongvine Visual Communications",
+            "alternateName": "Strongvine",
+            "url": "https://strongvine.com/",
+            "logo": "https://strongvine.com/src/assets/img/strongvine-logo.png",
+            "foundingDate": "2004",
+            "description": "A design-first visual communications company bringing together brand strategy, design, websites, graphics, print, audio, video, and AI.",
+            "email": "info@strongvine.com",
+            "telephone": "+1-613-884-5659",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Strongvine creative services",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand strategy and identity", "provider": { "@id": "https://strongvine.com/#organization" } } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website design and development", "provider": { "@id": "https://strongvine.com/#organization" } } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Graphic design", "provider": { "@id": "https://strongvine.com/#organization" } } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Print design", "provider": { "@id": "https://strongvine.com/#organization" } } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audio", "provider": { "@id": "https://strongvine.com/#organization" } } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video storytelling", "provider": { "@id": "https://strongvine.com/#organization" } } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI", "provider": { "@id": "https://strongvine.com/#organization" } } }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://strongvine.com/#website",
+            "url": "https://strongvine.com/",
+            "name": "Strongvine Visual Communications",
+            "publisher": { "@id": "https://strongvine.com/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://strongvine.com/#webpage",
+            "url": "https://strongvine.com/",
+            "name": "Strongvine Visual Communications | Branding & Web Design",
+            "description": "Design-first since 2004. Strongvine Visual Communications brings together branding, websites, graphics, print, audio, video, and AI.",
+            "isPartOf": { "@id": "https://strongvine.com/#website" },
+            "about": { "@id": "https://strongvine.com/#organization" },
+            "inLanguage": "en"
+          }
+        ]
+      }
+    </script>
 
     <link
       rel="icon"
@@ -48,14 +110,14 @@
               <img
                 src="src/assets/img/strongvine.png"
                 alt="Strongvine wordmark logo"
-              />
+              width="856" height="82" />
             </a>
 
             <a class="header__brand-logo" href="#" aria-label="Strongvine home">
               <img
                 src="src/assets/img/strongvine-logo.png"
                 alt="Strongvine logo"
-              />
+              width="575" height="477" fetchpriority="high" />
             </a>
           </div>
           <!-- Hero content area -->
@@ -88,6 +150,8 @@
                     class="btn btn--video header__video-btn"
                     type="button"
                     data-open-video
+                    aria-haspopup="dialog"
+                    aria-controls="video-dialog"
                   >
                     <span>Watch Video</span>
                   </button>
@@ -95,6 +159,7 @@
 
                 <div
                   class="header__contact-line"
+                  role="group"
                   aria-label="Strongvine contact information"
                 >
                   <span class="header__contact-status-wrap">
@@ -278,7 +343,7 @@
           <!-- Cherry content area -->
           <div class="cherry__container">
             <div class="cherry__icon" aria-hidden="true">
-              <img src="src/assets/img/cherry.png" alt="" />
+              <img src="src/assets/img/cherry.png" alt="" width="122" height="146" />
             </div>
 
             <p class="cherry__intro">
@@ -292,21 +357,25 @@
 
             <!-- Cherry buttons -->
             <div class="cherry__actions">
-              <a
+              <button
                 class="btn btn--portfolio cherry__portfolio-btn"
-                href="#"
+                type="button"
                 data-overlay-open="portfolio"
+                aria-haspopup="dialog"
+                aria-controls="portfolio-dialog"
               >
                 <span>Request Portfolio</span>
-              </a>
+              </button>
 
-              <a
+              <button
                 class="btn btn--cherry cherry__top-btn"
-                href="#"
+                type="button"
                 data-overlay-open="cherry"
+                aria-haspopup="dialog"
+                aria-controls="cherry-dialog"
               >
                 <span>Cherry On-Top</span>
-              </a>
+              </button>
             </div>
           </div>
         </section>
@@ -346,7 +415,7 @@
             <div class="less-is-more__content">
               <p class="less-is-more__aside">
                 <span class="less-is-more__eye" aria-hidden="true">
-                  <img src="src/assets/img/eye.png" alt="" />
+                  <img src="src/assets/img/eye.png" alt="" width="75" height="57" />
                 </span>
                 <span>couldn’t agree more...</span>
               </p>
@@ -366,13 +435,15 @@
               </p>
 
               <!-- CTA -->
-              <a
+              <button
                 class="btn btn--clients less-is-more__btn"
-                href="#"
+                type="button"
                 data-overlay-open="clients"
+                aria-haspopup="dialog"
+                aria-controls="clients-dialog"
               >
                 <span>Client List</span>
-              </a>
+              </button>
             </div>
           </div>
         </section>
@@ -501,6 +572,8 @@
                 class="btn btn--footer footer__cta"
                 type="button"
                 data-overlay-open="fun"
+                aria-haspopup="dialog"
+                aria-controls="fun-dialog"
               >
                 <span>Have Some Fun!</span>
               </button>
@@ -512,7 +585,7 @@
     </div>
 
     <!---------- Lightbox ---------->
-    <div class="video-popup" aria-hidden="true">
+    <dialog class="video-popup" id="video-dialog" aria-label="Strongvine video">
       <div class="video-popup__inner">
         <button class="video-close" type="button" aria-label="Close video">
           Close X
@@ -520,7 +593,7 @@
 
         <iframe
           class="video-popup__iframe"
-          src=""
+          src="about:blank"
           title="Strongvine video"
           allow="
             accelerometer;
@@ -533,21 +606,21 @@
           allowfullscreen
         ></iframe>
       </div>
-    </div>
+    </dialog>
 
     <!---------- Overlays ---------->
 
     <!-- Cherry On-Top overlay -->
-    <section class="overlay overlay--cherry">
+    <dialog class="overlay overlay--cherry" id="cherry-dialog" aria-labelledby="cherry-title">
       <div class="overlay__inner">
         <img
           class="overlay__icon overlay__icon--cherry"
           src="src/assets/img/cherry.png"
           alt=""
           aria-hidden="true"
-        />
+        width="122" height="146" />
 
-        <h2 class="overlay__title">
+        <h2 class="overlay__title" id="cherry-title">
           Not just a <span class="overlay__title-cherry">Cherry</span>
         </h2>
 
@@ -589,16 +662,16 @@
           </a>
         </div>
       </div>
-    </section>
+    </dialog>
 
     <!-- Request Portfolio overlay -->
-    <section class="overlay overlay--portfolio">
+    <dialog class="overlay overlay--portfolio" id="portfolio-dialog" aria-labelledby="portfolio-title">
       <div class="overlay__inner">
         <div class="overlay__icon overlay__icon--portfolio">
-          <img src="src/assets/img/bolt.png" alt="" aria-hidden="true" />
+          <img src="src/assets/img/bolt.png" alt="" aria-hidden="true" width="167" height="239" />
         </div>
 
-        <h2 class="overlay__title">Portfolio Access</h2>
+        <h2 class="overlay__title" id="portfolio-title">Portfolio Access</h2>
 
         <p class="overlay__copy overlay__copy--desktop">
           Some of our favourite work never actually makes it online. Many of our
@@ -638,12 +711,12 @@
           </button>
         </div>
       </div>
-    </section>
+    </dialog>
 
     <!--  Request Clients overlay -->
-    <section class="overlay overlay--clients">
+    <dialog class="overlay overlay--clients" id="clients-dialog" aria-labelledby="clients-title">
       <div class="overlay__inner overlay__inner--clients">
-        <h2 class="overlay__title">
+        <h2 class="overlay__title" id="clients-title">
           Say Hi!<span class="overlay__title-green">...</span>
         </h2>
 
@@ -698,10 +771,10 @@
           old-school Yo!
         </a>
       </div>
-    </section>
+    </dialog>
 
     <!-- Fun footer overlay -->
-    <section class="overlay overlay--fun">
+    <dialog class="overlay overlay--fun" id="fun-dialog" aria-label="Have Some Fun!">
       <div class="overlay__inner overlay__inner--fun">
         <div class="overlay__fun-desktop">
           <div class="overlay__fun-demo">
@@ -730,42 +803,46 @@
                 <button
                   class="overlay__fun-shape-btn active"
                   data-shape="rectangle"
+                  aria-pressed="true"
                   aria-label="Rectangle"
                 ></button>
                 <button
                   class="overlay__fun-shape-btn"
                   data-shape="circle"
+                  aria-pressed="false"
                   aria-label="Circle"
                 ></button>
                 <button
                   class="overlay__fun-shape-btn"
                   data-shape="diamond"
+                  aria-pressed="false"
                   aria-label="Diamond"
                 ></button>
                 <button
                   class="overlay__fun-shape-btn"
                   data-shape="hexagon"
+                  aria-pressed="false"
                   aria-label="Hexagon"
                 ></button>
               </div>
 
               <div class="overlay__fun-toggle-controls">
-                <button class="overlay__fun-toggle-btn" data-rotation-toggle>
+                <button class="overlay__fun-toggle-btn" data-rotation-toggle aria-pressed="false">
                   rotation
                 </button>
-                <button class="overlay__fun-toggle-btn" data-blur-toggle>
+                <button class="overlay__fun-toggle-btn" data-blur-toggle aria-pressed="false">
                   blur
                 </button>
-                <button class="overlay__fun-toggle-btn" data-color-toggle>
+                <button class="overlay__fun-toggle-btn" data-color-toggle aria-pressed="false">
                   color
                 </button>
-                <button class="overlay__fun-toggle-btn" data-opacity-toggle>
+                <button class="overlay__fun-toggle-btn" data-opacity-toggle aria-pressed="false">
                   opacity
                 </button>
-                <button class="overlay__fun-toggle-btn" data-parallax-toggle>
+                <button class="overlay__fun-toggle-btn" data-parallax-toggle aria-pressed="false">
                   parallax
                 </button>
-                <button class="overlay__fun-toggle-btn" data-3d-toggle>
+                <button class="overlay__fun-toggle-btn" data-3d-toggle aria-pressed="false">
                   3d
                 </button>
               </div>
@@ -784,7 +861,7 @@
             class="overlay__fun-mobile-image"
             src="/src/assets/img/fun-demo.png"
             alt=""
-          />
+          width="1201" height="1205" />
 
           <button
             class="btn btn--portfolio overlay__btn"
@@ -795,7 +872,7 @@
           </button>
         </div>
       </div>
-    </section>
+    </dialog>
 
     <!-- Scripts -->
 

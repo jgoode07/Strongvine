@@ -1,0 +1,35 @@
+{
+  "license": "https://unsplash.com/license",
+  "images": [
+    {
+      "file": "gallery-01.webp",
+      "source": "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2340&auto=format&fit=crop",
+      "download": "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2340&fm=webp&fit=crop",
+      "bytes": 325202
+    },
+    {
+      "file": "gallery-02.webp",
+      "source": "https://images.unsplash.com/photo-1609869644293-6714a930d4f4?q=80&w=1837&auto=format&fit=crop",
+      "download": "https://images.unsplash.com/photo-1609869644293-6714a930d4f4?q=80&w=1837&fm=webp&fit=crop",
+      "bytes": 346608
+    },
+    {
+      "file": "gallery-03.webp",
+      "source": "https://images.unsplash.com/photo-1527576539890-dfa815648363?q=80&w=1365&auto=format&fit=crop",
+      "download": "https://images.unsplash.com/photo-1527576539890-dfa815648363?q=80&w=1365&fm=webp&fit=crop",
+      "bytes": 208910
+    },
+    {
+      "file": "gallery-04.webp",
+      "source": "https://images.unsplash.com/photo-1531591022136-eb8b0da1e6d0?q=80&w=2012&auto=format&fit=crop",
+      "download": "https://images.unsplash.com/photo-1531591022136-eb8b0da1e6d0?q=80&w=2012&fm=webp&fit=crop",
+      "bytes": 231602
+    },
+    {
+      "file": "gallery-05.webp",
+      "source": "https://images.unsplash.com/photo-1598818384697-62330d600309?q=80&w=987&auto=format&fit=crop",
+      "download": "https://images.unsplash.com/photo-1598818384697-62330d600309?q=80&w=987&fm=webp&fit=crop",
+      "bytes": 88556
+    }
+  ]
+}

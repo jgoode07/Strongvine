@@ -106,7 +106,11 @@
     );
 
     wordEl.appendChild(clip);
-    wordEl.setAttribute("aria-label", currentWord);
+    // Keep the current phrase readable without labelling a generic span.
+    const accessibleWord = document.createElement("span");
+    accessibleWord.className = "sr-only";
+    accessibleWord.textContent = currentWord;
+    wordEl.appendChild(accessibleWord);
   };
 
   const rollToNext = () => {
@@ -144,60 +148,33 @@
 (() => {
   const openers = document.querySelectorAll("[data-open-video]");
   const popup = document.querySelector(".video-popup");
-
   if (!openers.length || !popup) return;
 
   const closeBtn = popup.querySelector(".video-close");
   const iframe = popup.querySelector(".video-popup__iframe");
-
   const videoUrl = "https://www.youtube.com/embed/_cj6TJfLYVI?autoplay=1";
 
   const open = () => {
+    if (popup.open) return;
     popup.classList.add("is-open");
-    popup.setAttribute("aria-hidden", "false");
+    popup.showModal();
     document.documentElement.classList.add("is-video-open");
-
-    if (iframe) {
-      iframe.src = videoUrl;
-    }
-
-    if (window.__lenis) {
-      window.__lenis.stop();
-    }
+    if (iframe) iframe.src = videoUrl;
+    window.__lenis?.stop();
   };
 
-  const close = () => {
+  // Handles both the close button and the browser's native Escape behavior.
+  popup.addEventListener("close", () => {
     popup.classList.remove("is-open");
-    popup.setAttribute("aria-hidden", "true");
     document.documentElement.classList.remove("is-video-open");
-
-    if (iframe) {
-      iframe.src = "";
-    }
-
-    if (window.__lenis) {
-      window.__lenis.start();
-    }
-  };
-
-  openers.forEach((button) => {
-    button.addEventListener("click", open);
+    if (iframe) iframe.src = "about:blank";
+    window.__lenis?.start();
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener("click", close);
-  }
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && popup.classList.contains("is-open")) {
-      close();
-    }
-  });
-
+  openers.forEach((button) => button.addEventListener("click", open));
+  closeBtn?.addEventListener("click", () => popup.close());
   popup.addEventListener("click", (event) => {
-    if (event.target === popup) {
-      close();
-    }
+    if (event.target === popup) popup.close();
   });
 })();
 
@@ -396,27 +373,27 @@
 
   const states = [
     {
-      img: "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2340&auto=format&fit=crop",
+      img: "src/assets/img/gallery/gallery-01.webp",
       points:
         "0.5,496.237 0.5,350.195 84.903,350.195 84.903,82.23 195.431,82.23 195.431,0.5 387.012,0.5 387.012,157.93 525.675,157.93 525.675,247.699 689.792,247.699 689.792,112.376 881.373,112.376 881.373,32.656 938.312,32.656 938.312,112.376 993.241,112.376 993.241,223.582 1047.5,223.582 1047.5,332.778 993.241,332.778 993.241,388.381 938.312,388.381 938.312,443.314 881.373,443.314 881.373,388.381 689.792,388.381 689.792,550.5 495.531,550.5 495.531,388.381 303.949,388.381 303.949,496.237",
     },
     {
-      img: "https://images.unsplash.com/photo-1609869644293-6714a930d4f4?q=80&w=1837&auto=format&fit=crop",
+      img: "src/assets/img/gallery/gallery-02.webp",
       points:
         "0.5,392 0.5,235 92,235 92,53 359,53 359,235 508,235 508,165.5 735.5,165.5 735.5,0.5 809.5,0.5 809.5,215.5 1047.5,215.5 1047.5,335 957,335 957,428 747,428 747,281.5 645,281.5 645,550 397.5,550 397.5,335 256,335 256,451 148,451 148,392",
     },
     {
-      img: "https://images.unsplash.com/photo-1527576539890-dfa815648363?q=80&w=1365&auto=format&fit=crop",
+      img: "src/assets/img/gallery/gallery-03.webp",
       points:
         "0.5,399.622 0.5,186.328 329.039,186.328 329.039,0.5 492.724,0.5 492.724,121.464 747.021,121.464 747.021,246.518 1047.5,246.518 1047.5,341.185 954.55,341.185 954.55,613.5 640.041,613.5 640.041,341.185 534.815,341.185 534.815,553.31 256.55,553.31 256.55,341.185 133.786,341.185 133.786,399.622",
     },
     {
-      img: "https://images.unsplash.com/photo-1531591022136-eb8b0da1e6d0?q=80&w=2012&auto=format&fit=crop",
+      img: "src/assets/img/gallery/gallery-04.webp",
       points:
         "0.5,293.497 0.5,61.474 54.953,61.474 54.953,31.257 164.936,31.257 164.936,132.699 415.095,132.699 415.095,242.776 440.434,242.776 440.434,71.726 494.348,71.726 494.348,0.5 604.331,0.5 604.331,132.699 580.609,132.699 580.609,242.776 658.784,242.776 658.784,112.195 773.619,112.195 773.619,242.776 939.134,242.776 939.134,323.714 1047.5,323.714 1047.5,403.573 1017.31,403.573 1017.31,491.526 962.856,491.526 962.856,552.5 793.567,552.5 793.567,403.573 658.784,403.573 658.784,530.377 330.451,530.377 330.451,467.784 494.348,467.784 494.348,403.573 550.418,403.573 550.418,323.714 294.868,323.714 294.868,242.776 190.275,242.776 190.275,351.233 78.675,351.233 78.675,293.497",
     },
     {
-      img: "https://images.unsplash.com/photo-1598818384697-62330d600309?q=80&w=987&auto=format&fit=crop",
+      img: "src/assets/img/gallery/gallery-05.webp",
       points:
         "0.5,369.446 0.5,207.288 329.408,207.288 329.408,0.5 522.14,0.5 522.14,300.268 615.901,300.268 615.901,69.677 784.076,69.677 784.076,272.002 848.816,272.002 848.816,170.84 944.809,170.84 944.809,136.623 1047.5,136.623 1047.5,369.446 944.809,369.446 944.809,604.5 784.076,604.5 784.076,529.372 615.901,529.372 615.901,466.889 423.169,466.889 423.169,604.5 256.483,604.5 256.483,466.889 96.494,466.889 96.494,369.446",
     },
@@ -1136,8 +1113,12 @@ const funOverlayEffect = (() => {
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        buttons.forEach((item) => item.classList.remove("active"));
+        buttons.forEach((item) => {
+          item.classList.remove("active");
+          item.setAttribute("aria-pressed", "false");
+        });
         button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
 
         reset2D();
         applyShape(button.dataset.shape);
@@ -1172,6 +1153,7 @@ const funOverlayEffect = (() => {
         button.classList.toggle("active");
 
         const isActive = button.classList.contains("active");
+        button.setAttribute("aria-pressed", String(isActive));
         button.textContent = isActive ? `${name} on` : name;
 
         if (name === "rotation") isRotation = isActive;
@@ -1261,46 +1243,33 @@ const funOverlayEffect = (() => {
 /* ---------- OVERLAYS ---------- */
 
 (() => {
-  const openButtons = document.querySelectorAll("[data-overlay-open]");
-  const closeButtons = document.querySelectorAll("[data-overlay-close]");
-
-  openButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      const overlayName = button.dataset.overlayOpen;
-
-      const overlay = document.querySelector(`.overlay--${overlayName}`);
-
-      if (!overlay) return;
+  document.querySelectorAll("[data-overlay-open]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const name = button.dataset.overlayOpen;
+      const overlay = document.getElementById(`${name}-dialog`);
+      if (!overlay || overlay.open) return;
 
       overlay.classList.add("is-open");
-
-      if (overlayName === "fun" && funOverlayEffect) {
-        funOverlayEffect.start();
-      }
-
-      if (overlayName === "clients" && clientsTerminal) {
-        clientsTerminal.start();
-      }
+      overlay.showModal();
+      document.documentElement.classList.add("is-overlay-open");
+      window.__lenis?.stop();
+      if (name === "fun") funOverlayEffect?.start();
+      if (name === "clients") clientsTerminal?.start();
     });
   });
 
-  closeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const overlay = button.closest(".overlay");
+  document.querySelectorAll("[data-overlay-close]").forEach((button) => {
+    button.addEventListener("click", () => button.closest("dialog")?.close());
+  });
 
-      if (!overlay) return;
-
+  document.querySelectorAll(".overlay").forEach((overlay) => {
+    // Native dialogs manage focus, background interaction, and Escape.
+    overlay.addEventListener("close", () => {
       overlay.classList.remove("is-open");
-
-      if (overlay.classList.contains("overlay--clients") && clientsTerminal) {
-        clientsTerminal.stop();
-      }
-
-      if (overlay.classList.contains("overlay--fun") && funOverlayEffect) {
-        funOverlayEffect.stop();
-      }
+      document.documentElement.classList.remove("is-overlay-open");
+      window.__lenis?.start();
+      if (overlay.classList.contains("overlay--clients")) clientsTerminal?.stop();
+      if (overlay.classList.contains("overlay--fun")) funOverlayEffect?.stop();
     });
   });
 })();

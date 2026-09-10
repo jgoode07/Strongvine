@@ -1,0 +1,5 @@
+# Public pages and assets are available to crawlers.
+User-agent: *
+Allow: /
+
+Sitemap: https://strongvine.com/sitemap.xml
