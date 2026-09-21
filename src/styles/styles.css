@@ -1382,7 +1382,9 @@ img {
 
   to {
     transform: translateX(
-      calc(var(--industries-marquee-distance) - var(--industries-marquee-offset))
+      calc(
+        var(--industries-marquee-distance) - var(--industries-marquee-offset)
+      )
     );
   }
 }
