@@ -1,6 +1,9 @@
 /* ---------- RESULTS MORPH SVG ---------- */
 
 (async () => {
+  // Temporary quality comparison: set to false to use the optimized WebPs again.
+  const USE_ORIGINAL_IMAGES = true;
+
   const scriptUrl = document.currentScript.src;
   const section = document.querySelector(".results-morph");
   const svg = document.querySelector(".results-morph__svg");
@@ -67,12 +70,15 @@
     points: shapeStates[index % shapeStates.length].points,
     img: new URL(`${slide.slug}-1440.webp`, imageBase).href,
     mobileImg: new URL(`${slide.slug}-960.webp`, imageBase).href,
+    originalImg: new URL(slide.source, imageBase).href,
     alt: slide.alt,
   }));
-  const getImageSource = (state) =>
-    mobileMedia.matches || navigator.connection?.saveData
+  const getImageSource = (state) => {
+    if (USE_ORIGINAL_IMAGES) return state.originalImg;
+    return mobileMedia.matches || navigator.connection?.saveData
       ? state.mobileImg
       : state.img;
+  };
   const preloadState = (state) => {
     const preload = new Image();
     preload.decoding = "async";
